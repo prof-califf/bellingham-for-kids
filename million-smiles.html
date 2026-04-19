@@ -89,15 +89,15 @@ html.reduce-motion *{animation:none!important;transition:none!important;}
 .hero-mountain svg{width:100%;height:100%;display:block;}
 
 /* PHOTO */
-.photo-section{background:var(--accent-light);border-bottom:4px solid var(--dark);}
-.photo-main{height:280px;background:var(--accent-light);display:flex;align-items:center;justify-content:center;border-bottom:3px dashed var(--accent);}
-.photo-placeholder{text-align:center;}
-.photo-placeholder-icon{font-size:48px;margin-bottom:8px;}
-.photo-placeholder-text{font-family:'Boogaloo',cursive;font-size:18px;color:var(--accent-dark);}
-.photo-placeholder-sub{font-size:12px;font-weight:700;color:var(--accent-dark);opacity:0.7;}
-.photo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;}
-.photo-thumb{height:100px;background:var(--accent);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:900;color:#fff;border:2px solid var(--dark);cursor:pointer;transition:opacity 0.15s;}
-.photo-thumb:hover{opacity:0.8;}
+
+
+
+
+
+
+
+
+
 
 /* CONTENT */
 .content{max-width:820px;margin:0 auto;padding:2rem 1.5rem;}
@@ -121,11 +121,11 @@ html.reduce-motion *{animation:none!important;transition:none!important;}
 .fact-row:last-child{border-bottom:none;}
 .fact-key{font-size:12px;font-weight:900;color:#888;text-transform:uppercase;letter-spacing:0.05em;}
 .fact-val{font-size:13px;font-weight:800;color:var(--dark);}
-.rate-card{background:var(--accent-light);border:3px solid var(--dark);border-radius:16px;padding:1.25rem;box-shadow:4px 4px 0 var(--dark);}
-.rate-title{font-family:'Boogaloo',cursive;font-size:18px;color:var(--dark);margin-bottom:10px;}
-.rate-stars{display:flex;gap:6px;margin-bottom:10px;}
-.rstar{font-size:28px;color:#D3D1C7;cursor:pointer;background:none;border:none;padding:0;line-height:1;font-family:'Nunito',sans-serif;transition:color 0.1s;}
-.rstar.lit{color:#FFB800;}
+
+
+
+
+
 .rate-textarea{width:100%;font-size:13px;font-family:'Nunito',sans-serif;font-weight:700;border:2.5px solid var(--dark);border-radius:10px;padding:10px;background:#fff;resize:vertical;min-height:80px;color:var(--dark);outline:none;}
 .rate-submit{margin-top:10px;width:100%;font-family:'Boogaloo',cursive;font-size:18px;padding:10px;border-radius:12px;border:2.5px solid var(--dark);background:var(--accent);color:#fff;cursor:pointer;box-shadow:3px 3px 0 var(--dark);transition:transform 0.1s,box-shadow 0.1s;}
 .rate-submit:hover{transform:translate(1px,1px);box-shadow:2px 2px 0 var(--dark);}
@@ -193,11 +193,6 @@ footer{background:var(--dark);border-top:4px solid var(--dark);padding:2rem 1.5r
   <div class="hero-inner">
     <div class="park-eyebrow">📍 Lynden</div>
     <div class="park-title">Million Smiles Park</div>
-    <div class="park-stars-row">
-      <span class="stars-big"><span style="color:#FFB800">★★★★★</span></span>
-      <span class="rating-big">4.9</span>
-      <span class="rating-cnt">(33 ratings)</span>
-    </div>
     <div class="hero-badges"><span class="dbadge" style="background:#FFE0EE;color:#993556;">Kid swings</span> <span class="dbadge" style="background:#FFE0EE;color:#993556;">Baby swings</span> <span class="dbadge" style="background:#EDE4FF;color:#6934D0;">Monkey bars</span> <span class="dbadge" style="background:#D6F7E8;color:#1B7A3E;">Basketball</span> <span class="dbadge" style="background:#D6F7E8;color:#1B7A3E;">Tennis</span> <span class="dbadge" style="background:#1E1B18;color:#FFD600;">Accessible</span></div>
     <div class="hero-address">📍 Lynden City Park, Lynden, WA 98264</div>
   </div>
@@ -222,18 +217,13 @@ footer{background:var(--dark);border-top:4px solid var(--dark);padding:2rem 1.5r
   </div>
 </div>
 
-<div class="photo-section">
-  <div class="photo-main">
-    <div class="photo-placeholder">
-      <div class="photo-placeholder-icon">😁</div>
-      <div class="photo-placeholder-text">Photos coming soon!</div>
-      <div class="photo-placeholder-sub">Add yours when you visit</div>
+      
+      
     </div>
   </div>
-  <div class="photo-grid">
-    <div class="photo-thumb">+ Add photo</div>
-    <div class="photo-thumb">+ Add photo</div>
-    <div class="photo-thumb">+ Add photo</div>
+  
+    
+    
   </div>
 </div>
 
@@ -261,17 +251,7 @@ footer{background:var(--dark);border-top:4px solid var(--dark);padding:2rem 1.5r
         <div class="fact-row"><span class="fact-key">Restrooms</span><span class="fact-val">Yes</span></div>
         <div class="fact-row"><span class="fact-key">Shade</span><span class="fact-val">Partial</span></div>
       </div>
-      <div class="rate-card">
-        <div class="rate-title">⭐ Rate this playground</div>
-        <div class="rate-stars" id="rate-stars">
-          <button class="rstar" data-v="1">★</button>
-          <button class="rstar" data-v="2">★</button>
-          <button class="rstar" data-v="3">★</button>
-          <button class="rstar" data-v="4">★</button>
-          <button class="rstar" data-v="5">★</button>
-        </div>
-        <textarea class="rate-textarea" placeholder="What did the kids love? Baby swings? Monkey bars? Shade?"></textarea>
-        <button class="rate-submit" aria-label="Submit your rating">Submit review 🎉</button>
+<p style="font-size:13px;font-weight:700;color:#666;line-height:1.6;margin-top:8px;">Ratings coming soon!<br>Be the first to review this park.</p>
       </div>
     </div>
   </div>
@@ -297,35 +277,28 @@ footer{background:var(--dark);border-top:4px solid var(--dark);padding:2rem 1.5r
   <div class="footer-copy">© 2025 Bellingham Playground Finder · Whatcom County, WA</div>
 </footer>
 <script>
-let sel = 0;
-document.getElementById('rate-stars').onclick = e => {
-  if(e.target.classList.contains('rstar')){
-    sel = parseInt(e.target.dataset.v);
-    document.querySelectorAll('.rstar').forEach(b => b.classList.toggle('lit', parseInt(b.dataset.v) <= sel));
+
+document.addEventListener('DOMContentLoaded', () => {
+  const a11yPanel = document.getElementById('a11y-panel');
+  const a11yBtn   = document.getElementById('a11y-nav-btn');
+  const htmlRoot  = document.getElementById('html-root');
+  if (!a11yPanel || !a11yBtn) return;
+  function toggleA11y(open) {
+    a11yPanel.classList.toggle('open', open);
+    a11yBtn.setAttribute('aria-expanded', String(open));
   }
-};
-document.querySelector('.rate-submit').onclick = () => {
-  if(!sel){ alert('Please pick a star rating first!'); return; }
-  alert('Thanks for rating Million Smiles Park! Your review helps other Bellingham families. 🎉');
-};
-// A11y panel
-const a11yPanel = document.getElementById('a11y-panel');
-const a11yBtn   = document.getElementById('a11y-nav-btn');
-const htmlRoot  = document.getElementById('html-root');
-function toggleA11y(open) {
-  a11yPanel.classList.toggle('open', open);
-  a11yBtn.setAttribute('aria-expanded', String(open));
-}
-a11yBtn.addEventListener('click', e => { e.stopPropagation(); toggleA11y(!a11yPanel.classList.contains('open')); });
-document.addEventListener('click', e => { if (!a11yPanel.contains(e.target) && e.target !== a11yBtn) toggleA11y(false); });
-document.addEventListener('keydown', e => { if (e.key === 'Escape') { toggleA11y(false); a11yBtn.focus(); } });
-function bindToggle(id, cls) {
-  const el = document.getElementById(id);
-  el.addEventListener('change', () => { htmlRoot.classList.toggle(cls, el.checked); el.setAttribute('aria-checked', String(el.checked)); });
-}
-bindToggle('toggle-contrast','high-contrast');
-bindToggle('toggle-text','large-text');
-bindToggle('toggle-motion','reduce-motion');
+  a11yBtn.addEventListener('click', e => { e.stopPropagation(); toggleA11y(!a11yPanel.classList.contains('open')); });
+  document.addEventListener('click', e => { if (!a11yPanel.contains(e.target) && e.target !== a11yBtn) toggleA11y(false); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') { toggleA11y(false); a11yBtn.focus(); } });
+  function bindToggle(id, cls) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.addEventListener('change', () => { htmlRoot.classList.toggle(cls, el.checked); el.setAttribute('aria-checked', String(el.checked)); });
+  }
+  bindToggle('toggle-contrast','high-contrast');
+  bindToggle('toggle-text','large-text');
+  bindToggle('toggle-motion','reduce-motion');
+});
 </script>
 </body>
 </html>

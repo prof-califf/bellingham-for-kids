@@ -9,40 +9,25 @@
 <link href="https://fonts.googleapis.com/css2?family=Boogaloo&family=Nunito:wght@400;700;800;900&display=swap" rel="stylesheet"/>
 <style>
 :root {
-  --red:    #F2383A;
-  --orange: #FF7A1A;
-  --yellow: #FFD600;
-  --green:  #3DBD4A;
-  --blue:   #2B87E3;
-  --purple: #9B5DE5;
-  --pink:   #F15BB5;
-  --cream:  #FFFEF5;
-  --dark:   #1E1B18;
-  --accent: #3DBD4A;
-  --accent-light: #D6F7E8;
-  --accent-dark: #1B7A3E;
+  --red:#F2383A; --orange:#FF7A1A; --yellow:#FFD600; --green:#3DBD4A;
+  --blue:#2B87E3; --purple:#9B5DE5; --pink:#F15BB5; --cream:#FFFEF5;
+  --dark:#1E1B18; --accent:#3DBD4A; --accent-light:#D6F7E8; --accent-dark:#1B7A3E;
 }
 *{box-sizing:border-box;margin:0;padding:0;}
 body{font-family:'Nunito',sans-serif;background:var(--cream);color:var(--dark);background-image:repeating-linear-gradient(-45deg,transparent,transparent 18px,rgba(255,214,0,0.04) 18px,rgba(255,214,0,0.04) 36px);}
 .rainbow-bar{height:7px;background:linear-gradient(90deg,var(--red) 0%,var(--orange) 16.6%,var(--yellow) 33.2%,var(--green) 49.8%,var(--blue) 66.4%,var(--purple) 83%,var(--pink) 100%);}
-
-/* SKIP LINK */
 .skip-link{position:absolute;top:-100px;left:1rem;background:var(--dark);color:var(--yellow);font-family:'Boogaloo',cursive;font-size:16px;padding:10px 20px;border-radius:8px;border:3px solid var(--yellow);text-decoration:none;z-index:9999;transition:top 0.15s;}
 .skip-link:focus{top:8px;}
 :focus-visible{outline:3px solid var(--dark);outline-offset:3px;border-radius:4px;box-shadow:0 0 0 5px var(--yellow);}
-
-/* NAV */
 nav{background:#fff;border-bottom:4px solid var(--yellow);padding:0 1.5rem;height:66px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;box-shadow:0 3px 0 rgba(0,0,0,0.06);}
 .logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
 .logo-icon{width:42px;height:42px;background:var(--yellow);border-radius:50%;border:3px solid var(--dark);display:flex;align-items:center;justify-content:center;box-shadow:3px 3px 0 var(--dark);font-size:20px;}
-.logo-text{font-family:'Boogaloo',cursive;font-size:22px;color:var(--red);letter-spacing:0.5px;}
+.logo-text{font-family:'Boogaloo',cursive;font-size:22px;color:var(--red);}
 .logo-text span{color:var(--blue);}
 .nav-links{display:flex;gap:4px;}
 .nav-links a{font-size:13px;font-weight:800;color:var(--dark);text-decoration:none;padding:6px 14px;border-radius:30px;border:2.5px solid transparent;transition:all 0.15s;}
 .nav-links a:hover{background:var(--yellow);border-color:var(--dark);}
 .nav-links a.active{background:var(--red);color:#fff;border-color:var(--dark);box-shadow:2px 2px 0 var(--dark);}
-
-/* A11Y NAV BUTTON */
 .a11y-nav-wrap{position:relative;}
 .a11y-nav-btn{width:38px;height:38px;background:var(--dark);color:var(--yellow);border:2.5px solid var(--dark);border-radius:50%;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:2px 2px 0 rgba(0,0,0,0.18);transition:background 0.15s,transform 0.1s;flex-shrink:0;}
 .a11y-nav-btn:hover,.a11y-nav-btn:focus-visible{background:var(--yellow);color:var(--dark);outline:none;transform:scale(1.08);}
@@ -62,44 +47,30 @@ nav{background:#fff;border-bottom:4px solid var(--yellow);padding:0 1.5rem;heigh
 html.high-contrast body{filter:contrast(1.35);}
 html.large-text body{font-size:118%;}
 html.reduce-motion *{animation:none!important;transition:none!important;}
-
-/* BREADCRUMB */
 .breadcrumb{background:#fff;border-bottom:3px solid var(--yellow);padding:10px 1.5rem;font-size:12px;font-weight:700;color:#888;}
 .breadcrumb a{color:var(--accent-dark);text-decoration:none;font-weight:900;}
 .breadcrumb a:hover{text-decoration:underline;}
 .breadcrumb span{color:#ccc;margin:0 6px;}
-
-/* HERO */
-.hero{background:var(--accent-light);border-bottom:4px solid var(--dark);padding:2.5rem 1.5rem 2rem;position:relative;overflow:hidden;}
+.hero{background:var(--accent-light);border-bottom:4px solid var(--dark);padding:2.5rem 1.5rem 0;position:relative;overflow:hidden;}
 .hero::before{content:'';position:absolute;top:-60px;right:-60px;width:260px;height:260px;background:var(--accent);border-radius:50%;opacity:0.13;pointer-events:none;}
 .hero::after{content:'';position:absolute;bottom:-80px;left:-40px;width:200px;height:200px;background:var(--accent);border-radius:50%;opacity:0.08;pointer-events:none;}
 .hero-inner{position:relative;z-index:1;max-width:820px;}
 .park-eyebrow{font-size:12px;font-weight:900;color:var(--accent-dark);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:8px;}
 .park-title{font-family:'Boogaloo',cursive;font-size:clamp(30px,5vw,52px);color:var(--dark);line-height:1.05;margin-bottom:10px;}
-.park-stars-row{display:flex;align-items:center;gap:10px;margin-bottom:14px;}
-.stars-big{font-size:22px;letter-spacing:2px;}
-.rating-big{font-size:18px;font-weight:900;color:var(--dark);}
-.rating-cnt{font-size:13px;font-weight:700;color:#888;}
 .hero-badges{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:1rem;}
 .dbadge{font-size:12px;font-weight:900;padding:5px 13px;border-radius:20px;border:2px solid var(--dark);box-shadow:2px 2px 0 var(--dark);}
-.hero-address{font-size:13px;font-weight:700;color:var(--accent-dark);}
+.hero-address{font-size:13px;font-weight:700;color:var(--accent-dark);margin-bottom:1.5rem;}
+.hero-scene{position:relative;width:100%;height:260px;overflow:hidden;}
+.hero-scene svg{width:100%;height:100%;display:block;}
 
-/* MOUNTAIN BANNER */
-.hero-mountain{position:relative;width:100%;height:90px;overflow:hidden;margin-top:1.5rem;}
-.hero-mountain svg{width:100%;height:100%;display:block;}
 
-/* PHOTO */
-.photo-section{background:var(--accent-light);border-bottom:4px solid var(--dark);}
-.photo-main{height:280px;background:var(--accent-light);display:flex;align-items:center;justify-content:center;border-bottom:3px dashed var(--accent);}
-.photo-placeholder{text-align:center;}
-.photo-placeholder-icon{font-size:48px;margin-bottom:8px;}
-.photo-placeholder-text{font-family:'Boogaloo',cursive;font-size:18px;color:var(--accent-dark);}
-.photo-placeholder-sub{font-size:12px;font-weight:700;color:var(--accent-dark);opacity:0.7;}
-.photo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;}
-.photo-thumb{height:100px;background:var(--accent);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:900;color:#fff;border:2px solid var(--dark);cursor:pointer;transition:opacity 0.15s;}
-.photo-thumb:hover{opacity:0.8;}
 
-/* CONTENT */
+
+
+
+
+
+
 .content{max-width:820px;margin:0 auto;padding:2rem 1.5rem;}
 .content-grid{display:grid;grid-template-columns:1fr 290px;gap:2rem;}
 @media(max-width:640px){.content-grid{grid-template-columns:1fr;}}
@@ -113,33 +84,21 @@ html.reduce-motion *{animation:none!important;transition:none!important;}
 .tip-item{font-size:14px;font-weight:700;color:#444;padding:9px 0 9px 28px;border-bottom:2px dashed var(--yellow);position:relative;line-height:1.5;}
 .tip-item:last-child{border-bottom:none;}
 .tip-item::before{content:'✓';position:absolute;left:0;color:var(--accent);font-weight:900;font-size:16px;}
-
-/* SIDEBAR */
 .sidebar-card{background:#fff;border:3px solid var(--dark);border-radius:16px;padding:1.25rem;margin-bottom:1rem;box-shadow:4px 4px 0 var(--dark);}
 .sidebar-title{font-family:'Boogaloo',cursive;font-size:18px;color:var(--dark);margin-bottom:12px;}
 .fact-row{display:flex;justify-content:space-between;align-items:baseline;padding:7px 0;border-bottom:2px dashed var(--yellow);}
 .fact-row:last-child{border-bottom:none;}
 .fact-key{font-size:12px;font-weight:900;color:#888;text-transform:uppercase;letter-spacing:0.05em;}
 .fact-val{font-size:13px;font-weight:800;color:var(--dark);}
-.rate-card{background:var(--accent-light);border:3px solid var(--dark);border-radius:16px;padding:1.25rem;box-shadow:4px 4px 0 var(--dark);}
-.rate-title{font-family:'Boogaloo',cursive;font-size:18px;color:var(--dark);margin-bottom:10px;}
-.rate-stars{display:flex;gap:6px;margin-bottom:10px;}
-.rstar{font-size:28px;color:#D3D1C7;cursor:pointer;background:none;border:none;padding:0;line-height:1;font-family:'Nunito',sans-serif;transition:color 0.1s;}
-.rstar.lit{color:#FFB800;}
-.rate-textarea{width:100%;font-size:13px;font-family:'Nunito',sans-serif;font-weight:700;border:2.5px solid var(--dark);border-radius:10px;padding:10px;background:#fff;resize:vertical;min-height:80px;color:var(--dark);outline:none;}
-.rate-submit{margin-top:10px;width:100%;font-family:'Boogaloo',cursive;font-size:18px;padding:10px;border-radius:12px;border:2.5px solid var(--dark);background:var(--accent);color:#fff;cursor:pointer;box-shadow:3px 3px 0 var(--dark);transition:transform 0.1s,box-shadow 0.1s;}
-.rate-submit:hover{transform:translate(1px,1px);box-shadow:2px 2px 0 var(--dark);}
 
-/* NEARBY */
+
 .nearby-section{padding:0 1.5rem 2.5rem;max-width:820px;margin:0 auto;}
 .nearby-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;}
 .nearby-card{background:#fff;border:3px solid var(--dark);border-radius:14px;padding:12px 16px;text-decoration:none;display:flex;justify-content:space-between;align-items:center;box-shadow:3px 3px 0 var(--dark);transition:transform 0.15s,box-shadow 0.15s;}
 .nearby-card:hover{transform:translate(-1px,-1px);box-shadow:4px 4px 0 var(--dark);}
 .nearby-name{font-size:13px;font-weight:900;color:var(--dark);}
 .nearby-arrow{font-size:18px;color:var(--red);font-weight:900;}
-
-/* FOOTER */
-footer{background:var(--dark);border-top:4px solid var(--dark);padding:2rem 1.5rem;text-align:center;}
+footer{background:var(--dark);padding:2rem 1.5rem;text-align:center;}
 .footer-rainbow{height:5px;background:linear-gradient(90deg,var(--red) 0%,var(--orange) 16.6%,var(--yellow) 33.2%,var(--green) 49.8%,var(--blue) 66.4%,var(--purple) 83%,var(--pink) 100%);margin-bottom:1.5rem;border-radius:2px;}
 .footer-logo{font-family:'Boogaloo',cursive;font-size:24px;color:var(--yellow);margin-bottom:4px;}
 .footer-logo span{color:var(--blue);}
@@ -184,56 +143,209 @@ footer{background:var(--dark);border-top:4px solid var(--dark);padding:2rem 1.5r
     </div>
   </div>
 </nav>
+
 <div class="breadcrumb">
   <a href="index.html">← All Playgrounds</a>
   <span>›</span>
   Fairhaven Park
 </div>
+
 <div class="hero">
   <div class="hero-inner">
     <div class="park-eyebrow">📍 Bellingham — Historic Fairhaven</div>
     <div class="park-title">Fairhaven Park</div>
-    <div class="park-stars-row">
-      <span class="stars-big"><span style="color:#FFB800">★★★★</span><span style="color:#DDD">★</span></span>
-      <span class="rating-big">4.4</span>
-      <span class="rating-cnt">(37 ratings)</span>
+    <div class="hero-badges">
+      <span class="dbadge" style="background:#FFE0EE;color:#993556;">🤸 Kid swings</span>
+      <span class="dbadge" style="background:#FFE0EE;color:#993556;">👶 Baby swings</span>
+      <span class="dbadge" style="background:#EDE4FF;color:#6934D0;">🐒 Monkey bars</span>
+      <span class="dbadge" style="background:#DDEEFF;color:#0C5DB5;">💦 Spray park</span>
+      <span class="dbadge" style="background:#D6F7E8;color:#1B7A3E;">🌳 Shade</span>
+      <span class="dbadge" style="background:#F5F5F5;color:#444;">🚻 Restrooms</span>
+      <span class="dbadge" style="background:#FFE8CC;color:#8B4000;">🐕 Dog friendly</span>
+      <span class="dbadge" style="background:#FFF3CC;color:#7A5800;">🪑 Picnic tables</span>
+      <span class="dbadge" style="background:#1E1B18;color:#FFD600;">♿ Accessible</span>
     </div>
-    <div class="hero-badges"><span class="dbadge" style="background:#FFE0EE;color:#993556;">Kid swings</span> <span class="dbadge" style="background:#FFE0EE;color:#993556;">Baby swings</span> <span class="dbadge" style="background:#EDE4FF;color:#6934D0;">Monkey bars</span> <span class="dbadge" style="background:#DDEEFF;color:#0C5DB5;">Spray park</span> <span class="dbadge" style="background:#D6F7E8;color:#1B7A3E;">Shade</span> <span class="dbadge" style="background:#F5F5F5;color:#444;">Restrooms</span> <span class="dbadge" style="background:#1E1B18;color:#FFD600;">Accessible</span></div>
-    <div class="hero-address">📍 107 Chuckanut Dr, Bellingham, WA 98225</div>
+    <div class="hero-address">📍 107 Chuckanut Dr N, Bellingham, WA 98225</div>
   </div>
-  <div class="hero-mountain" aria-hidden="true">
-    <svg viewBox="0 0 1440 90" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+
+  <!-- PARK SIGN + MOUNTAIN SCENE — Harriet Spanel style -->
+  <div class="hero-scene" aria-hidden="true">
+    <svg viewBox="0 0 1440 260" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
       <defs>
-        <linearGradient id="snowG2" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#ffffff"/>
-          <stop offset="100%" stop-color="#dff0f8"/>
+        <linearGradient id="skyFH" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#a8d8f0"/>
+          <stop offset="100%" stop-color="#c8f0da"/>
+        </linearGradient>
+        <linearGradient id="snowFH" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#fff"/>
+          <stop offset="100%" stop-color="#ddf0f8"/>
+        </linearGradient>
+        <linearGradient id="postMetal" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stop-color="#444"/>
+          <stop offset="35%" stop-color="#7a7a7a"/>
+          <stop offset="65%" stop-color="#686868"/>
+          <stop offset="100%" stop-color="#383838"/>
+        </linearGradient>
+        <linearGradient id="signFace" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#1e5230"/>
+          <stop offset="100%" stop-color="#133520"/>
+        </linearGradient>
+        <linearGradient id="concrete" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#c0bdb8"/>
+          <stop offset="100%" stop-color="#a0ada0"/>
         </linearGradient>
       </defs>
-      <rect width="1440" height="90" fill="#D6F7E8"/>
-      <path d="M0 90 L120 55 L240 70 L360 30 L480 65 L600 20 L720 58 L840 28 L960 62 L1080 18 L1200 52 L1320 35 L1440 50 L1440 90 Z" fill="#c2dce8" opacity="0.5"/>
-      <path d="M0 90 L90 65 L200 80 L310 42 L420 72 L540 28 L650 65 L760 38 L880 75 L990 32 L1100 68 L1210 45 L1330 70 L1440 52 L1440 90 Z" fill="#8ab8cc" opacity="0.6"/>
-      <path d="M0 90 L100 60 L180 82 L260 45 L350 80 L450 28 L530 68 L620 48 L720 85 L800 35 L900 72 L980 42 L1080 78 L1160 30 L1260 65 L1360 48 L1440 62 L1440 90 Z" fill="#4a8fa8"/>
-      <path d="M450 28 L438 42 L462 42 Z" fill="url(#snowG2)" opacity="0.95"/>
-      <path d="M800 35 L788 48 L812 48 Z" fill="url(#snowG2)" opacity="0.95"/>
-      <path d="M1160 30 L1149 43 L1171 43 Z" fill="url(#snowG2)" opacity="0.9"/>
-      <path d="M600 20 L589 33 L611 33 Z" fill="url(#snowG2)" opacity="0.9"/>
-      <rect x="0" y="87" width="1440" height="3" fill="#1E1B18"/>
+
+      <!-- Sky -->
+      <rect width="1440" height="260" fill="url(#skyFH)"/>
+
+      <!-- Clouds -->
+      <ellipse cx="175" cy="44" rx="65" ry="24" fill="#fff" opacity="0.72"/>
+      <ellipse cx="222" cy="34" rx="48" ry="19" fill="#fff" opacity="0.65"/>
+      <ellipse cx="135" cy="42" rx="40" ry="17" fill="#fff" opacity="0.6"/>
+      <ellipse cx="1090" cy="38" rx="60" ry="22" fill="#fff" opacity="0.68"/>
+      <ellipse cx="1135" cy="27" rx="44" ry="17" fill="#fff" opacity="0.6"/>
+      <ellipse cx="615" cy="28" rx="50" ry="18" fill="#fff" opacity="0.5"/>
+
+      <!-- Far mountains -->
+      <path d="M0 260 L130 130 L270 165 L410 90 L550 152 L680 72 L820 140 L960 84 L1100 135 L1240 92 L1440 130 L1440 260 Z" fill="#a8c8de" opacity="0.5"/>
+      <!-- Mid mountains -->
+      <path d="M0 260 L95 160 L210 185 L325 125 L455 175 L575 105 L700 165 L825 115 L950 178 L1070 118 L1190 168 L1320 130 L1440 155 L1440 260 Z" fill="#5a98b5" opacity="0.7"/>
+      <!-- Front mountains -->
+      <path d="M0 260 L75 188 L165 208 L248 162 L345 204 L448 128 L538 182 L628 160 L742 212 L838 150 L932 195 L1024 160 L1122 206 L1212 142 L1312 188 L1440 164 L1440 260 Z" fill="#2e6a84"/>
+      <!-- Snow caps -->
+      <path d="M448 128 L435 145 L461 145 Z" fill="url(#snowFH)" opacity="0.95"/>
+      <path d="M838 150 L826 165 L850 165 Z" fill="url(#snowFH)" opacity="0.9"/>
+      <path d="M1212 142 L1201 156 L1223 156 Z" fill="url(#snowFH)" opacity="0.9"/>
+      <path d="M680 72 L669 87 L691 87 Z" fill="url(#snowFH)" opacity="0.9"/>
+
+      <!-- Grass -->
+      <rect x="0" y="240" width="1440" height="20" fill="#286838"/>
+      <rect x="0" y="247" width="1440" height="13" fill="#329044"/>
+
+      <!-- LEFT evergreen trees -->
+      <rect x="38" y="210" width="8" height="32" fill="#3a2408"/>
+      <polygon points="42,158 22,212 62,212" fill="#123820"/>
+      <polygon points="42,143 24,170 60,170" fill="#186830"/>
+      <polygon points="42,130 26,153 58,153" fill="#1e7838"/>
+      <rect x="82" y="215" width="7" height="27" fill="#3a2408"/>
+      <polygon points="86,172 68,216 104,216" fill="#123820"/>
+      <polygon points="86,160 70,180 102,180" fill="#186830"/>
+      <rect x="125" y="210" width="8" height="32" fill="#3a2408"/>
+      <polygon points="129,156 108,212 150,212" fill="#123820"/>
+      <polygon points="129,142 110,168 148,168" fill="#186830"/>
+      <polygon points="129,130 112,150 146,150" fill="#1e7838"/>
+      <ellipse cx="85" cy="242" rx="50" ry="10" fill="#1e5828"/>
+
+      <!-- RIGHT evergreen trees -->
+      <rect x="1300" y="210" width="8" height="32" fill="#3a2408"/>
+      <polygon points="1304,156 1283,212 1325,212" fill="#123820"/>
+      <polygon points="1304,142 1285,168 1323,168" fill="#186830"/>
+      <polygon points="1304,130 1287,150 1321,150" fill="#1e7838"/>
+      <rect x="1345" y="215" width="7" height="27" fill="#3a2408"/>
+      <polygon points="1349,172 1331,216 1367,216" fill="#123820"/>
+      <polygon points="1349,160 1333,180 1365,180" fill="#186830"/>
+      <rect x="1388" y="210" width="8" height="32" fill="#3a2408"/>
+      <polygon points="1392,158 1371,212 1413,212" fill="#123820"/>
+      <polygon points="1392,144 1373,170 1411,170" fill="#186830"/>
+      <ellipse cx="1360" cy="242" rx="50" ry="10" fill="#1e5828"/>
+
+      <!-- Mid scattered trees -->
+      <rect x="290" y="218" width="6" height="24" fill="#3a2408"/>
+      <polygon points="293,184 281,219 305,219" fill="#123820"/>
+      <polygon points="293,173 282,190 304,190" fill="#186830"/>
+      <rect x="1145" y="216" width="6" height="26" fill="#3a2408"/>
+      <polygon points="1148,180 1136,217 1160,217" fill="#123820"/>
+      <polygon points="1148,170 1137,187 1159,187" fill="#186830"/>
+
+      <!-- ================================== -->
+      <!-- HARRIET SPANEL STYLE SIGN          -->
+      <!-- Square steel posts, yellow bands,  -->
+      <!-- wide board, left-aligned bold text  -->
+      <!-- ================================== -->
+
+      <!-- Concrete slab -->
+      <rect x="370" y="234" width="700" height="20" rx="3" fill="url(#concrete)" stroke="#8a8880" stroke-width="1.5"/>
+      <line x1="376" y1="240" x2="1064" y2="240" stroke="#b8b5b0" stroke-width="0.8" opacity="0.5"/>
+      <line x1="376" y1="246" x2="1064" y2="246" stroke="#b0ada8" stroke-width="0.6" opacity="0.4"/>
+
+      <!-- Base flanges -->
+      <rect x="402" y="229" width="40" height="12" rx="2" fill="#585858" stroke="#2a2a2a" stroke-width="1.2"/>
+      <rect x="998" y="229" width="40" height="12" rx="2" fill="#585858" stroke="#2a2a2a" stroke-width="1.2"/>
+      <circle cx="412" cy="235" r="3" fill="#2a2a2a"/>
+      <circle cx="432" cy="235" r="3" fill="#2a2a2a"/>
+      <circle cx="1008" cy="235" r="3" fill="#2a2a2a"/>
+      <circle cx="1028" cy="235" r="3" fill="#2a2a2a"/>
+
+      <!-- LEFT steel post -->
+      <rect x="404" y="105" width="38" height="128" fill="url(#postMetal)" stroke="#222" stroke-width="2"/>
+      <rect x="404" y="105" width="5" height="128" fill="#909090" opacity="0.45"/>
+      <rect x="437" y="105" width="5" height="128" fill="#1a1a1a" opacity="0.35"/>
+      <!-- Yellow bands -->
+      <rect x="401" y="112" width="44" height="11" rx="1" fill="#FFD600" stroke="#a88800" stroke-width="1.5"/>
+      <rect x="401" y="127" width="44" height="11" rx="1" fill="#FFD600" stroke="#a88800" stroke-width="1.5"/>
+
+      <!-- RIGHT steel post -->
+      <rect x="998" y="105" width="38" height="128" fill="url(#postMetal)" stroke="#222" stroke-width="2"/>
+      <rect x="998" y="105" width="5" height="128" fill="#909090" opacity="0.45"/>
+      <rect x="1031" y="105" width="5" height="128" fill="#1a1a1a" opacity="0.35"/>
+      <!-- Yellow bands -->
+      <rect x="995" y="112" width="44" height="11" rx="1" fill="#FFD600" stroke="#a88800" stroke-width="1.5"/>
+      <rect x="995" y="127" width="44" height="11" rx="1" fill="#FFD600" stroke="#a88800" stroke-width="1.5"/>
+
+      <!-- Sign drop shadow -->
+      <rect x="445" y="109" width="552" height="130" rx="4" fill="rgba(0,0,0,0.28)"/>
+
+      <!-- Sign face — wide landscape board -->
+      <rect x="441" y="105" width="554" height="128" rx="4" fill="url(#signFace)" stroke="#081808" stroke-width="3"/>
+
+      <!-- Subtle horizontal grain -->
+      <line x1="446" y1="120" x2="988" y2="120" stroke="#0a2010" stroke-width="0.5" opacity="0.14"/>
+      <line x1="446" y1="140" x2="988" y2="140" stroke="#0a2010" stroke-width="0.5" opacity="0.11"/>
+      <line x1="446" y1="160" x2="988" y2="160" stroke="#0a2010" stroke-width="0.5" opacity="0.11"/>
+      <line x1="446" y1="180" x2="988" y2="180" stroke="#0a2010" stroke-width="0.5" opacity="0.11"/>
+      <line x1="446" y1="200" x2="988" y2="200" stroke="#0a2010" stroke-width="0.5" opacity="0.11"/>
+      <line x1="446" y1="220" x2="988" y2="220" stroke="#0a2010" stroke-width="0.5" opacity="0.14"/>
+
+      <!-- MAIN TEXT — large bold left-aligned, like Harriet Spanel -->
+      <text x="468" y="165" font-family="Arial Black, Impact, sans-serif" font-size="50" font-weight="900"
+            fill="#ffffff" letter-spacing="-1">Fairhaven</text>
+      <text x="468" y="213" font-family="Arial Black, Impact, sans-serif" font-size="44" font-weight="900"
+            fill="#ffffff" letter-spacing="-1">Park</text>
+
+      <!-- Address — bottom left, small -->
+      <text x="468" y="226" font-family="Arial, sans-serif" font-size="9" fill="#80b898" letter-spacing="0.5">107 CHUCKANUT DR N  ·  CITY OF BELLINGHAM  ·  PARKS AND RECREATION DEPARTMENT</text>
+
+      <!-- Bellingham Parks seal — bottom RIGHT (just like Harriet Spanel photo) -->
+      <circle cx="950" cy="185" r="30" fill="#163c22" stroke="#2e6840" stroke-width="2"/>
+      <circle cx="950" cy="185" r="25" fill="none" stroke="#3a7848" stroke-width="1"/>
+      <!-- Trees in seal -->
+      <polygon points="950,163 943,180 957,180" fill="#fff" opacity="0.92"/>
+      <rect x="948" y="180" width="4" height="6" fill="#fff" opacity="0.85"/>
+      <polygon points="936,166 930,180 942,180" fill="#fff" opacity="0.82"/>
+      <rect x="934" y="180" width="4" height="5" fill="#fff" opacity="0.75"/>
+      <polygon points="964,166 958,180 970,180" fill="#fff" opacity="0.82"/>
+      <rect x="962" y="180" width="4" height="5" fill="#fff" opacity="0.75"/>
+      <line x1="928" y1="186" x2="972" y2="186" stroke="#fff" stroke-width="1.5" opacity="0.7"/>
+      <!-- Seal text -->
+      <text x="950" y="161" font-family="Arial, sans-serif" font-size="6.5" fill="#b0d8c0"
+            text-anchor="middle" letter-spacing="1.2" opacity="0.9">BELLINGHAM</text>
+      <text x="950" y="210" font-family="Arial, sans-serif" font-size="5.5" fill="#b0d8c0"
+            text-anchor="middle" letter-spacing="0.8" opacity="0.85">PARKS AND RECREATION</text>
+
+      <!-- Ground border -->
+      <rect x="0" y="256" width="1440" height="4" fill="#1E1B18"/>
     </svg>
   </div>
 </div>
 
-<div class="photo-section">
-  <div class="photo-main">
-    <div class="photo-placeholder">
-      <div class="photo-placeholder-icon">🌲</div>
-      <div class="photo-placeholder-text">Photos coming soon!</div>
-      <div class="photo-placeholder-sub">Add yours when you visit</div>
+      
+      
     </div>
   </div>
-  <div class="photo-grid">
-    <div class="photo-thumb">+ Add photo</div>
-    <div class="photo-thumb">+ Add photo</div>
-    <div class="photo-thumb">+ Add photo</div>
+  
+    
+    
   </div>
 </div>
 
@@ -241,37 +353,33 @@ footer{background:var(--dark);border-top:4px solid var(--dark);padding:2rem 1.5r
   <div class="content-grid">
     <div class="main-col">
       <div class="section-label">🌳 About this park</div>
-      <p class="park-desc">A beautiful community park tucked into the wooded hills near Bellingham's Historic Fairhaven Village. The spray park is one of the best in Bellingham. Natural forest shade keeps it cool even on hot days. After the park, walk to Fairhaven Village for ice cream — a perfect family afternoon.</p>
+      <p class="park-desc">A beautiful community park tucked into the wooded hills near Bellingham's Historic Fairhaven Village. Fairhaven Park has something for everyone — a spray park, sports areas, hiking trails, a community building, and plenty of shaded picnic spots. The natural forest canopy keeps it cool even on the warmest days, and the historic village is just a short walk away.</p>
+
       <div class="unique-box">
         <div class="unique-label">✨ What makes it special</div>
-        <div class="unique-text">Right next to Historic Fairhaven Village — combine with ice cream or lunch at the village shops.</div>
+        <div class="unique-text">Right next to Historic Fairhaven Village — after the park, walk over for ice cream, coffee, or lunch at the village shops. A perfect full family afternoon.</div>
       </div>
+
       <div class="section-label">💡 Tips from families</div>
       <ul class="tips-list">
         <li class="tip-item">The spray park is fantastic — bring a change of clothes</li>
-        <li class="tip-item">Fairhaven Village is a 5-minute walk — great for lunch after</li>
+        <li class="tip-item">Fairhaven Village is a 5-minute walk — great for lunch or ice cream after</li>
         <li class="tip-item">The wooded trails behind the park are beautiful for a stroll</li>
+        <li class="tip-item">Dogs are welcome — keep them leashed on the trails</li>
       </ul>
     </div>
+
     <div class="sidebar-col">
       <div class="sidebar-card">
         <div class="sidebar-title">📋 Quick facts</div>
         <div class="fact-row"><span class="fact-key">Best age</span><span class="fact-val">All ages</span></div>
         <div class="fact-row"><span class="fact-key">Parking</span><span class="fact-val">Free lot</span></div>
-        <div class="fact-row"><span class="fact-key">Restrooms</span><span class="fact-val">Yes</span></div>
+        <div class="fact-row"><span class="fact-key">Restrooms</span><span class="fact-val">Yes — public</span></div>
         <div class="fact-row"><span class="fact-key">Shade</span><span class="fact-val">Full — natural forest</span></div>
+        <div class="fact-row"><span class="fact-key">Dogs</span><span class="fact-val">Yes — on leash</span></div>
+        <div class="fact-row"><span class="fact-key">Picnic tables</span><span class="fact-val">Yes</span></div>
       </div>
-      <div class="rate-card">
-        <div class="rate-title">⭐ Rate this playground</div>
-        <div class="rate-stars" id="rate-stars">
-          <button class="rstar" data-v="1">★</button>
-          <button class="rstar" data-v="2">★</button>
-          <button class="rstar" data-v="3">★</button>
-          <button class="rstar" data-v="4">★</button>
-          <button class="rstar" data-v="5">★</button>
-        </div>
-        <textarea class="rate-textarea" placeholder="What did the kids love? Baby swings? Monkey bars? Shade?"></textarea>
-        <button class="rate-submit" aria-label="Submit your rating">Submit review 🎉</button>
+<p style="font-size:13px;font-weight:700;color:#666;line-height:1.6;margin-top:8px;">Ratings coming soon!<br>Be the first to review this park.</p>
       </div>
     </div>
   </div>
@@ -285,6 +393,7 @@ footer{background:var(--dark);border-top:4px solid var(--dark);padding:2rem 1.5r
     <a href="#" class="nearby-card"><span class="nearby-name">Marine Park</span><span class="nearby-arrow">→</span></a>
   </div>
 </div>
+
 <footer>
   <div class="footer-rainbow"></div>
   <div class="footer-logo">bellingham<span> playground finder</span></div>
@@ -296,36 +405,29 @@ footer{background:var(--dark);border-top:4px solid var(--dark);padding:2rem 1.5r
   </div>
   <div class="footer-copy">© 2025 Bellingham Playground Finder · Whatcom County, WA</div>
 </footer>
+
 <script>
-let sel = 0;
-document.getElementById('rate-stars').onclick = e => {
-  if(e.target.classList.contains('rstar')){
-    sel = parseInt(e.target.dataset.v);
-    document.querySelectorAll('.rstar').forEach(b => b.classList.toggle('lit', parseInt(b.dataset.v) <= sel));
+document.addEventListener('DOMContentLoaded', () => {
+  const a11yPanel = document.getElementById('a11y-panel');
+  const a11yBtn   = document.getElementById('a11y-nav-btn');
+  const htmlRoot  = document.getElementById('html-root');
+  if (!a11yPanel || !a11yBtn) return;
+  function toggleA11y(open) {
+    a11yPanel.classList.toggle('open', open);
+    a11yBtn.setAttribute('aria-expanded', String(open));
   }
-};
-document.querySelector('.rate-submit').onclick = () => {
-  if(!sel){ alert('Please pick a star rating first!'); return; }
-  alert('Thanks for rating Fairhaven Park! Your review helps other Bellingham families. 🎉');
-};
-// A11y panel
-const a11yPanel = document.getElementById('a11y-panel');
-const a11yBtn   = document.getElementById('a11y-nav-btn');
-const htmlRoot  = document.getElementById('html-root');
-function toggleA11y(open) {
-  a11yPanel.classList.toggle('open', open);
-  a11yBtn.setAttribute('aria-expanded', String(open));
-}
-a11yBtn.addEventListener('click', e => { e.stopPropagation(); toggleA11y(!a11yPanel.classList.contains('open')); });
-document.addEventListener('click', e => { if (!a11yPanel.contains(e.target) && e.target !== a11yBtn) toggleA11y(false); });
-document.addEventListener('keydown', e => { if (e.key === 'Escape') { toggleA11y(false); a11yBtn.focus(); } });
-function bindToggle(id, cls) {
-  const el = document.getElementById(id);
-  el.addEventListener('change', () => { htmlRoot.classList.toggle(cls, el.checked); el.setAttribute('aria-checked', String(el.checked)); });
-}
-bindToggle('toggle-contrast','high-contrast');
-bindToggle('toggle-text','large-text');
-bindToggle('toggle-motion','reduce-motion');
+  a11yBtn.addEventListener('click', e => { e.stopPropagation(); toggleA11y(!a11yPanel.classList.contains('open')); });
+  document.addEventListener('click', e => { if (!a11yPanel.contains(e.target) && e.target !== a11yBtn) toggleA11y(false); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') { toggleA11y(false); a11yBtn.focus(); } });
+  function bindToggle(id, cls) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.addEventListener('change', () => { htmlRoot.classList.toggle(cls, el.checked); el.setAttribute('aria-checked', String(el.checked)); });
+  }
+  bindToggle('toggle-contrast','high-contrast');
+  bindToggle('toggle-text','large-text');
+  bindToggle('toggle-motion','reduce-motion');
+});
 </script>
 </body>
 </html>

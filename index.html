@@ -260,39 +260,90 @@ nav {
 /* FILTER CHIPS */
 .filter-chips { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:1.5rem; }
 
+/* OFF state — very faded, clearly inactive */
 .fchip {
   font-size: 12px;
-  font-weight: 900;
-  padding: 6px 14px;
+  font-weight: 700;
+  padding: 5px 12px;
   border-radius: 30px;
-  border: 2.5px solid var(--dark);
+  border: 2px dashed #ccc;
   cursor: pointer;
   font-family: 'Nunito', sans-serif;
-  transition: all 0.15s;
-  box-shadow: 2px 2px 0 var(--dark);
-  opacity: 0.38;
-  background: #fff;
-  color: var(--dark);
-  /* reset button defaults */
+  transition: all 0.12s;
+  background: transparent;
+  color: #bbb;
   appearance: none;
   -webkit-appearance: none;
 }
-.fchip.active {
-  opacity: 1;
-  transform: none;
+.fchip:hover {
+  border-color: #999;
+  color: #666;
 }
-.fchip:hover { opacity: 0.7; }
 
+/* ON state — solid, large, impossible to miss */
+.fchip.active {
+  font-size: 13px;
+  font-weight: 900;
+  padding: 7px 16px;
+  border-style: solid;
+  border-color: var(--dark);
+  border-width: 2.5px;
+  box-shadow: 3px 3px 0 var(--dark);
+  color: var(--dark);
+  transform: translateY(-2px);
+}
 .fchip[data-f="Baby swings"].active    { background: var(--pink); }
 .fchip[data-f="Kid swings"].active     { background: var(--pink); }
 .fchip[data-f="Monkey bars"].active    { background: var(--purple); color:#fff; }
 .fchip[data-f="Shade"].active          { background: var(--green); color:#fff; }
 .fchip[data-f="Spray park"].active     { background: var(--blue); color:#fff; }
 .fchip[data-f="Restrooms"].active      { background: var(--yellow); }
-.fchip[data-f="Dog friendly"].active   { background: var(--orange); }
+.fchip[data-f="Dog friendly"].active   { background: var(--orange); color:#fff; }
 .fchip[data-f="Beach access"].active   { background: var(--blue); color:#fff; }
 .fchip[data-f="Accessible"].active     { background: var(--dark); color:var(--yellow); }
 .fchip[data-f="Pump track"].active     { background: var(--orange); color:#fff; }
+
+/* FILTER SUMMARY */
+.filter-summary {
+  min-height: 28px;
+  margin-bottom: 1.25rem;
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--dark);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.filter-summary .summary-label {
+  color: #888;
+  font-weight: 700;
+}
+.filter-summary .summary-tag {
+  background: var(--dark);
+  color: var(--yellow);
+  font-family: 'Boogaloo', cursive;
+  font-size: 14px;
+  padding: 2px 10px;
+  border-radius: 20px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+.filter-summary .summary-clear {
+  background: none;
+  border: 2px solid var(--dark);
+  border-radius: 20px;
+  padding: 2px 10px;
+  font-size: 12px;
+  font-weight: 900;
+  font-family: 'Nunito', sans-serif;
+  cursor: pointer;
+  color: var(--dark);
+  margin-left: 4px;
+  transition: background 0.1s;
+}
+.filter-summary .summary-clear:hover { background: var(--yellow); }
 
 /* PARK GRID */
 .park-grid {
@@ -361,16 +412,6 @@ nav {
   color: #888;
   margin-bottom: 8px;
 }
-.park-stars {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  margin-bottom: 10px;
-}
-.stars-display { font-size: 15px; letter-spacing: 1px; }
-.rating-num { font-size: 13px; font-weight: 900; }
-.rating-cnt { font-size: 12px; color: #888; font-weight: 700; }
-
 .park-badges {
   display: flex;
   flex-wrap: wrap;
@@ -909,7 +950,7 @@ html.reduce-motion * { animation: none !important; transition: none !important; 
 <div class="stats-bar">
   <div class="stat"><div class="stat-num">13</div><div class="stat-label">Parks listed</div></div>
   <div class="stat"><div class="stat-num">6</div><div class="stat-label">Full park pages</div></div>
-  <div class="stat"><div class="stat-num">340+</div><div class="stat-label">Community ratings</div></div>
+  <div class="stat"><div class="stat-num">9</div><div class="stat-label">Features tracked</div></div>
   <div class="stat"><div class="stat-num">100%</div><div class="stat-label">Family tested</div></div>
 </div>
 
@@ -917,17 +958,19 @@ html.reduce-motion * { animation: none !important; transition: none !important; 
 <div class="section" id="main-content">
   <div class="section-header"><h2>🎯 What does your kid need today?</h2></div>
   <div class="filter-chips" role="group" aria-label="Filter playgrounds by feature">
-    <button class="fchip active" data-f="Baby swings" aria-pressed="true">👶 Baby swings</button>
-    <button class="fchip active" data-f="Kid swings" aria-pressed="true">🤸 Kid swings</button>
-    <button class="fchip active" data-f="Monkey bars" aria-pressed="true">🐒 Monkey bars</button>
-    <button class="fchip active" data-f="Shade" aria-pressed="true">🌳 Shade</button>
-    <button class="fchip active" data-f="Spray park" aria-pressed="true">💦 Spray park</button>
-    <button class="fchip active" data-f="Restrooms" aria-pressed="true">🚻 Restrooms</button>
-    <button class="fchip active" data-f="Dog friendly" aria-pressed="true">🐕 Dog friendly</button>
-    <button class="fchip active" data-f="Beach access" aria-pressed="true">🏖️ Beach access</button>
-    <button class="fchip active" data-f="Accessible" aria-pressed="true" style="background:#1E1B18;color:#FFD600;">♿ Accessible</button>
-    <button class="fchip active" data-f="Pump track" aria-pressed="true">🚲 Pump track</button>
+    <button class="fchip" data-f="Baby swings" aria-pressed="false">👶 Baby swings</button>
+    <button class="fchip" data-f="Kid swings" aria-pressed="false">🤸 Kid swings</button>
+    <button class="fchip" data-f="Monkey bars" aria-pressed="false">🐒 Monkey bars</button>
+    <button class="fchip" data-f="Shade" aria-pressed="false">🌳 Shade</button>
+    <button class="fchip" data-f="Spray park" aria-pressed="false">💦 Spray park</button>
+    <button class="fchip" data-f="Restrooms" aria-pressed="false">🚻 Restrooms</button>
+    <button class="fchip" data-f="Dog friendly" aria-pressed="false">🐕 Dog friendly</button>
+    <button class="fchip" data-f="Beach access" aria-pressed="false">🏖️ Beach access</button>
+    <button class="fchip" data-f="Accessible" aria-pressed="false">♿ Accessible</button>
+    <button class="fchip" data-f="Pump track" aria-pressed="false">🚲 Pump track</button>
   </div>
+
+  <div class="filter-summary" id="filter-summary" aria-live="polite"></div>
 
   <div class="section-header"><h2>🛝 Playgrounds</h2></div>
   <div class="park-grid" id="park-grid"></div>
@@ -975,12 +1018,12 @@ html.reduce-motion * { animation: none !important; transition: none !important; 
 
 <script>
 const parks = [
-  {id:'waypoint',       name:'Waypoint Park',       area:'Bellingham waterfront', rating:4.8, count:71,  color:'#DDEEFF', accentColor:'var(--blue)',   emoji:'🌊', tags:['Beach access','Trails','Accessible','Pump track'],                                               desc:'Brand new waterfront park with modern play equipment and the iconic Acid Ball art installation.'},
-  {id:'million-smiles', name:'Million Smiles Park',  area:'Lynden',               rating:4.9, count:33,  color:'#DDFCE6', accentColor:'var(--green)',  emoji:'😁', tags:['Kid swings','Baby swings','Monkey bars','Basketball','Tennis','Accessible'],         desc:"Widely known as the 'best playground ever' in Whatcom County. Exceptional equipment for all ages."},
-  {id:'cornwall',       name:'Cornwall Park',         area:'Bellingham',           rating:4.6, count:61,  color:'#FFF3CC', accentColor:'var(--yellow)', emoji:'🎡', tags:['Kid swings','Baby swings','Monkey bars','Spray park','Shade','Restrooms','Accessible'], desc:'70 acres in the heart of Bellingham with two playgrounds, spray park, disc golf, and pickleball.'},
-  {id:'star-park',      name:'Star Park',             area:'Ferndale',             rating:4.5, count:21,  color:'#FFE0EE', accentColor:'var(--pink)',   emoji:'⭐', tags:['Kid swings','Baby swings','Monkey bars'],                              desc:'Purpose-built 12,000 sq ft playground with zones for ages 0–5 and ages 5–12.'},
-  {id:'whatcom-falls',  name:'Whatcom Falls Park',    area:'Bellingham',           rating:4.5, count:58,  color:'#EDE4FF', accentColor:'var(--purple)', emoji:'🌊', tags:['Kid swings','Baby swings','Monkey bars','Shade','Restrooms','Dog friendly','Accessible'], desc:'Forested park with 3+ miles of trails, stunning waterfalls, and full canopy shade.'},
-  {id:'fairhaven',      name:'Fairhaven Park',        area:'Bellingham',           rating:4.4, count:37,  color:'#D6F7E8', accentColor:'var(--green)',  emoji:'🌲', tags:['Kid swings','Baby swings','Monkey bars','Spray park','Shade','Restrooms','Accessible'], desc:'Wooded park near Historic Fairhaven Village with a beloved spray park and natural shade.'},
+  {id:'waypoint',       name:'Waypoint Park',       area:'Bellingham waterfront', color:'#DDEEFF', emoji:'🌊', tags:['Beach access','Trails','Accessible','Pump track'],                                               desc:'Brand new waterfront park with modern play equipment and the iconic Acid Ball art installation.'},
+  {id:'million-smiles', name:'Million Smiles Park',  area:'Lynden',               color:'#DDFCE6', emoji:'😁', tags:['Kid swings','Baby swings','Monkey bars','Basketball','Tennis','Accessible'],         desc:"Widely known as the 'best playground ever' in Whatcom County. Exceptional equipment for all ages."},
+  {id:'cornwall',       name:'Cornwall Park',         area:'Bellingham',           color:'#FFF3CC', emoji:'🎡', tags:['Kid swings','Baby swings','Monkey bars','Spray park','Shade','Restrooms','Accessible'], desc:'70 acres in the heart of Bellingham with two playgrounds, spray park, disc golf, and pickleball.'},
+  {id:'star-park',      name:'Star Park',             area:'Ferndale',             color:'#FFE0EE', emoji:'⭐', tags:['Kid swings','Baby swings','Monkey bars'],                              desc:'Purpose-built 12,000 sq ft playground with zones for ages 0–5 and ages 5–12.'},
+  {id:'whatcom-falls',  name:'Whatcom Falls Park',    area:'Bellingham',           color:'#EDE4FF', emoji:'🌊', tags:['Kid swings','Baby swings','Monkey bars','Shade','Restrooms','Dog friendly','Accessible'], desc:'Forested park with 3+ miles of trails, stunning waterfalls, and full canopy shade.'},
+  {id:'fairhaven',      name:'Fairhaven Park',        area:'Bellingham',           color:'#D6F7E8', emoji:'🌲', tags:['Kid swings','Baby swings','Monkey bars','Spray park','Shade','Restrooms','Accessible'], desc:'Wooded park near Historic Fairhaven Village with a beloved spray park and natural shade.'},
 ];
 
 const tagEmoji = {
@@ -1004,17 +1047,29 @@ const tagColor = {
   'default':      'background:#F5F5F5;color:#444;'
 };
 
-function starsHtml(r){
-  let s='';
-  for(let i=1;i<=5;i++){
-    s+=`<span style="color:${i<=Math.round(r)?'#FFB800':'#DDD'}">★</span>`;
-  }
-  return s;
-}
-
 function badgeStyle(tag){ return tagColor[tag] || tagColor['default']; }
 
-let activeFilters = new Set();
+let activeFilters = new Set(); // empty = show all parks
+
+function updateSummary() {
+  const el = document.getElementById('filter-summary');
+  if (!activeFilters.size) { el.innerHTML = ''; return; }
+  const tags = [...activeFilters].map(f => {
+    const emoji = tagEmoji[f] || '';
+    return `<span class="summary-tag">${emoji} ${f}</span>`;
+  }).join('');
+  el.innerHTML = `<span class="summary-label">Filtering by:</span> ${tags} <button class="summary-clear" onclick="clearFilters()">✕ Clear all</button>`;
+}
+
+function clearFilters() {
+  activeFilters.clear();
+  document.querySelectorAll('.fchip').forEach(c => {
+    c.classList.remove('active');
+    c.setAttribute('aria-pressed', 'false');
+  });
+  updateSummary();
+  render();
+}
 
 function render(){
   const q = document.getElementById('search-input').value.toLowerCase();
@@ -1028,18 +1083,13 @@ function render(){
   if(!filtered.length){ grid.innerHTML=''; noRes.style.display='block'; return; }
   noRes.style.display='none';
   grid.innerHTML = filtered.map((p,i)=>`
-    <a class="park-card" href="${p.id}.html" style="animation-delay:${i*0.07}s" aria-label="${p.name} — ${p.area}, rated ${p.rating} out of 5">
+    <a class="park-card" href="${p.id}.html" style="animation-delay:${i*0.07}s" aria-label="${p.name} — ${p.area}">
       <div class="park-photo" style="background:${p.color};">
         <div class="park-photo-art">${p.emoji}</div>
         <span class="photo-pill">📍 ${p.area}</span>
       </div>
       <div class="park-body">
         <div class="park-name">${p.name}</div>
-        <div class="park-stars">
-          <span class="stars-display">${starsHtml(p.rating)}</span>
-          <span class="rating-num">${p.rating.toFixed(1)}</span>
-          <span class="rating-cnt">(${p.count} ratings)</span>
-        </div>
         <div class="park-badges">${p.tags.slice(0,4).map(t=>`<span class="pbadge" style="${badgeStyle(t)}">${(tagEmoji[t]||'')} ${t}</span>`).join('')}</div>
         <span class="explore-btn">🗺️ Explore this park →</span>
       </div>
@@ -1059,6 +1109,7 @@ document.querySelectorAll('.fchip').forEach(c=>{
       c.classList.add('active');
       c.setAttribute('aria-pressed','true');
     }
+    updateSummary();
     render();
   };
 });
