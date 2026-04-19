@@ -1,167 +1,908 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" id="html-root">
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Bellingham for Kids — Find Your Next Adventure</title>
+<title>Bellingham Playground Finder</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800;900&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Boogaloo&family=Nunito:wght@400;700;800;900&display=swap" rel="stylesheet"/>
 <style>
+:root {
+  --red:    #F2383A;
+  --orange: #FF7A1A;
+  --yellow: #FFD600;
+  --green:  #3DBD4A;
+  --blue:   #2B87E3;
+  --purple: #9B5DE5;
+  --pink:   #F15BB5;
+  --cream:  #FFFEF5;
+  --dark:   #1E1B18;
+  --shadow: 4px 4px 0px rgba(0,0,0,0.18);
+}
+
 *{box-sizing:border-box;margin:0;padding:0;}
-body{font-family:'Nunito',sans-serif;background:#FFFDF8;color:#2C2C2A;}
+
+/* Wavy rainbow stripe at very top */
+body {
+  font-family:'Nunito',sans-serif;
+  background: var(--cream);
+  color: var(--dark);
+  background-image:
+    repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 18px,
+      rgba(255,214,0,0.04) 18px,
+      rgba(255,214,0,0.04) 36px
+    );
+}
+
+/* Rainbow top bar */
+.rainbow-bar {
+  height: 7px;
+  background: linear-gradient(90deg,
+    var(--red) 0%,
+    var(--orange) 16.6%,
+    var(--yellow) 33.2%,
+    var(--green) 49.8%,
+    var(--blue) 66.4%,
+    var(--purple) 83%,
+    var(--pink) 100%
+  );
+}
 
 /* NAV */
-nav{background:#fff;border-bottom:3px solid #FAC775;padding:0 1.5rem;height:60px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;}
-.logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
-.logo-icon{width:38px;height:38px;background:#FAC775;border-radius:50%;display:flex;align-items:center;justify-content:center;}
-.logo-icon svg{width:22px;height:22px;}
-.logo-text{font-size:19px;font-weight:900;color:#E24B4A;letter-spacing:-0.3px;}
-.logo-text span{color:#378ADD;}
-.nav-links{display:flex;gap:4px;}
-.nav-links a{font-size:13px;font-weight:800;color:#5F5E5A;text-decoration:none;padding:6px 12px;border-radius:20px;}
-.nav-links a:hover{background:#E6F1FB;color:#185FA5;}
-.nav-links a.active{background:#E24B4A;color:#fff;}
+nav {
+  background: #fff;
+  border-bottom: 4px solid var(--yellow);
+  padding: 0 1.5rem;
+  height: 66px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 3px 0 rgba(0,0,0,0.06);
+}
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+.logo-icon {
+  width: 42px;
+  height: 42px;
+  background: var(--yellow);
+  border-radius: 50%;
+  border: 3px solid var(--dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 3px 3px 0 var(--dark);
+  font-size: 20px;
+}
+.logo-text {
+  font-family: 'Boogaloo', cursive;
+  font-size: 22px;
+  color: var(--red);
+  letter-spacing: 0.5px;
+}
+.logo-text span { color: var(--blue); }
+
+.nav-links { display:flex; gap:4px; }
+.nav-links a {
+  font-size:13px;
+  font-weight:800;
+  color: var(--dark);
+  text-decoration:none;
+  padding:6px 14px;
+  border-radius:30px;
+  border: 2.5px solid transparent;
+  transition: all 0.15s;
+}
+.nav-links a:hover { background:var(--yellow); border-color:var(--dark); }
+.nav-links a.active {
+  background: var(--red);
+  color: #fff;
+  border-color: var(--dark);
+  box-shadow: 2px 2px 0 var(--dark);
+}
 
 /* HERO */
-.hero{background:#E6F1FB;padding:3.5rem 1.5rem 2.5rem;text-align:center;border-bottom:3px dashed #B5D4F4;position:relative;overflow:hidden;}
-.hero-bg-circles{position:absolute;top:0;left:0;right:0;bottom:0;pointer-events:none;}
-.hero-circle{position:absolute;border-radius:50%;opacity:0.18;}
-.hero-eyebrow{font-size:13px;font-weight:800;color:#185FA5;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:12px;}
-.hero-title{font-size:clamp(36px,7vw,64px);font-weight:900;color:#E24B4A;line-height:1.05;margin-bottom:10px;}
-.hero-title span{color:#378ADD;}
-.hero-title em{color:#639922;font-style:normal;}
-.hero-sub{font-size:16px;font-weight:700;color:#185FA5;margin-bottom:2rem;max-width:480px;margin-left:auto;margin-right:auto;}
-.crayon-row{display:flex;justify-content:center;gap:6px;margin-bottom:2rem;}
-.crayon{width:13px;height:50px;border-radius:3px 3px 5px 5px;position:relative;animation:crayon-bob 2s ease-in-out infinite;}
-.crayon::after{content:'';position:absolute;bottom:-7px;left:50%;transform:translateX(-50%);width:0;height:0;border-left:6.5px solid transparent;border-right:6.5px solid transparent;border-top:8px solid rgba(0,0,0,0.12);}
-@keyframes crayon-bob{0%,100%{transform:translateY(0);}50%{transform:translateY(-5px);}}
-.crayon:nth-child(1){animation-delay:0s;}
-.crayon:nth-child(2){animation-delay:0.15s;}
-.crayon:nth-child(3){animation-delay:0.3s;}
-.crayon:nth-child(4){animation-delay:0.45s;}
-.crayon:nth-child(5){animation-delay:0.6s;}
-.crayon:nth-child(6){animation-delay:0.75s;}
+.hero {
+  background: #fff;
+  padding: 3.5rem 1.5rem 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  border-bottom: none;
+}
 
-.search-wrap{max-width:480px;margin:0 auto;}
-.search-bar{background:#fff;border:2.5px solid #FAC775;border-radius:40px;padding:11px 20px;display:flex;align-items:center;gap:10px;}
-.search-bar input{border:none;outline:none;font-size:15px;font-family:'Nunito',sans-serif;font-weight:700;background:transparent;flex:1;color:#2C2C2A;}
-.search-bar input::placeholder{color:#B4B2A9;font-weight:400;}
-.search-btn{background:#E24B4A;border:none;border-radius:30px;padding:6px 16px;font-size:13px;font-weight:800;font-family:'Nunito',sans-serif;color:#fff;cursor:pointer;white-space:nowrap;}
-.search-btn:hover{background:#A32D2D;}
+
+
+
+
+.hero-eyebrow {
+  font-size: 12px;
+  font-weight: 900;
+  color: var(--purple);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.hero-title {
+  font-family: 'Boogaloo', cursive;
+  font-size: clamp(40px, 8vw, 72px);
+  line-height: 1.0;
+  margin-bottom: 14px;
+  position: relative;
+}
+.hero-title .w1 { color: var(--red); }
+.hero-title .w2 { color: var(--orange); }
+.hero-title .w3 { color: var(--green); }
+.hero-title .w4 { color: var(--blue); }
+.hero-title .w5 { color: var(--purple); }
+
+.hero-sub {
+  font-size: 16px;
+  font-weight: 700;
+  color: #555;
+  margin-bottom: 2rem;
+  max-width: 460px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Equipment inside mountain scene — static */
+
+/* SEARCH */
+.search-wrap { max-width: 500px; margin: 0 auto; position: relative; }
+.search-bar {
+  background: #fff;
+  border: 3px solid var(--dark);
+  border-radius: 40px;
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 4px 4px 0 var(--dark);
+}
+.search-bar input {
+  border: none;
+  outline: none;
+  font-size: 15px;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 700;
+  background: transparent;
+  flex: 1;
+  color: var(--dark);
+}
+.search-bar input::placeholder { color:#B4B2A9; font-weight:500; }
+.search-btn {
+  background: var(--red);
+  border: 2.5px solid var(--dark);
+  border-radius: 30px;
+  padding: 6px 18px;
+  font-size: 13px;
+  font-weight: 900;
+  font-family: 'Nunito', sans-serif;
+  color: #fff;
+  cursor: pointer;
+  white-space: nowrap;
+  box-shadow: 2px 2px 0 var(--dark);
+  transition: transform 0.1s, box-shadow 0.1s;
+}
+.search-btn:hover {
+  transform: translate(1px,1px);
+  box-shadow: 1px 1px 0 var(--dark);
+}
 
 /* STATS BAR */
-.stats-bar{background:#FAC775;padding:0.75rem 1.5rem;display:flex;justify-content:center;gap:2.5rem;flex-wrap:wrap;}
-.stat{text-align:center;}
-.stat-num{font-size:22px;font-weight:900;color:#412402;}
-.stat-label{font-size:11px;font-weight:800;color:#633806;text-transform:uppercase;letter-spacing:0.05em;}
+.stats-bar {
+  background: var(--yellow);
+  border-top: 4px solid var(--dark);
+  border-bottom: 4px solid var(--dark);
+  padding: 0.85rem 1.5rem;
+  display: flex;
+  justify-content: center;
+  gap: 2.5rem;
+  flex-wrap: wrap;
+}
+.stat { text-align: center; }
+.stat-num {
+  font-family: 'Boogaloo', cursive;
+  font-size: 28px;
+  color: var(--dark);
+  line-height: 1;
+}
+.stat-label {
+  font-size: 11px;
+  font-weight: 900;
+  color: rgba(0,0,0,0.55);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
 
 /* SECTIONS */
-.section{padding:2rem 1.5rem;}
-.section-header{display:flex;align-items:center;gap:12px;margin-bottom:1.25rem;}
-.section-header h2{font-size:20px;font-weight:900;color:#2C2C2A;}
-.section-header::after{content:'';flex:1;height:2.5px;background:#FAC775;border-radius:2px;}
+.section { padding: 2rem 1.5rem; }
+
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 1.25rem;
+}
+.section-header h2 {
+  font-family: 'Boogaloo', cursive;
+  font-size: 24px;
+  color: var(--dark);
+  white-space: nowrap;
+}
+.section-header::after {
+  content: '';
+  flex: 1;
+  height: 3px;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--red) 0px, var(--red) 12px,
+    var(--orange) 12px, var(--orange) 24px,
+    var(--yellow) 24px, var(--yellow) 36px,
+    var(--green) 36px, var(--green) 48px,
+    var(--blue) 48px, var(--blue) 60px,
+    var(--purple) 60px, var(--purple) 72px
+  );
+  border-radius: 2px;
+}
 
 /* FILTER CHIPS */
-.filter-chips{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:1.5rem;}
-.fchip{font-size:12px;font-weight:800;padding:6px 14px;border-radius:20px;border:2.5px solid;cursor:pointer;font-family:'Nunito',sans-serif;transition:opacity 0.15s;}
-.fchip:not(.active){opacity:0.45;}
-.fchip.active{opacity:1;}
-.chip-pink{background:#FBEAF0;color:#993556;border-color:#ED93B1;}
-.chip-purple{background:#EEEDFE;color:#534AB7;border-color:#AFA9EC;}
-.chip-green{background:#EAF3DE;color:#3B6D11;border-color:#97C459;}
-.chip-blue{background:#E6F1FB;color:#185FA5;border-color:#85B7EB;}
-.chip-yellow{background:#FAEEDA;color:#854F0B;border-color:#FAC775;}
-.chip-red{background:#FCEBEB;color:#A32D2D;border-color:#F09595;}
+.filter-chips { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:1.5rem; }
+
+.fchip {
+  font-size: 12px;
+  font-weight: 900;
+  padding: 6px 14px;
+  border-radius: 30px;
+  border: 2.5px solid var(--dark);
+  cursor: pointer;
+  font-family: 'Nunito', sans-serif;
+  transition: all 0.15s;
+  box-shadow: 2px 2px 0 var(--dark);
+  opacity: 0.38;
+  background: #fff;
+  color: var(--dark);
+  /* reset button defaults */
+  appearance: none;
+  -webkit-appearance: none;
+}
+.fchip.active {
+  opacity: 1;
+  transform: none;
+}
+.fchip:hover { opacity: 0.7; }
+
+.fchip[data-f="Baby swings"].active    { background: var(--pink); }
+.fchip[data-f="Kid swings"].active     { background: var(--pink); }
+.fchip[data-f="Monkey bars"].active    { background: var(--purple); color:#fff; }
+.fchip[data-f="Shade"].active          { background: var(--green); color:#fff; }
+.fchip[data-f="Spray park"].active     { background: var(--blue); color:#fff; }
+.fchip[data-f="Restrooms"].active      { background: var(--yellow); }
+.fchip[data-f="Dog friendly"].active   { background: var(--orange); }
+.fchip[data-f="Beach access"].active   { background: var(--blue); color:#fff; }
+.fchip[data-f="Accessible"].active     { background: var(--dark); color:var(--yellow); }
+.fchip[data-f="Pump track"].active     { background: var(--orange); color:#fff; }
 
 /* PARK GRID */
-.park-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;}
-.park-card{background:#fff;border:2.5px solid #FAC775;border-radius:16px;overflow:hidden;text-decoration:none;display:block;transition:border-color 0.15s,transform 0.15s;}
-.park-card:hover{border-color:#E24B4A;transform:translateY(-2px);}
-.park-photo{height:140px;display:flex;align-items:flex-end;padding:10px;position:relative;}
-.park-photo-placeholder{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;}
-.photo-pill{background:rgba(255,255,255,0.92);border-radius:20px;padding:3px 10px;font-size:11px;font-weight:800;color:#2C2C2A;position:relative;z-index:1;}
-.park-body{padding:14px;}
-.park-name{font-size:17px;font-weight:900;color:#2C2C2A;margin-bottom:1px;}
-.park-area{font-size:12px;font-weight:700;color:#888780;margin-bottom:8px;}
-.park-stars{display:flex;align-items:center;gap:6px;margin-bottom:10px;}
-.stars-display{color:#EF9F27;font-size:14px;letter-spacing:1px;}
-.rating-num{font-size:13px;font-weight:800;color:#2C2C2A;}
-.rating-cnt{font-size:12px;color:#888780;font-weight:700;}
-.park-badges{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:12px;}
-.pbadge{font-size:10px;font-weight:800;padding:3px 8px;border-radius:10px;}
-.explore-btn{display:block;width:100%;text-align:center;font-size:13px;font-weight:800;font-family:'Nunito',sans-serif;padding:8px;border-radius:10px;border:2.5px solid #E24B4A;background:#fff;color:#E24B4A;cursor:pointer;text-decoration:none;transition:background 0.15s,color 0.15s;}
-.explore-btn:hover{background:#E24B4A;color:#fff;}
+.park-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 18px;
+}
+
+.park-card {
+  background: #fff;
+  border: 3px solid var(--dark);
+  border-radius: 18px;
+  overflow: hidden;
+  text-decoration: none;
+  display: block;
+  box-shadow: 5px 5px 0 var(--dark);
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+.park-card:hover {
+  transform: translate(-2px,-2px);
+  box-shadow: 7px 7px 0 var(--dark);
+}
+
+.park-photo {
+  height: 150px;
+  display: flex;
+  align-items: flex-end;
+  padding: 10px;
+  position: relative;
+  border-bottom: 3px solid var(--dark);
+}
+
+/* Playground equipment SVG doodle inside cards */
+.park-photo-art {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 52px;
+  opacity: 0.22;
+}
+
+.photo-pill {
+  background: rgba(255,255,255,0.95);
+  border: 2px solid var(--dark);
+  border-radius: 20px;
+  padding: 3px 12px;
+  font-size: 11px;
+  font-weight: 900;
+  color: var(--dark);
+  position: relative;
+  z-index: 1;
+}
+
+.park-body { padding: 14px; }
+.park-name {
+  font-family: 'Boogaloo', cursive;
+  font-size: 20px;
+  color: var(--dark);
+  margin-bottom: 1px;
+}
+.park-area {
+  font-size: 12px;
+  font-weight: 700;
+  color: #888;
+  margin-bottom: 8px;
+}
+.park-stars {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+.stars-display { font-size: 15px; letter-spacing: 1px; }
+.rating-num { font-size: 13px; font-weight: 900; }
+.rating-cnt { font-size: 12px; color: #888; font-weight: 700; }
+
+.park-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-bottom: 12px;
+}
+.pbadge {
+  font-size: 10px;
+  font-weight: 900;
+  padding: 3px 9px;
+  border-radius: 12px;
+  border: 1.5px solid rgba(0,0,0,0.18);
+}
+
+.explore-btn {
+  display: block;
+  width: 100%;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 900;
+  font-family: 'Nunito', sans-serif;
+  padding: 9px;
+  border-radius: 12px;
+  border: 2.5px solid var(--dark);
+  background: var(--yellow);
+  color: var(--dark);
+  cursor: pointer;
+  text-decoration: none;
+  box-shadow: 3px 3px 0 var(--dark);
+  transition: transform 0.1s, box-shadow 0.1s;
+}
+.explore-btn:hover {
+  transform: translate(1px,1px);
+  box-shadow: 2px 2px 0 var(--dark);
+}
 
 /* NO RESULTS */
-.no-results{text-align:center;padding:3rem;color:#888780;font-weight:700;font-size:15px;display:none;}
+.no-results {
+  text-align: center;
+  padding: 3rem;
+  color: #888;
+  font-weight: 700;
+  font-size: 15px;
+  display: none;
+}
 
 /* FEATURE STRIP */
-.feature-strip{background:#EEEDFE;border-top:3px dashed #AFA9EC;border-bottom:3px dashed #AFA9EC;padding:2rem 1.5rem;}
-.feature-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem;max-width:800px;margin:0 auto;}
-.feature-item{text-align:center;padding:1rem;}
-.feature-icon{width:48px;height:48px;border-radius:50%;margin:0 auto 10px;display:flex;align-items:center;justify-content:center;font-size:22px;}
-.feature-title{font-size:14px;font-weight:900;color:#3C3489;margin-bottom:4px;}
-.feature-desc{font-size:12px;font-weight:700;color:#534AB7;line-height:1.5;}
+.feature-strip {
+  background: #fff;
+  border-top: 4px solid var(--dark);
+  border-bottom: 4px solid var(--dark);
+  padding: 2.5rem 1.5rem;
+  position: relative;
+  overflow: hidden;
+}
+/* Wavy stripe accent */
+.feature-strip::before {
+  content:'';
+  position:absolute;
+  top:0; left:0; right:0;
+  height:6px;
+  background: linear-gradient(90deg,
+    var(--red) 0%, var(--orange) 16.6%, var(--yellow) 33.2%,
+    var(--green) 49.8%, var(--blue) 66.4%, var(--purple) 83%, var(--pink) 100%
+  );
+}
+
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px,1fr));
+  gap: 1.25rem;
+  max-width: 820px;
+  margin: 0 auto;
+}
+.feature-item {
+  text-align: center;
+  padding: 1.25rem 1rem;
+  border: 2.5px solid var(--dark);
+  border-radius: 18px;
+  box-shadow: 4px 4px 0 var(--dark);
+  background: var(--cream);
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+.feature-item:nth-child(1) { background: #FFF0F4; }
+.feature-item:nth-child(2) { background: #F0FFF2; }
+.feature-item:nth-child(3) { background: #F0F6FF; }
+.feature-item:nth-child(4) { background: #FFFBF0; }
+
+.feature-item:hover {
+  transform: translate(-2px,-2px);
+  box-shadow: 6px 6px 0 var(--dark);
+}
+
+.feature-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: 2.5px solid var(--dark);
+  margin: 0 auto 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  box-shadow: 2px 2px 0 var(--dark);
+}
+.feature-title {
+  font-family: 'Boogaloo', cursive;
+  font-size: 17px;
+  color: var(--dark);
+  margin-bottom: 5px;
+}
+.feature-desc {
+  font-size: 12px;
+  font-weight: 700;
+  color: #555;
+  line-height: 1.55;
+}
 
 /* FOOTER */
-footer{background:#E6F1FB;border-top:3px solid #FAC775;padding:2rem 1.5rem;text-align:center;}
-.footer-logo{font-size:20px;font-weight:900;color:#E24B4A;margin-bottom:4px;}
-.footer-logo span{color:#378ADD;}
-.footer-tagline{font-size:13px;font-weight:700;color:#185FA5;margin-bottom:1rem;}
-.footer-links{display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;}
-.footer-links a{font-size:12px;font-weight:800;color:#5F5E5A;text-decoration:none;}
-.footer-links a:hover{color:#E24B4A;}
-.footer-copy{font-size:11px;color:#888780;font-weight:700;margin-top:1rem;}
+footer {
+  background: var(--dark);
+  border-top: 4px solid var(--dark);
+  padding: 2rem 1.5rem;
+  text-align: center;
+}
+.footer-rainbow {
+  height: 5px;
+  background: linear-gradient(90deg,
+    var(--red) 0%, var(--orange) 16.6%, var(--yellow) 33.2%,
+    var(--green) 49.8%, var(--blue) 66.4%, var(--purple) 83%, var(--pink) 100%
+  );
+  margin-bottom: 1.5rem;
+  border-radius: 2px;
+}
+.footer-logo {
+  font-family: 'Boogaloo', cursive;
+  font-size: 24px;
+  color: var(--yellow);
+  margin-bottom: 4px;
+}
+.footer-logo span { color: var(--blue); }
+.footer-tagline {
+  font-size: 13px;
+  font-weight: 700;
+  color: rgba(255,255,255,0.6);
+  margin-bottom: 1rem;
+}
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+.footer-links a {
+  font-size: 12px;
+  font-weight: 800;
+  color: rgba(255,255,255,0.7);
+  text-decoration: none;
+  padding: 4px 12px;
+  border-radius: 20px;
+  border: 1.5px solid rgba(255,255,255,0.2);
+  transition: all 0.15s;
+}
+.footer-links a:hover {
+  color: var(--yellow);
+  border-color: var(--yellow);
+}
+.footer-copy {
+  font-size: 11px;
+  color: rgba(255,255,255,0.35);
+  font-weight: 700;
+}
+
+/* Slide in animation for cards */
+@keyframes slideUp {
+  from { opacity:0; transform:translateY(20px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+.park-card { animation: slideUp 0.4s ease both; }
+
+/* SKIP LINK */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 1rem;
+  background: var(--dark);
+  color: var(--yellow);
+  font-family: 'Boogaloo', cursive;
+  font-size: 16px;
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: 3px solid var(--yellow);
+  text-decoration: none;
+  z-index: 9999;
+  transition: top 0.15s;
+}
+.skip-link:focus {
+  top: 8px;
+}
+
+/* GLOBAL FOCUS STYLES — thick, high-contrast */
+:focus-visible {
+  outline: 3px solid var(--dark);
+  outline-offset: 3px;
+  border-radius: 4px;
+  box-shadow: 0 0 0 5px var(--yellow);
+}
+
+/* MOUNTAIN SILHOUETTE */
+.mountain-banner {
+  position: relative;
+  height: 80px;
+  overflow: hidden;
+  background: linear-gradient(180deg, #e8f4f8 0%, #c8e6f0 100%);
+  border-bottom: 3px solid var(--dark);
+  flex-shrink: 0;
+}
+.mountain-banner svg {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* ACCESSIBILITY NAV BUTTON + DROPDOWN */
+.a11y-nav-wrap {
+  position: relative;
+}
+.a11y-nav-btn {
+  width: 38px;
+  height: 38px;
+  background: var(--dark);
+  color: var(--yellow);
+  border: 2.5px solid var(--dark);
+  border-radius: 50%;
+  font-size: 18px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 2px 2px 0 rgba(0,0,0,0.18);
+  transition: background 0.15s, transform 0.1s;
+  flex-shrink: 0;
+}
+.a11y-nav-btn:hover, .a11y-nav-btn:focus-visible {
+  background: var(--yellow);
+  color: var(--dark);
+  outline: none;
+  transform: scale(1.08);
+}
+.a11y-panel {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  width: 280px;
+  background: #fff;
+  border: 3px solid var(--dark);
+  border-radius: 16px;
+  padding: 1.25rem;
+  box-shadow: 4px 4px 0 var(--dark);
+  z-index: 300;
+  display: none;
+}
+.a11y-panel.open { display: block; }
+.a11y-panel-title {
+  font-family: 'Boogaloo', cursive;
+  font-size: 18px;
+  color: var(--dark);
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 3px solid var(--yellow);
+}
+.a11y-option {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 9px 0;
+  border-bottom: 2px dashed #eee;
+  gap: 12px;
+}
+.a11y-option:last-child { border-bottom: none; }
+.a11y-option-text label { display: block; font-size: 13px; font-weight: 800; color: var(--dark); }
+.a11y-option-text p { font-size: 11px; color: #777; margin-top: 1px; }
+.a11y-toggle {
+  position: relative;
+  width: 42px;
+  height: 23px;
+  flex-shrink: 0;
+}
+.a11y-toggle input { opacity:0; width:0; height:0; }
+.a11y-toggle-slider {
+  position: absolute;
+  inset: 0;
+  background: #ccc;
+  border-radius: 23px;
+  border: 2px solid var(--dark);
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.a11y-toggle-slider::before {
+  content: '';
+  position: absolute;
+  left: 2px; top: 2px;
+  width: 15px; height: 15px;
+  background: #fff;
+  border-radius: 50%;
+  border: 1.5px solid var(--dark);
+  transition: transform 0.2s;
+}
+.a11y-toggle input:checked + .a11y-toggle-slider { background: var(--green); }
+.a11y-toggle input:checked + .a11y-toggle-slider::before { transform: translateX(19px); }
+
+/* Accessibility enhancement classes */
+html.high-contrast body { filter: contrast(1.35); }
+html.large-text body { font-size: 118%; }
+html.reduce-motion * { animation: none !important; transition: none !important; }
 </style>
 </head>
 <body>
 
+<a href="#main-content" class="skip-link">Skip to main content</a>
+<div class="rainbow-bar"></div>
+
 <nav>
   <a href="index.html" class="logo">
-    <div class="logo-icon">
-      <svg viewBox="0 0 22 22" fill="none">
-        <circle cx="11" cy="9" r="4.5" fill="#E24B4A"/>
-        <rect x="4" y="14" width="14" height="3" rx="1.5" fill="#378ADD"/>
-        <rect x="7.5" y="17" width="2.5" height="3.5" rx="1.25" fill="#639922"/>
-        <rect x="12" y="17" width="2.5" height="3.5" rx="1.25" fill="#639922"/>
-      </svg>
-    </div>
-    <div class="logo-text">bellingham<span>forkids</span></div>
+    <div class="logo-icon">🛝</div>
+    <div class="logo-text">bellingham<span> playground finder</span></div>
   </a>
-  <div class="nav-links">
-    <a href="index.html" class="active">Playgrounds</a>
-    <a href="#">Parks</a>
-    <a href="#">Events</a>
-    <a href="#">About</a>
+  <div style="display:flex;align-items:center;gap:10px;">
+    <div class="nav-links">
+      <a href="index.html" class="active">Playgrounds</a>
+      <a href="#">About</a>
+    </div>
+    <div style="width:1px;height:28px;background:rgba(0,0,0,0.12);border-radius:1px;flex-shrink:0;"></div>
+    <div class="a11y-nav-wrap">
+      <button class="a11y-nav-btn" id="a11y-nav-btn" aria-expanded="false" aria-controls="a11y-panel" aria-label="Accessibility settings">♿</button>
+      <div class="a11y-panel" id="a11y-panel" role="dialog" aria-label="Accessibility options">
+        <div class="a11y-panel-title">♿ Accessibility</div>
+        <div class="a11y-option">
+          <div class="a11y-option-text"><label for="toggle-contrast">High contrast</label><p>Increases color contrast</p></div>
+          <label class="a11y-toggle"><input type="checkbox" id="toggle-contrast" role="switch" aria-checked="false"/><span class="a11y-toggle-slider"></span></label>
+        </div>
+        <div class="a11y-option">
+          <div class="a11y-option-text"><label for="toggle-text">Larger text</label><p>Increases base font size</p></div>
+          <label class="a11y-toggle"><input type="checkbox" id="toggle-text" role="switch" aria-checked="false"/><span class="a11y-toggle-slider"></span></label>
+        </div>
+        <div class="a11y-option">
+          <div class="a11y-option-text"><label for="toggle-motion">Reduce motion</label><p>Stops all animations</p></div>
+          <label class="a11y-toggle"><input type="checkbox" id="toggle-motion" role="switch" aria-checked="false"/><span class="a11y-toggle-slider"></span></label>
+        </div>
+      </div>
+    </div>
   </div>
 </nav>
 
 <div class="hero">
-  <div class="hero-bg-circles">
-    <div class="hero-circle" style="width:300px;height:300px;background:#378ADD;top:-100px;left:-80px;"></div>
-    <div class="hero-circle" style="width:200px;height:200px;background:#E24B4A;bottom:-60px;right:-40px;"></div>
-    <div class="hero-circle" style="width:150px;height:150px;background:#EF9F27;top:20px;right:15%;"></div>
+
+  <div class="hero-eyebrow">🗺️ Whatcom County, WA · Family-tested</div>
+
+  <h1 class="hero-title">
+    <span class="w1">Find</span>
+    <span class="w2"> Your</span>
+    <span class="w3"> Perfect</span><br>
+    <span class="w4"> Play</span><span class="w5">ground!</span>
+  </h1>
+
+  <p class="hero-sub">Search parks by name or feature — e.g. Cornwall Park, monkey bars, shade, spray park 🌲</p>
+
+  <div class="search-wrap">
+    <div class="search-bar">
+      <span>🔍</span>
+      <input type="text" id="search-input" placeholder="Park name or feature…" aria-label="Search by feature, park name, or neighborhood" autocomplete="off"/>
+      <button class="search-btn" aria-label="Search playgrounds">Find!</button>
+    </div>
+    <div class="search-suggestions" id="search-suggestions" role="listbox" aria-label="Search suggestions"></div>
   </div>
-  <div style="position:relative;z-index:1;">
-    <div class="hero-eyebrow">Whatcom County's playground guide</div>
-    <div class="hero-title">Find your next<br><span>adventure</span> <em>outside!</em></div>
-    <div class="hero-sub">Playgrounds rated by Bellingham families — find swings, shade, monkey bars, and more.</div>
-    <div class="crayon-row">
-      <div class="crayon" style="background:#E24B4A;"></div>
-      <div class="crayon" style="background:#378ADD;"></div>
-      <div class="crayon" style="background:#639922;"></div>
-      <div class="crayon" style="background:#EF9F27;"></div>
-      <div class="crayon" style="background:#7F77DD;"></div>
-      <div class="crayon" style="background:#D4537E;"></div>
-    </div>
-    <div class="search-wrap">
-      <div class="search-bar">
-        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="7.5" cy="7.5" r="5" stroke="#EF9F27" stroke-width="2.2"/><path d="M11.5 11.5L15.5 15.5" stroke="#EF9F27" stroke-width="2.2" stroke-linecap="round"/></svg>
-        <input type="text" id="search-input" placeholder="Search parks, features, areas..."/>
-        <button class="search-btn">Search</button>
-      </div>
-    </div>
+
+  <!-- INTEGRATED MOUNTAIN + PLAYGROUND SCENE -->
+  <div class="hero-mountain" aria-hidden="true">
+    <svg viewBox="0 0 1440 200" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="skyG" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#d6eef8"/>
+          <stop offset="100%" stop-color="#eef8f3"/>
+        </linearGradient>
+        <linearGradient id="snowG" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#ffffff"/>
+          <stop offset="100%" stop-color="#dff0f8"/>
+        </linearGradient>
+      </defs>
+
+      <!-- Sky fill -->
+      <rect width="1440" height="200" fill="url(#skyG)"/>
+
+      <!-- Far mountains -->
+      <path d="M0 200 L120 110 L240 145 L360 75 L480 130 L600 60 L720 120 L840 70 L960 130 L1080 50 L1200 110 L1320 80 L1440 115 L1440 200 Z" fill="#c2dce8" opacity="0.5"/>
+
+      <!-- Mid mountains -->
+      <path d="M0 200 L90 140 L200 165 L310 105 L420 155 L540 85 L650 145 L760 95 L880 160 L990 90 L1100 150 L1210 105 L1330 155 L1440 120 L1440 200 Z" fill="#8ab8cc" opacity="0.65"/>
+
+      <!-- Front mountains — main silhouette, with playground equipment sitting on peaks -->
+      <!-- Designed so peaks land near x=215, x=480, x=760, x=1000, x=1260 -->
+      <path d="M0 200 L80 165 L160 185 L215 118 L270 170 L380 190 L480 100 L560 165 L640 185 L760 88 L840 158 L930 178 L1000 108 L1070 165 L1160 185 L1260 115 L1340 170 L1440 148 L1440 200 Z" fill="#4a8fa8"/>
+
+      <!-- Snow caps -->
+      <path d="M215 118 L200 135 L230 135 Z" fill="url(#snowG)" opacity="0.95"/>
+      <path d="M480 100 L462 120 L498 120 Z" fill="url(#snowG)" opacity="0.95"/>
+      <path d="M760 88 L742 108 L778 108 Z" fill="url(#snowG)" opacity="0.95"/>
+      <path d="M1000 108 L984 126 L1016 126 Z" fill="url(#snowG)" opacity="0.9"/>
+      <path d="M1260 115 L1244 132 L1276 132 Z" fill="url(#snowG)" opacity="0.9"/>
+
+      <!-- Ground/grass strip -->
+      <rect x="0" y="188" width="1440" height="12" fill="#3a7a52"/>
+
+      <!-- Trees scattered at base of mountains -->
+      <!-- Tree macro: trunk + 3 triangle layers -->
+      <!-- Tree @ x=50 -->
+      <rect x="57" y="175" width="5" height="14" fill="#5a3a1a"/>
+      <polygon points="60,150 48,175 72,175" fill="#2d5a3d"/>
+      <polygon points="60,140 50,162 70,162" fill="#3a7a52"/>
+      <polygon points="60,132 52,150 68,150" fill="#4a9a62"/>
+      <!-- Tree @ x=130 -->
+      <rect x="137" y="178" width="5" height="12" fill="#5a3a1a"/>
+      <polygon points="140,158 129,178 151,178" fill="#2d5a3d"/>
+      <polygon points="140,150 131,166 149,166" fill="#3a7a52"/>
+      <polygon points="140,143 133,155 147,155" fill="#4a9a62"/>
+      <!-- Tree @ x=340 -->
+      <rect x="347" y="178" width="5" height="12" fill="#5a3a1a"/>
+      <polygon points="350,158 339,178 361,178" fill="#2d5a3d"/>
+      <polygon points="350,150 341,166 359,166" fill="#3a7a52"/>
+      <!-- Tree @ x=600 -->
+      <rect x="607" y="177" width="5" height="13" fill="#5a3a1a"/>
+      <polygon points="610,155 598,177 622,177" fill="#2d5a3d"/>
+      <polygon points="610,146 600,163 620,163" fill="#3a7a52"/>
+      <polygon points="610,138 602,151 618,151" fill="#4a9a62"/>
+      <!-- Tree @ x=880 -->
+      <rect x="887" y="178" width="5" height="12" fill="#5a3a1a"/>
+      <polygon points="890,158 879,178 901,178" fill="#2d5a3d"/>
+      <polygon points="890,150 881,166 899,166" fill="#3a7a52"/>
+      <!-- Tree @ x=1140 -->
+      <rect x="1147" y="178" width="5" height="12" fill="#5a3a1a"/>
+      <polygon points="1150,158 1139,178 1161,178" fill="#2d5a3d"/>
+      <polygon points="1150,150 1141,166 1159,166" fill="#3a7a52"/>
+      <polygon points="1150,142 1143,155 1157,155" fill="#4a9a62"/>
+      <!-- Tree @ x=1400 -->
+      <rect x="1407" y="177" width="5" height="13" fill="#5a3a1a"/>
+      <polygon points="1410,157 1399,177 1421,177" fill="#2d5a3d"/>
+      <polygon points="1410,149 1401,165 1419,165" fill="#3a7a52"/>
+
+      <!-- ===================== -->
+      <!-- PLAYGROUND EQUIPMENT  -->
+      <!-- Sitting ON the mountain peaks, bases anchored to terrain -->
+      <!-- ===================== -->
+
+      <!-- SWING SET @ peak x=215, terrain y≈118, equip sits above -->
+      <g class="bob1" transform="translate(168, 30)">
+        <!-- posts -->
+        <rect x="0" y="0" width="6" height="72" rx="3" fill="#F2383A" stroke="#1E1B18" stroke-width="2"/>
+        <rect x="68" y="0" width="6" height="72" rx="3" fill="#F2383A" stroke="#1E1B18" stroke-width="2"/>
+        <!-- crossbar -->
+        <rect x="0" y="0" width="74" height="7" rx="3" fill="#1E1B18"/>
+        <!-- chains -->
+        <line x1="18" y1="7" x2="15" y2="50" stroke="#1E1B18" stroke-width="2" stroke-linecap="round"/>
+        <line x1="56" y1="7" x2="59" y2="50" stroke="#1E1B18" stroke-width="2" stroke-linecap="round"/>
+        <!-- seat -->
+        <rect x="11" y="50" width="52" height="9" rx="4" fill="#FFD600" stroke="#1E1B18" stroke-width="2"/>
+      </g>
+
+      <!-- SLIDE @ peak x=480, terrain y≈100 -->
+      <g class="bob2" transform="translate(440, 18)">
+        <!-- ladder posts -->
+        <rect x="28" y="0" width="6" height="56" rx="3" fill="#9B5DE5" stroke="#1E1B18" stroke-width="2"/>
+        <rect x="44" y="0" width="6" height="56" rx="3" fill="#9B5DE5" stroke="#1E1B18" stroke-width="2"/>
+        <!-- rungs -->
+        <rect x="22" y="10" width="34" height="6" rx="3" fill="#FFD600" stroke="#1E1B18" stroke-width="1.5"/>
+        <rect x="22" y="26" width="34" height="6" rx="3" fill="#FFD600" stroke="#1E1B18" stroke-width="1.5"/>
+        <rect x="22" y="42" width="34" height="6" rx="3" fill="#FFD600" stroke="#1E1B18" stroke-width="1.5"/>
+        <!-- slide chute -->
+        <path d="M34 56 Q18 72 4 86" stroke="#2B87E3" stroke-width="9" stroke-linecap="round" fill="none"/>
+        <path d="M40 56 Q24 72 10 86" stroke="#2B87E3" stroke-width="9" stroke-linecap="round" fill="none"/>
+        <!-- landing -->
+        <rect x="0" y="82" width="24" height="7" rx="3" fill="#F2383A" stroke="#1E1B18" stroke-width="2"/>
+      </g>
+
+      <!-- MONKEY BARS @ peak x=760, terrain y≈88 -->
+      <g class="bob3" transform="translate(690, 14)">
+        <!-- side posts -->
+        <rect x="0" y="0" width="6" height="58" rx="3" fill="#FF7A1A" stroke="#1E1B18" stroke-width="2"/>
+        <rect x="110" y="0" width="6" height="58" rx="3" fill="#FF7A1A" stroke="#1E1B18" stroke-width="2"/>
+        <!-- top rail -->
+        <rect x="0" y="0" width="116" height="7" rx="3" fill="#F15BB5" stroke="#1E1B18" stroke-width="2"/>
+        <!-- bars -->
+        <rect x="18" y="7" width="6" height="26" rx="3" fill="#F2383A" stroke="#1E1B18" stroke-width="1.5"/>
+        <rect x="38" y="7" width="6" height="26" rx="3" fill="#FFD600" stroke="#1E1B18" stroke-width="1.5"/>
+        <rect x="58" y="7" width="6" height="26" rx="3" fill="#3DBD4A" stroke="#1E1B18" stroke-width="1.5"/>
+        <rect x="78" y="7" width="6" height="26" rx="3" fill="#2B87E3" stroke="#1E1B18" stroke-width="1.5"/>
+        <rect x="98" y="7" width="6" height="26" rx="3" fill="#9B5DE5" stroke="#1E1B18" stroke-width="1.5"/>
+        <!-- bottom rail -->
+        <rect x="0" y="52" width="116" height="6" rx="3" fill="#F15BB5" stroke="#1E1B18" stroke-width="2"/>
+      </g>
+
+      <!-- SEESAW @ peak x=1000, terrain y≈108 -->
+      <g class="bob4" transform="translate(948, 50)">
+        <!-- fulcrum -->
+        <polygon points="52,55 40,70 64,70" fill="#FF7A1A" stroke="#1E1B18" stroke-width="2"/>
+        <!-- board -->
+        <rect x="0" y="48" width="104" height="8" rx="4" fill="#3DBD4A" stroke="#1E1B18" stroke-width="2" transform="rotate(-6 52 52)"/>
+        <!-- kid left -->
+        <circle cx="12" cy="38" r="8" fill="#F15BB5" stroke="#1E1B18" stroke-width="2"/>
+        <rect x="8" y="45" width="7" height="16" rx="3" fill="#F15BB5" stroke="#1E1B18" stroke-width="1.5"/>
+        <!-- kid right -->
+        <circle cx="93" cy="52" r="8" fill="#2B87E3" stroke="#1E1B18" stroke-width="2"/>
+        <rect x="89" y="58" width="7" height="16" rx="3" fill="#2B87E3" stroke="#1E1B18" stroke-width="1.5"/>
+      </g>
+
+      <!-- CLIMBING WALL @ peak x=1260, terrain y≈115 -->
+      <g class="bob5" transform="translate(1218, 25)">
+        <rect x="0" y="0" width="60" height="78" rx="6" fill="#2B87E3" stroke="#1E1B18" stroke-width="2"/>
+        <!-- holds -->
+        <circle cx="16" cy="12" r="5" fill="#FFD600" stroke="#1E1B18" stroke-width="1.5"/>
+        <circle cx="40" cy="22" r="5" fill="#F2383A" stroke="#1E1B18" stroke-width="1.5"/>
+        <circle cx="14" cy="36" r="5" fill="#3DBD4A" stroke="#1E1B18" stroke-width="1.5"/>
+        <circle cx="44" cy="48" r="5" fill="#F15BB5" stroke="#1E1B18" stroke-width="1.5"/>
+        <circle cx="18" cy="60" r="5" fill="#FF7A1A" stroke="#1E1B18" stroke-width="1.5"/>
+        <circle cx="42" cy="70" r="5" fill="#9B5DE5" stroke="#1E1B18" stroke-width="1.5"/>
+      </g>
+
+      <!-- dark outline border bottom -->
+      <rect x="0" y="196" width="1440" height="4" fill="#1E1B18"/>
+    </svg>
   </div>
 </div>
 
@@ -172,41 +913,44 @@ footer{background:#E6F1FB;border-top:3px solid #FAC775;padding:2rem 1.5rem;text-
   <div class="stat"><div class="stat-num">100%</div><div class="stat-label">Family tested</div></div>
 </div>
 
-<div class="section">
-  <div class="section-header"><h2>Filter by what you need</h2></div>
-  <div class="filter-chips">
-    <span class="fchip chip-pink active" data-f="Baby swings">Baby swings</span>
-    <span class="fchip chip-pink active" data-f="Kid swings">Kid swings</span>
-    <span class="fchip chip-purple active" data-f="Monkey bars">Monkey bars</span>
-    <span class="fchip chip-green active" data-f="Shade">Shade</span>
-    <span class="fchip chip-blue active" data-f="Spray park">Spray park</span>
-    <span class="fchip chip-yellow active" data-f="Restrooms">Restrooms</span>
-    <span class="fchip chip-red active" data-f="Dog friendly">Dog friendly</span>
-    <span class="fchip chip-blue active" data-f="Beach access">Beach access</span>
+
+<div class="section" id="main-content">
+  <div class="section-header"><h2>🎯 What does your kid need today?</h2></div>
+  <div class="filter-chips" role="group" aria-label="Filter playgrounds by feature">
+    <button class="fchip active" data-f="Baby swings" aria-pressed="true">👶 Baby swings</button>
+    <button class="fchip active" data-f="Kid swings" aria-pressed="true">🤸 Kid swings</button>
+    <button class="fchip active" data-f="Monkey bars" aria-pressed="true">🐒 Monkey bars</button>
+    <button class="fchip active" data-f="Shade" aria-pressed="true">🌳 Shade</button>
+    <button class="fchip active" data-f="Spray park" aria-pressed="true">💦 Spray park</button>
+    <button class="fchip active" data-f="Restrooms" aria-pressed="true">🚻 Restrooms</button>
+    <button class="fchip active" data-f="Dog friendly" aria-pressed="true">🐕 Dog friendly</button>
+    <button class="fchip active" data-f="Beach access" aria-pressed="true">🏖️ Beach access</button>
+    <button class="fchip active" data-f="Accessible" aria-pressed="true" style="background:#1E1B18;color:#FFD600;">♿ Accessible</button>
+    <button class="fchip active" data-f="Pump track" aria-pressed="true">🚲 Pump track</button>
   </div>
 
-  <div class="section-header"><h2>Playgrounds</h2></div>
+  <div class="section-header"><h2>🛝 Playgrounds</h2></div>
   <div class="park-grid" id="park-grid"></div>
-  <div class="no-results" id="no-results">No playgrounds match — try adjusting your filters!</div>
+  <div class="no-results" id="no-results">😢 No playgrounds match — try adjusting your filters!</div>
 </div>
 
 <div class="feature-strip">
-  <div class="section-header" style="margin-bottom:1.5rem;"><h2 style="color:#3C3489;">Why Bellingham for Kids?</h2></div>
+  <div class="section-header" style="margin-bottom:1.5rem;"><h2>🌈 Find it by feature, not by name</h2></div>
   <div class="feature-grid">
     <div class="feature-item">
       <div class="feature-icon" style="background:#FBEAF0;">👶</div>
-      <div class="feature-title">Toddler-friendly</div>
-      <div class="feature-desc">Filter for baby swings, soft surfaces, and gentle equipment</div>
+      <div class="feature-title">Start with the feature</div>
+      <div class="feature-desc">Search "baby swings" or "spray park" — not a park name — and we find the match</div>
     </div>
     <div class="feature-item">
       <div class="feature-icon" style="background:#EAF3DE;">🌳</div>
-      <div class="feature-title">Shade-first</div>
-      <div class="feature-desc">Know before you go whether there's cover on hot sunny days</div>
+      <div class="feature-title">No more guessing</div>
+      <div class="feature-desc">Every feature is verified — so "shade" means real shade, not just one tree</div>
     </div>
     <div class="feature-item">
       <div class="feature-icon" style="background:#E6F1FB;">⭐</div>
-      <div class="feature-title">Family ratings</div>
-      <div class="feature-desc">Rated by real Bellingham parents and kids, not algorithms</div>
+      <div class="feature-title">Rated by locals</div>
+      <div class="feature-desc">Reviews from real Bellingham families who've been there with their actual kids</div>
     </div>
     <div class="feature-item">
       <div class="feature-icon" style="background:#FAEEDA;">📸</div>
@@ -217,42 +961,58 @@ footer{background:#E6F1FB;border-top:3px solid #FAC775;padding:2rem 1.5rem;text-
 </div>
 
 <footer>
-  <div class="footer-logo">bellingham<span>forkids</span></div>
-  <div class="footer-tagline">Made by Bellingham families, for Bellingham families 🌲</div>
+  <div class="footer-rainbow"></div>
+  <div class="footer-logo">bellingham<span> playground finder</span></div>
+  <div class="footer-tagline">Finding the best playgrounds in Bellingham for local families 🌲</div>
   <div class="footer-links">
     <a href="#">Playgrounds</a>
     <a href="#">Submit a park</a>
     <a href="#">About us</a>
     <a href="#">Contact</a>
   </div>
-  <div class="footer-copy">© 2025 Bellingham for Kids · Whatcom County, WA</div>
+  <div class="footer-copy">© 2025 Bellingham Playground Finder · Whatcom County, WA</div>
 </footer>
 
 <script>
 const parks = [
-  {id:'waypoint', name:'Waypoint Park', area:'Bellingham waterfront', rating:4.8, count:71, color:'#E6F1FB', tcolor:'#185FA5', tags:['Beach access','Trails'], desc:'Brand new waterfront park with modern play equipment and the iconic Acid Ball art installation.'},
-  {id:'million-smiles', name:'Million Smiles Park', area:'Lynden', rating:4.9, count:33, color:'#EAF3DE', tcolor:'#3B6D11', tags:['Kid swings','Baby swings','Monkey bars','Basketball','Tennis'], desc:"Widely known as the 'best playground ever' in Whatcom County. Exceptional equipment for all ages."},
-  {id:'cornwall', name:'Cornwall Park', area:'Bellingham', rating:4.6, count:61, color:'#FAEEDA', tcolor:'#854F0B', tags:['Kid swings','Baby swings','Monkey bars','Spray park','Shade','Restrooms'], desc:'70 acres in the heart of Bellingham with two playgrounds, spray park, disc golf, and pickleball.'},
-  {id:'star-park', name:'Star Park', area:'Ferndale', rating:4.5, count:21, color:'#FBEAF0', tcolor:'#993556', tags:['Kid swings','Baby swings','Monkey bars'], desc:'Purpose-built 12,000 sq ft playground with zones for ages 0–5 and ages 5–12.'},
-  {id:'whatcom-falls', name:'Whatcom Falls Park', area:'Bellingham', rating:4.5, count:58, color:'#EEEDFE', tcolor:'#534AB7', tags:['Kid swings','Baby swings','Monkey bars','Shade','Restrooms','Dog friendly'], desc:'Forested park with 3+ miles of trails, stunning waterfalls, and full canopy shade.'},
-  {id:'fairhaven', name:'Fairhaven Park', area:'Bellingham', rating:4.4, count:37, color:'#E1F5EE', tcolor:'#085041', tags:['Kid swings','Baby swings','Monkey bars','Spray park','Shade','Restrooms'], desc:'Wooded park near Historic Fairhaven Village with a beloved spray park and natural shade.'},
+  {id:'waypoint',       name:'Waypoint Park',       area:'Bellingham waterfront', rating:4.8, count:71,  color:'#DDEEFF', accentColor:'var(--blue)',   emoji:'🌊', tags:['Beach access','Trails','Accessible','Pump track'],                                               desc:'Brand new waterfront park with modern play equipment and the iconic Acid Ball art installation.'},
+  {id:'million-smiles', name:'Million Smiles Park',  area:'Lynden',               rating:4.9, count:33,  color:'#DDFCE6', accentColor:'var(--green)',  emoji:'😁', tags:['Kid swings','Baby swings','Monkey bars','Basketball','Tennis','Accessible'],         desc:"Widely known as the 'best playground ever' in Whatcom County. Exceptional equipment for all ages."},
+  {id:'cornwall',       name:'Cornwall Park',         area:'Bellingham',           rating:4.6, count:61,  color:'#FFF3CC', accentColor:'var(--yellow)', emoji:'🎡', tags:['Kid swings','Baby swings','Monkey bars','Spray park','Shade','Restrooms','Accessible'], desc:'70 acres in the heart of Bellingham with two playgrounds, spray park, disc golf, and pickleball.'},
+  {id:'star-park',      name:'Star Park',             area:'Ferndale',             rating:4.5, count:21,  color:'#FFE0EE', accentColor:'var(--pink)',   emoji:'⭐', tags:['Kid swings','Baby swings','Monkey bars'],                              desc:'Purpose-built 12,000 sq ft playground with zones for ages 0–5 and ages 5–12.'},
+  {id:'whatcom-falls',  name:'Whatcom Falls Park',    area:'Bellingham',           rating:4.5, count:58,  color:'#EDE4FF', accentColor:'var(--purple)', emoji:'🌊', tags:['Kid swings','Baby swings','Monkey bars','Shade','Restrooms','Dog friendly','Accessible'], desc:'Forested park with 3+ miles of trails, stunning waterfalls, and full canopy shade.'},
+  {id:'fairhaven',      name:'Fairhaven Park',        area:'Bellingham',           rating:4.4, count:37,  color:'#D6F7E8', accentColor:'var(--green)',  emoji:'🌲', tags:['Kid swings','Baby swings','Monkey bars','Spray park','Shade','Restrooms','Accessible'], desc:'Wooded park near Historic Fairhaven Village with a beloved spray park and natural shade.'},
 ];
+
+const tagEmoji = {
+  'Kid swings':'🤸','Baby swings':'👶','Monkey bars':'🐒',
+  'Shade':'🌳','Spray park':'💦','Restrooms':'🚻',
+  'Dog friendly':'🐕','Beach access':'🏖️','Trails':'🥾',
+  'Basketball':'🏀','Tennis':'🎾','Accessible':'♿','Pump track':'🚲'
+};
+
+const tagColor = {
+  'Kid swings':   'background:#FFE0EE;color:#993556;',
+  'Baby swings':  'background:#FFE0EE;color:#993556;',
+  'Monkey bars':  'background:#EDE4FF;color:#6934D0;',
+  'Shade':        'background:#D6F7E8;color:#1B7A3E;',
+  'Spray park':   'background:#DDEEFF;color:#0C5DB5;',
+  'Dog friendly': 'background:#FFE8CC;color:#8B4000;',
+  'Beach access': 'background:#DDEEFF;color:#0C447C;',
+  'Restrooms':    'background:#F5F5F5;color:#444;',
+  'Accessible':   'background:#1E1B18;color:#FFD600;',
+  'Pump track':   'background:#FFE8CC;color:#8B4000;',
+  'default':      'background:#F5F5F5;color:#444;'
+};
 
 function starsHtml(r){
   let s='';
-  for(let i=1;i<=5;i++) s+=`<span style="color:${i<=Math.round(r)?'#EF9F27':'#D3D1C7'}">★</span>`;
+  for(let i=1;i<=5;i++){
+    s+=`<span style="color:${i<=Math.round(r)?'#FFB800':'#DDD'}">★</span>`;
+  }
   return s;
 }
-function badgeStyle(tag){
-  if(['Kid swings','Baby swings'].includes(tag)) return 'background:#FBEAF0;color:#993556;';
-  if(tag==='Monkey bars') return 'background:#EEEDFE;color:#534AB7;';
-  if(tag==='Shade') return 'background:#EAF3DE;color:#3B6D11;';
-  if(tag==='Spray park') return 'background:#E6F1FB;color:#185FA5;';
-  if(tag==='Dog friendly') return 'background:#FAEEDA;color:#854F0B;';
-  if(tag==='Beach access') return 'background:#E6F1FB;color:#0C447C;';
-  if(tag==='Restrooms') return 'background:#F1EFE8;color:#444441;';
-  return 'background:#F1EFE8;color:#444441;';
-}
+
+function badgeStyle(tag){ return tagColor[tag] || tagColor['default']; }
 
 let activeFilters = new Set();
 
@@ -267,11 +1027,11 @@ function render(){
   });
   if(!filtered.length){ grid.innerHTML=''; noRes.style.display='block'; return; }
   noRes.style.display='none';
-  grid.innerHTML = filtered.map(p=>`
-    <a class="park-card" href="${p.id}.html">
+  grid.innerHTML = filtered.map((p,i)=>`
+    <a class="park-card" href="${p.id}.html" style="animation-delay:${i*0.07}s" aria-label="${p.name} — ${p.area}, rated ${p.rating} out of 5">
       <div class="park-photo" style="background:${p.color};">
-        <div class="park-photo-placeholder" style="color:${p.tcolor};">📷 Photos coming soon</div>
-        <span class="photo-pill">${p.area}</span>
+        <div class="park-photo-art">${p.emoji}</div>
+        <span class="photo-pill">📍 ${p.area}</span>
       </div>
       <div class="park-body">
         <div class="park-name">${p.name}</div>
@@ -280,8 +1040,8 @@ function render(){
           <span class="rating-num">${p.rating.toFixed(1)}</span>
           <span class="rating-cnt">(${p.count} ratings)</span>
         </div>
-        <div class="park-badges">${p.tags.slice(0,4).map(t=>`<span class="pbadge" style="${badgeStyle(t)}">${t}</span>`).join('')}</div>
-        <span class="explore-btn">Explore this park →</span>
+        <div class="park-badges">${p.tags.slice(0,4).map(t=>`<span class="pbadge" style="${badgeStyle(t)}">${(tagEmoji[t]||'')} ${t}</span>`).join('')}</div>
+        <span class="explore-btn">🗺️ Explore this park →</span>
       </div>
     </a>
   `).join('');
@@ -289,14 +1049,161 @@ function render(){
 
 document.querySelectorAll('.fchip').forEach(c=>{
   c.onclick=()=>{
-    const f=c.dataset.f;
-    if(activeFilters.has(f)){activeFilters.delete(f);c.classList.remove('active');}
-    else{activeFilters.add(f);c.classList.add('active');}
+    const f = c.dataset.f;
+    if(activeFilters.has(f)){
+      activeFilters.delete(f);
+      c.classList.remove('active');
+      c.setAttribute('aria-pressed','false');
+    } else {
+      activeFilters.add(f);
+      c.classList.add('active');
+      c.setAttribute('aria-pressed','true');
+    }
     render();
   };
 });
-document.getElementById('search-input').oninput=render;
+
+// ── Feature-first search & suggestions ──────────────────────────────────────
+const FEATURES = [
+  {label:'Baby swings',   emoji:'👶', filter:'Baby swings'},
+  {label:'Kid swings',    emoji:'🤸', filter:'Kid swings'},
+  {label:'Monkey bars',   emoji:'🐒', filter:'Monkey bars'},
+  {label:'Spray park',    emoji:'💦', filter:'Spray park'},
+  {label:'Shade',         emoji:'🌳', filter:'Shade'},
+  {label:'Restrooms',     emoji:'🚻', filter:'Restrooms'},
+  {label:'Dog friendly',  emoji:'🐕', filter:'Dog friendly'},
+  {label:'Beach access',  emoji:'🏖️', filter:'Beach access'},
+  {label:'Accessible',    emoji:'♿', filter:'Accessible'},
+  {label:'Pump track',    emoji:'🚲', filter:'Pump track'},
+];
+
+const suggBox = document.getElementById('search-suggestions');
+const searchInput = document.getElementById('search-input');
+
+function countParksWithTag(tag){
+  return parks.filter(p=>p.tags.includes(tag)).length;
+}
+
+function showSuggestions(q) {
+  if (!q) { suggBox.classList.remove('visible'); suggBox.innerHTML=''; return; }
+
+  const ql = q.toLowerCase();
+  const matchFeatures = FEATURES.filter(f => f.label.toLowerCase().includes(ql));
+  const matchParks    = parks.filter(p =>
+    p.name.toLowerCase().includes(ql) || p.area.toLowerCase().includes(ql)
+  );
+
+  if (!matchFeatures.length && !matchParks.length) {
+    suggBox.classList.remove('visible'); return;
+  }
+
+  let html = '';
+  if (matchFeatures.length) {
+    html += '<div class="sugg-group-label">Features</div>';
+    matchFeatures.forEach(f => {
+      const n = countParksWithTag(f.filter);
+      html += `<button class="sugg-item" data-type="feature" data-value="${f.filter}" role="option">
+        <span class="sugg-icon">${f.emoji}</span>
+        <span class="sugg-label">${f.label}</span>
+        <span class="sugg-count">${n} park${n!==1?'s':''}</span>
+      </button>`;
+    });
+  }
+  if (matchParks.length) {
+    html += '<div class="sugg-group-label">Parks</div>';
+    matchParks.forEach(p => {
+      html += `<button class="sugg-item" data-type="park" data-value="${p.name}" role="option">
+        <span class="sugg-icon">${p.emoji}</span>
+        <span class="sugg-label">${p.name}</span>
+        <span class="sugg-count">${p.area}</span>
+      </button>`;
+    });
+  }
+
+  suggBox.innerHTML = html;
+  suggBox.classList.add('visible');
+
+  suggBox.querySelectorAll('.sugg-item').forEach(btn => {
+    btn.addEventListener('mousedown', e => {
+      e.preventDefault();
+      const type  = btn.dataset.type;
+      const value = btn.dataset.value;
+      if (type === 'feature') {
+        // activate the matching chip and clear text
+        searchInput.value = '';
+        const chip = document.querySelector(`.fchip[data-f="${value}"]`);
+        if (chip && !activeFilters.has(value)) {
+          activeFilters.add(value);
+          chip.classList.add('active');
+          chip.setAttribute('aria-pressed','true');
+        }
+      } else {
+        searchInput.value = value;
+      }
+      suggBox.classList.remove('visible');
+      render();
+    });
+  });
+}
+
+searchInput.addEventListener('input', () => {
+  showSuggestions(searchInput.value.trim());
+  render();
+});
+searchInput.addEventListener('focus', () => {
+  if (searchInput.value.trim()) showSuggestions(searchInput.value.trim());
+});
+searchInput.addEventListener('blur', () => {
+  setTimeout(() => suggBox.classList.remove('visible'), 150);
+});
+searchInput.addEventListener('keydown', e => {
+  if (e.key === 'Escape') { suggBox.classList.remove('visible'); }
+  if (e.key === 'ArrowDown') {
+    const first = suggBox.querySelector('.sugg-item');
+    if (first) { e.preventDefault(); first.focus(); }
+  }
+});
+
 render();
 </script>
+
+
+
+<script>
+// Accessibility panel (nav dropdown)
+const a11yPanel = document.getElementById('a11y-panel');
+const a11yBtn   = document.getElementById('a11y-nav-btn');
+const htmlRoot  = document.getElementById('html-root');
+
+function toggleA11y(open) {
+  a11yPanel.classList.toggle('open', open);
+  a11yBtn.setAttribute('aria-expanded', String(open));
+}
+
+a11yBtn.addEventListener('click', e => {
+  e.stopPropagation();
+  toggleA11y(!a11yPanel.classList.contains('open'));
+});
+
+// Close when clicking outside
+document.addEventListener('click', e => {
+  if (!a11yPanel.contains(e.target) && e.target !== a11yBtn) toggleA11y(false);
+});
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') { toggleA11y(false); a11yBtn.focus(); }
+});
+
+function bindToggle(id, cls) {
+  const el = document.getElementById(id);
+  el.addEventListener('change', () => {
+    htmlRoot.classList.toggle(cls, el.checked);
+    el.setAttribute('aria-checked', String(el.checked));
+  });
+}
+bindToggle('toggle-contrast', 'high-contrast');
+bindToggle('toggle-text', 'large-text');
+bindToggle('toggle-motion', 'reduce-motion');
+</script>
+
 </body>
 </html>
