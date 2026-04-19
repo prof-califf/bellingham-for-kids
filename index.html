@@ -87,10 +87,13 @@ nav {
 .logo-text {
   font-family: 'Boogaloo', cursive;
   font-size: 22px;
-  color: var(--red);
   letter-spacing: 0.5px;
 }
-.logo-text span { color: var(--blue); }
+.logo-text .c1{color:var(--red);}
+.logo-text .c2{color:var(--orange);}
+.logo-text .c3{color:var(--green);}
+.logo-text .c4{color:var(--blue);}
+.logo-text .c5{color:var(--purple);}
 
 .nav-links { display:flex; gap:4px; }
 .nav-links a {
@@ -111,13 +114,17 @@ nav {
   box-shadow: 2px 2px 0 var(--dark);
 }
 
+/* HERO MOUNTAIN */
+.hero-mountain { width:100%; margin-bottom:1rem; }
+.hero-mountain svg { display:block; width:100%; }
+
 /* HERO */
 .hero {
   background: #fff;
   padding: 3.5rem 1.5rem 0;
   text-align: center;
   position: relative;
-  overflow: hidden;
+  overflow: visible;
   border-bottom: none;
 }
 
@@ -158,47 +165,7 @@ nav {
 
 /* Equipment inside mountain scene — static */
 
-/* SEARCH */
-.search-wrap { max-width: 500px; margin: 0 auto; position: relative; }
-.search-bar {
-  background: #fff;
-  border: 3px solid var(--dark);
-  border-radius: 40px;
-  padding: 10px 16px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  box-shadow: 4px 4px 0 var(--dark);
-}
-.search-bar input {
-  border: none;
-  outline: none;
-  font-size: 15px;
-  font-family: 'Nunito', sans-serif;
-  font-weight: 700;
-  background: transparent;
-  flex: 1;
-  color: var(--dark);
-}
-.search-bar input::placeholder { color:#B4B2A9; font-weight:500; }
-.search-btn {
-  background: var(--red);
-  border: 2.5px solid var(--dark);
-  border-radius: 30px;
-  padding: 6px 18px;
-  font-size: 13px;
-  font-weight: 900;
-  font-family: 'Nunito', sans-serif;
-  color: #fff;
-  cursor: pointer;
-  white-space: nowrap;
-  box-shadow: 2px 2px 0 var(--dark);
-  transition: transform 0.1s, box-shadow 0.1s;
-}
-.search-btn:hover {
-  transform: translate(1px,1px);
-  box-shadow: 1px 1px 0 var(--dark);
-}
+
 
 /* STATS BAR */
 .stats-bar {
@@ -302,6 +269,7 @@ nav {
 .fchip[data-f="Beach access"].active   { background: var(--blue); color:#fff; }
 .fchip[data-f="Accessible"].active     { background: var(--dark); color:var(--yellow); }
 .fchip[data-f="Pump track"].active     { background: var(--orange); color:#fff; }
+.fchip[data-f="Sun"].active            { background: var(--yellow); color: var(--dark); }
 
 /* FILTER SUMMARY */
 .filter-summary {
@@ -367,44 +335,19 @@ nav {
   box-shadow: 7px 7px 0 var(--dark);
 }
 
-.park-photo {
-  height: 150px;
-  display: flex;
-  align-items: flex-end;
-  padding: 10px;
-  position: relative;
+/* Coloured top accent bar */
+.park-card-top {
+  height: 8px;
   border-bottom: 3px solid var(--dark);
 }
 
-/* Playground equipment SVG doodle inside cards */
-.park-photo-art {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 52px;
-  opacity: 0.22;
-}
-
-.photo-pill {
-  background: rgba(255,255,255,0.95);
-  border: 2px solid var(--dark);
-  border-radius: 20px;
-  padding: 3px 12px;
-  font-size: 11px;
-  font-weight: 900;
-  color: var(--dark);
-  position: relative;
-  z-index: 1;
-}
-
-.park-body { padding: 14px; }
+.park-body { padding: 18px 16px 16px; }
 .park-name {
   font-family: 'Boogaloo', cursive;
-  font-size: 20px;
+  font-size: 26px;
   color: var(--dark);
-  margin-bottom: 1px;
+  line-height: 1.1;
+  margin-bottom: 4px;
 }
 .park-area {
   font-size: 12px;
@@ -740,7 +683,7 @@ html.reduce-motion * { animation: none !important; transition: none !important; 
 <nav>
   <a href="index.html" class="logo">
     <div class="logo-icon">🛝</div>
-    <div class="logo-text">bellingham<span> playground finder</span></div>
+    <div class="logo-text"><span class="c1">b</span><span class="c2">e</span><span class="c3">l</span><span class="c4">l</span><span class="c5">i</span><span class="c1">n</span><span class="c2">g</span><span class="c3">h</span><span class="c4">a</span><span class="c5">m</span> <span class="c1">p</span><span class="c2">l</span><span class="c3">a</span><span class="c4">y</span><span class="c5">g</span><span class="c1">r</span><span class="c2">o</span><span class="c3">u</span><span class="c4">n</span><span class="c5">d</span> <span class="c1">f</span><span class="c2">i</span><span class="c3">n</span><span class="c4">d</span><span class="c5">e</span><span class="c1">r</span></div>
   </a>
   <div style="display:flex;align-items:center;gap:10px;">
     <div class="nav-links">
@@ -771,192 +714,55 @@ html.reduce-motion * { animation: none !important; transition: none !important; 
 
 <div class="hero">
 
-  <div class="hero-eyebrow">🗺️ Whatcom County, WA · Family-tested</div>
-
-  <h1 class="hero-title">
-    <span class="w1">Find</span>
-    <span class="w2"> Your</span>
-    <span class="w3"> Perfect</span><br>
-    <span class="w4"> Play</span><span class="w5">ground!</span>
-  </h1>
-
-  <p class="hero-sub">Search parks by name or feature — e.g. Cornwall Park, monkey bars, shade, spray park 🌲</p>
-
-  <div class="search-wrap">
-    <div class="search-bar">
-      <span>🔍</span>
-      <input type="text" id="search-input" placeholder="Park name or feature…" aria-label="Search by feature, park name, or neighborhood" autocomplete="off"/>
-      <button class="search-btn" aria-label="Search playgrounds">Find!</button>
-    </div>
-    <div class="search-suggestions" id="search-suggestions" role="listbox" aria-label="Search suggestions"></div>
-  </div>
-
-  <!-- INTEGRATED MOUNTAIN + PLAYGROUND SCENE -->
+  <!-- MOUNTAIN SCENE -->
   <div class="hero-mountain" aria-hidden="true">
-    <svg viewBox="0 0 1440 200" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <svg viewBox="0 0 1440 100" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:90px;">
       <defs>
         <linearGradient id="skyG" x1="0" y1="0" x2="0" y2="1">
           <stop offset="0%" stop-color="#d6eef8"/>
           <stop offset="100%" stop-color="#eef8f3"/>
         </linearGradient>
-        <linearGradient id="snowG" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#ffffff"/>
-          <stop offset="100%" stop-color="#dff0f8"/>
-        </linearGradient>
       </defs>
-
-      <!-- Sky fill -->
-      <rect width="1440" height="200" fill="url(#skyG)"/>
-
-      <!-- Far mountains -->
-      <path d="M0 200 L120 110 L240 145 L360 75 L480 130 L600 60 L720 120 L840 70 L960 130 L1080 50 L1200 110 L1320 80 L1440 115 L1440 200 Z" fill="#c2dce8" opacity="0.5"/>
-
-      <!-- Mid mountains -->
-      <path d="M0 200 L90 140 L200 165 L310 105 L420 155 L540 85 L650 145 L760 95 L880 160 L990 90 L1100 150 L1210 105 L1330 155 L1440 120 L1440 200 Z" fill="#8ab8cc" opacity="0.65"/>
-
-      <!-- Front mountains — main silhouette, with playground equipment sitting on peaks -->
-      <!-- Designed so peaks land near x=215, x=480, x=760, x=1000, x=1260 -->
-      <path d="M0 200 L80 165 L160 185 L215 118 L270 170 L380 190 L480 100 L560 165 L640 185 L760 88 L840 158 L930 178 L1000 108 L1070 165 L1160 185 L1260 115 L1340 170 L1440 148 L1440 200 Z" fill="#4a8fa8"/>
-
-      <!-- Snow caps -->
-      <path d="M215 118 L200 135 L230 135 Z" fill="url(#snowG)" opacity="0.95"/>
-      <path d="M480 100 L462 120 L498 120 Z" fill="url(#snowG)" opacity="0.95"/>
-      <path d="M760 88 L742 108 L778 108 Z" fill="url(#snowG)" opacity="0.95"/>
-      <path d="M1000 108 L984 126 L1016 126 Z" fill="url(#snowG)" opacity="0.9"/>
-      <path d="M1260 115 L1244 132 L1276 132 Z" fill="url(#snowG)" opacity="0.9"/>
-
-      <!-- Ground/grass strip -->
-      <rect x="0" y="188" width="1440" height="12" fill="#3a7a52"/>
-
-      <!-- Trees scattered at base of mountains -->
-      <!-- Tree macro: trunk + 3 triangle layers -->
-      <!-- Tree @ x=50 -->
-      <rect x="57" y="175" width="5" height="14" fill="#5a3a1a"/>
-      <polygon points="60,150 48,175 72,175" fill="#2d5a3d"/>
-      <polygon points="60,140 50,162 70,162" fill="#3a7a52"/>
-      <polygon points="60,132 52,150 68,150" fill="#4a9a62"/>
-      <!-- Tree @ x=130 -->
-      <rect x="137" y="178" width="5" height="12" fill="#5a3a1a"/>
-      <polygon points="140,158 129,178 151,178" fill="#2d5a3d"/>
-      <polygon points="140,150 131,166 149,166" fill="#3a7a52"/>
-      <polygon points="140,143 133,155 147,155" fill="#4a9a62"/>
-      <!-- Tree @ x=340 -->
-      <rect x="347" y="178" width="5" height="12" fill="#5a3a1a"/>
-      <polygon points="350,158 339,178 361,178" fill="#2d5a3d"/>
-      <polygon points="350,150 341,166 359,166" fill="#3a7a52"/>
-      <!-- Tree @ x=600 -->
-      <rect x="607" y="177" width="5" height="13" fill="#5a3a1a"/>
-      <polygon points="610,155 598,177 622,177" fill="#2d5a3d"/>
-      <polygon points="610,146 600,163 620,163" fill="#3a7a52"/>
-      <polygon points="610,138 602,151 618,151" fill="#4a9a62"/>
-      <!-- Tree @ x=880 -->
-      <rect x="887" y="178" width="5" height="12" fill="#5a3a1a"/>
-      <polygon points="890,158 879,178 901,178" fill="#2d5a3d"/>
-      <polygon points="890,150 881,166 899,166" fill="#3a7a52"/>
-      <!-- Tree @ x=1140 -->
-      <rect x="1147" y="178" width="5" height="12" fill="#5a3a1a"/>
-      <polygon points="1150,158 1139,178 1161,178" fill="#2d5a3d"/>
-      <polygon points="1150,150 1141,166 1159,166" fill="#3a7a52"/>
-      <polygon points="1150,142 1143,155 1157,155" fill="#4a9a62"/>
-      <!-- Tree @ x=1400 -->
-      <rect x="1407" y="177" width="5" height="13" fill="#5a3a1a"/>
-      <polygon points="1410,157 1399,177 1421,177" fill="#2d5a3d"/>
-      <polygon points="1410,149 1401,165 1419,165" fill="#3a7a52"/>
-
-      <!-- ===================== -->
-      <!-- PLAYGROUND EQUIPMENT  -->
-      <!-- Sitting ON the mountain peaks, bases anchored to terrain -->
-      <!-- ===================== -->
-
-      <!-- SWING SET @ peak x=215, terrain y≈118, equip sits above -->
-      <g class="bob1" transform="translate(168, 30)">
-        <!-- posts -->
-        <rect x="0" y="0" width="6" height="72" rx="3" fill="#F2383A" stroke="#1E1B18" stroke-width="2"/>
-        <rect x="68" y="0" width="6" height="72" rx="3" fill="#F2383A" stroke="#1E1B18" stroke-width="2"/>
-        <!-- crossbar -->
-        <rect x="0" y="0" width="74" height="7" rx="3" fill="#1E1B18"/>
-        <!-- chains -->
-        <line x1="18" y1="7" x2="15" y2="50" stroke="#1E1B18" stroke-width="2" stroke-linecap="round"/>
-        <line x1="56" y1="7" x2="59" y2="50" stroke="#1E1B18" stroke-width="2" stroke-linecap="round"/>
-        <!-- seat -->
-        <rect x="11" y="50" width="52" height="9" rx="4" fill="#FFD600" stroke="#1E1B18" stroke-width="2"/>
-      </g>
-
-      <!-- SLIDE @ peak x=480, terrain y≈100 -->
-      <g class="bob2" transform="translate(440, 18)">
-        <!-- ladder posts -->
-        <rect x="28" y="0" width="6" height="56" rx="3" fill="#9B5DE5" stroke="#1E1B18" stroke-width="2"/>
-        <rect x="44" y="0" width="6" height="56" rx="3" fill="#9B5DE5" stroke="#1E1B18" stroke-width="2"/>
-        <!-- rungs -->
-        <rect x="22" y="10" width="34" height="6" rx="3" fill="#FFD600" stroke="#1E1B18" stroke-width="1.5"/>
-        <rect x="22" y="26" width="34" height="6" rx="3" fill="#FFD600" stroke="#1E1B18" stroke-width="1.5"/>
-        <rect x="22" y="42" width="34" height="6" rx="3" fill="#FFD600" stroke="#1E1B18" stroke-width="1.5"/>
-        <!-- slide chute -->
-        <path d="M34 56 Q18 72 4 86" stroke="#2B87E3" stroke-width="9" stroke-linecap="round" fill="none"/>
-        <path d="M40 56 Q24 72 10 86" stroke="#2B87E3" stroke-width="9" stroke-linecap="round" fill="none"/>
-        <!-- landing -->
-        <rect x="0" y="82" width="24" height="7" rx="3" fill="#F2383A" stroke="#1E1B18" stroke-width="2"/>
-      </g>
-
-      <!-- MONKEY BARS @ peak x=760, terrain y≈88 -->
-      <g class="bob3" transform="translate(690, 14)">
-        <!-- side posts -->
-        <rect x="0" y="0" width="6" height="58" rx="3" fill="#FF7A1A" stroke="#1E1B18" stroke-width="2"/>
-        <rect x="110" y="0" width="6" height="58" rx="3" fill="#FF7A1A" stroke="#1E1B18" stroke-width="2"/>
-        <!-- top rail -->
-        <rect x="0" y="0" width="116" height="7" rx="3" fill="#F15BB5" stroke="#1E1B18" stroke-width="2"/>
-        <!-- bars -->
-        <rect x="18" y="7" width="6" height="26" rx="3" fill="#F2383A" stroke="#1E1B18" stroke-width="1.5"/>
-        <rect x="38" y="7" width="6" height="26" rx="3" fill="#FFD600" stroke="#1E1B18" stroke-width="1.5"/>
-        <rect x="58" y="7" width="6" height="26" rx="3" fill="#3DBD4A" stroke="#1E1B18" stroke-width="1.5"/>
-        <rect x="78" y="7" width="6" height="26" rx="3" fill="#2B87E3" stroke="#1E1B18" stroke-width="1.5"/>
-        <rect x="98" y="7" width="6" height="26" rx="3" fill="#9B5DE5" stroke="#1E1B18" stroke-width="1.5"/>
-        <!-- bottom rail -->
-        <rect x="0" y="52" width="116" height="6" rx="3" fill="#F15BB5" stroke="#1E1B18" stroke-width="2"/>
-      </g>
-
-      <!-- SEESAW @ peak x=1000, terrain y≈108 -->
-      <g class="bob4" transform="translate(948, 50)">
-        <!-- fulcrum -->
-        <polygon points="52,55 40,70 64,70" fill="#FF7A1A" stroke="#1E1B18" stroke-width="2"/>
-        <!-- board -->
-        <rect x="0" y="48" width="104" height="8" rx="4" fill="#3DBD4A" stroke="#1E1B18" stroke-width="2" transform="rotate(-6 52 52)"/>
-        <!-- kid left -->
-        <circle cx="12" cy="38" r="8" fill="#F15BB5" stroke="#1E1B18" stroke-width="2"/>
-        <rect x="8" y="45" width="7" height="16" rx="3" fill="#F15BB5" stroke="#1E1B18" stroke-width="1.5"/>
-        <!-- kid right -->
-        <circle cx="93" cy="52" r="8" fill="#2B87E3" stroke="#1E1B18" stroke-width="2"/>
-        <rect x="89" y="58" width="7" height="16" rx="3" fill="#2B87E3" stroke="#1E1B18" stroke-width="1.5"/>
-      </g>
-
-      <!-- CLIMBING WALL @ peak x=1260, terrain y≈115 -->
-      <g class="bob5" transform="translate(1218, 25)">
-        <rect x="0" y="0" width="60" height="78" rx="6" fill="#2B87E3" stroke="#1E1B18" stroke-width="2"/>
-        <!-- holds -->
-        <circle cx="16" cy="12" r="5" fill="#FFD600" stroke="#1E1B18" stroke-width="1.5"/>
-        <circle cx="40" cy="22" r="5" fill="#F2383A" stroke="#1E1B18" stroke-width="1.5"/>
-        <circle cx="14" cy="36" r="5" fill="#3DBD4A" stroke="#1E1B18" stroke-width="1.5"/>
-        <circle cx="44" cy="48" r="5" fill="#F15BB5" stroke="#1E1B18" stroke-width="1.5"/>
-        <circle cx="18" cy="60" r="5" fill="#FF7A1A" stroke="#1E1B18" stroke-width="1.5"/>
-        <circle cx="42" cy="70" r="5" fill="#9B5DE5" stroke="#1E1B18" stroke-width="1.5"/>
-      </g>
-
-      <!-- dark outline border bottom -->
-      <rect x="0" y="196" width="1440" height="4" fill="#1E1B18"/>
+      <rect width="1440" height="100" fill="url(#skyG)"/>
+      <path d="M0 100 L120 52 L240 68 L360 28 L480 62 L600 14 L720 50 L840 24 L960 56 L1080 12 L1200 44 L1320 28 L1440 42 L1440 100 Z" fill="#b8d8e8" opacity="0.5"/>
+      <path d="M0 100 L90 65 L200 80 L310 42 L430 72 L550 30 L660 65 L770 38 L890 74 L1000 32 L1110 68 L1230 46 L1350 68 L1440 54 L1440 100 Z" fill="#6aaec8" opacity="0.6"/>
+      <path d="M0 100 L80 72 L170 88 L255 55 L350 84 L448 35 L530 70 L618 52 L730 88 L820 44 L910 78 L1000 55 L1100 82 L1185 38 L1285 72 L1380 52 L1440 65 L1440 100 Z" fill="#3d7d96"/>
+      <path d="M600 14 L591 26 L609 26 Z" fill="#fff" opacity="0.85"/>
+      <path d="M1080 12 L1071 24 L1089 24 Z" fill="#fff" opacity="0.82"/>
+      <path d="M360 28 L352 39 L368 39 Z" fill="#fff" opacity="0.78"/>
+      <path d="M840 24 L832 35 L848 35 Z" fill="#fff" opacity="0.78"/>
+      <polygon points="44,100 48,88 52,100" fill="#2d5a3d" opacity="0.7"/>
+      <polygon points="155,100 159,90 163,100" fill="#2d5a3d" opacity="0.65"/>
+      <polygon points="500,100 504,91 508,100" fill="#2d5a3d" opacity="0.7"/>
+      <polygon points="710,100 714,90 718,100" fill="#2d5a3d" opacity="0.65"/>
+      <polygon points="960,100 964,92 968,100" fill="#2d5a3d" opacity="0.7"/>
+      <polygon points="1210,100 1214,90 1218,100" fill="#2d5a3d" opacity="0.65"/>
+      <polygon points="1395,100 1399,91 1403,100" fill="#2d5a3d" opacity="0.7"/>
     </svg>
   </div>
+
+  <div class="hero-eyebrow">🗺️ Bellingham, WA · Built by a local Bellingham family</div>
+
+  <h1 class="hero-title">
+    <span class="w1">Find</span>
+    <span class="w2"> Your</span>
+    <span class="w3"> Perfect</span><br>
+    <span class="w4"> Bellingham </span><span class="w5">Playground!</span>
+  </h1>
+
+  <p class="hero-sub">Finding the best playgrounds in and around Bellingham, WA for local families 🌲</p>
+
 </div>
 
-<div class="stats-bar">
-  <div class="stat"><div class="stat-num">13</div><div class="stat-label">Parks listed</div></div>
-  <div class="stat"><div class="stat-num">6</div><div class="stat-label">Full park pages</div></div>
-  <div class="stat"><div class="stat-num">9</div><div class="stat-label">Features tracked</div></div>
-  <div class="stat"><div class="stat-num">100%</div><div class="stat-label">Family tested</div></div>
-</div>
+
+
+
+
 
 
 <div class="section" id="main-content">
-  <div class="section-header"><h2>🎯 What does your kid need today?</h2></div>
+  <div class="section-header"><h2>What are you feeling today?</h2></div>
+  <p style="font-size:14px;font-weight:700;color:#666;margin-bottom:1.25rem;margin-top:-0.75rem;">Choose a feature below and we'll recommend a playground!</p>
   <div class="filter-chips" role="group" aria-label="Filter playgrounds by feature">
     <button class="fchip" data-f="Baby swings" aria-pressed="false">👶 Baby swings</button>
     <button class="fchip" data-f="Kid swings" aria-pressed="false">🤸 Kid swings</button>
@@ -968,6 +774,7 @@ html.reduce-motion * { animation: none !important; transition: none !important; 
     <button class="fchip" data-f="Beach access" aria-pressed="false">🏖️ Beach access</button>
     <button class="fchip" data-f="Accessible" aria-pressed="false">♿ Accessible</button>
     <button class="fchip" data-f="Pump track" aria-pressed="false">🚲 Pump track</button>
+    <button class="fchip" data-f="Sun" aria-pressed="false">☀️ Sun</button>
   </div>
 
   <div class="filter-summary" id="filter-summary" aria-live="polite"></div>
@@ -977,35 +784,10 @@ html.reduce-motion * { animation: none !important; transition: none !important; 
   <div class="no-results" id="no-results">😢 No playgrounds match — try adjusting your filters!</div>
 </div>
 
-<div class="feature-strip">
-  <div class="section-header" style="margin-bottom:1.5rem;"><h2>🌈 Find it by feature, not by name</h2></div>
-  <div class="feature-grid">
-    <div class="feature-item">
-      <div class="feature-icon" style="background:#FBEAF0;">👶</div>
-      <div class="feature-title">Start with the feature</div>
-      <div class="feature-desc">Search "baby swings" or "spray park" — not a park name — and we find the match</div>
-    </div>
-    <div class="feature-item">
-      <div class="feature-icon" style="background:#EAF3DE;">🌳</div>
-      <div class="feature-title">No more guessing</div>
-      <div class="feature-desc">Every feature is verified — so "shade" means real shade, not just one tree</div>
-    </div>
-    <div class="feature-item">
-      <div class="feature-icon" style="background:#E6F1FB;">⭐</div>
-      <div class="feature-title">Rated by locals</div>
-      <div class="feature-desc">Reviews from real Bellingham families who've been there with their actual kids</div>
-    </div>
-    <div class="feature-item">
-      <div class="feature-icon" style="background:#FAEEDA;">📸</div>
-      <div class="feature-title">Real photos</div>
-      <div class="feature-desc">See what the playground actually looks like before the drive</div>
-    </div>
-  </div>
-</div>
 
 <footer>
   <div class="footer-rainbow"></div>
-  <div class="footer-logo">bellingham<span> playground finder</span></div>
+  <div class="footer-logo"><span style="color:var(--red)">b</span><span style="color:var(--orange)">e</span><span style="color:var(--green)">l</span><span style="color:var(--blue)">l</span><span style="color:var(--purple)">i</span><span style="color:var(--red)">n</span><span style="color:var(--orange)">g</span><span style="color:var(--green)">h</span><span style="color:var(--blue)">a</span><span style="color:var(--purple)">m</span> <span style="color:var(--red)">p</span><span style="color:var(--orange)">l</span><span style="color:var(--green)">a</span><span style="color:var(--blue)">y</span><span style="color:var(--purple)">g</span><span style="color:var(--red)">r</span><span style="color:var(--orange)">o</span><span style="color:var(--green)">u</span><span style="color:var(--blue)">n</span><span style="color:var(--purple)">d</span> <span style="color:var(--red)">f</span><span style="color:var(--orange)">i</span><span style="color:var(--green)">n</span><span style="color:var(--blue)">d</span><span style="color:var(--purple)">e</span><span style="color:var(--red)">r</span></div>
   <div class="footer-tagline">Finding the best playgrounds in Bellingham for local families 🌲</div>
   <div class="footer-links">
     <a href="#">Playgrounds</a>
@@ -1013,7 +795,29 @@ html.reduce-motion * { animation: none !important; transition: none !important; 
     <a href="#">About us</a>
     <a href="#">Contact</a>
   </div>
-  <div class="footer-copy">© 2025 Bellingham Playground Finder · Whatcom County, WA</div>
+
+  <!-- Mountains -->
+  <div style="width:100%;margin:1.5rem 0 0.5rem;opacity:0.55;" aria-hidden="true">
+    <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:60px;">
+      <path d="M0 80 L120 42 L240 58 L360 20 L480 52 L600 10 L720 44 L840 18 L960 48 L1080 8 L1200 38 L1320 22 L1440 36 L1440 80 Z" fill="#4a8fa8" opacity="0.4"/>
+      <path d="M0 80 L90 55 L200 70 L310 35 L430 65 L550 25 L660 58 L770 32 L890 68 L1000 28 L1110 62 L1230 40 L1350 62 L1440 48 L1440 80 Z" fill="#6aaec8" opacity="0.5"/>
+      <path d="M0 80 L80 62 L170 75 L255 48 L350 72 L448 30 L530 62 L618 45 L730 76 L820 38 L910 70 L1000 48 L1100 74 L1185 32 L1285 65 L1380 46 L1440 58 L1440 80 Z" fill="#8ecce0" opacity="0.6"/>
+      <!-- snow caps -->
+      <path d="M600 10 L592 22 L608 22 Z" fill="#fff" opacity="0.7"/>
+      <path d="M1080 8 L1072 20 L1088 20 Z" fill="#fff" opacity="0.65"/>
+      <path d="M360 20 L353 31 L367 31 Z" fill="#fff" opacity="0.6"/>
+      <!-- tiny trees -->
+      <polygon points="44,80 48,68 52,80" fill="#2d5a3d" opacity="0.7"/>
+      <polygon points="150,80 154,70 158,80" fill="#2d5a3d" opacity="0.65"/>
+      <polygon points="490,80 494,71 498,80" fill="#2d5a3d" opacity="0.7"/>
+      <polygon points="700,80 704,70 708,80" fill="#2d5a3d" opacity="0.65"/>
+      <polygon points="950,80 954,72 958,80" fill="#2d5a3d" opacity="0.7"/>
+      <polygon points="1200,80 1204,70 1208,80" fill="#2d5a3d" opacity="0.65"/>
+      <polygon points="1390,80 1394,72 1398,80" fill="#2d5a3d" opacity="0.7"/>
+    </svg>
+  </div>
+
+  <div class="footer-copy">Built by Bellingham locals 🏔️ · Whatcom County, WA</div>
 </footer>
 
 <script>
@@ -1030,7 +834,7 @@ const tagEmoji = {
   'Kid swings':'🤸','Baby swings':'👶','Monkey bars':'🐒',
   'Shade':'🌳','Spray park':'💦','Restrooms':'🚻',
   'Dog friendly':'🐕','Beach access':'🏖️','Trails':'🥾',
-  'Basketball':'🏀','Tennis':'🎾','Accessible':'♿','Pump track':'🚲'
+  'Basketball':'🏀','Tennis':'🎾','Accessible':'♿','Pump track':'🚲','Sun':'☀️'
 };
 
 const tagColor = {
@@ -1044,6 +848,7 @@ const tagColor = {
   'Restrooms':    'background:#F5F5F5;color:#444;',
   'Accessible':   'background:#1E1B18;color:#FFD600;',
   'Pump track':   'background:#FFE8CC;color:#8B4000;',
+  'Sun':          'background:#FFF9CC;color:#7A5800;',
   'default':      'background:#F5F5F5;color:#444;'
 };
 
@@ -1072,11 +877,9 @@ function clearFilters() {
 }
 
 function render(){
-  const q = document.getElementById('search-input').value.toLowerCase();
   const grid = document.getElementById('park-grid');
   const noRes = document.getElementById('no-results');
   const filtered = parks.filter(p=>{
-    if(q && !p.name.toLowerCase().includes(q) && !p.area.toLowerCase().includes(q) && !p.tags.some(t=>t.toLowerCase().includes(q))) return false;
     if(activeFilters.size && ![...activeFilters].every(f=>p.tags.includes(f))) return false;
     return true;
   });
@@ -1084,14 +887,13 @@ function render(){
   noRes.style.display='none';
   grid.innerHTML = filtered.map((p,i)=>`
     <a class="park-card" href="${p.id}.html" style="animation-delay:${i*0.07}s" aria-label="${p.name} — ${p.area}">
-      <div class="park-photo" style="background:${p.color};">
-        <div class="park-photo-art">${p.emoji}</div>
-        <span class="photo-pill">📍 ${p.area}</span>
-      </div>
+      <div class="park-card-top" style="background:${p.color};"></div>
       <div class="park-body">
         <div class="park-name">${p.name}</div>
-        <div class="park-badges">${p.tags.slice(0,4).map(t=>`<span class="pbadge" style="${badgeStyle(t)}">${(tagEmoji[t]||'')} ${t}</span>`).join('')}</div>
-        <span class="explore-btn">🗺️ Explore this park →</span>
+        <div class="park-area">📍 ${p.area}</div>
+        <p style="font-size:13px;color:#555;font-weight:600;line-height:1.5;margin:8px 0 12px;">${p.desc}</p>
+        <div class="park-badges">${p.tags.map(t=>`<span class="pbadge" style="${badgeStyle(t)}">${(tagEmoji[t]||'')} ${t}</span>`).join('')}</div>
+        <span class="explore-btn" style="margin-top:14px;">→ Explore this park</span>
       </div>
     </a>
   `).join('');
@@ -1112,107 +914,6 @@ document.querySelectorAll('.fchip').forEach(c=>{
     updateSummary();
     render();
   };
-});
-
-// ── Feature-first search & suggestions ──────────────────────────────────────
-const FEATURES = [
-  {label:'Baby swings',   emoji:'👶', filter:'Baby swings'},
-  {label:'Kid swings',    emoji:'🤸', filter:'Kid swings'},
-  {label:'Monkey bars',   emoji:'🐒', filter:'Monkey bars'},
-  {label:'Spray park',    emoji:'💦', filter:'Spray park'},
-  {label:'Shade',         emoji:'🌳', filter:'Shade'},
-  {label:'Restrooms',     emoji:'🚻', filter:'Restrooms'},
-  {label:'Dog friendly',  emoji:'🐕', filter:'Dog friendly'},
-  {label:'Beach access',  emoji:'🏖️', filter:'Beach access'},
-  {label:'Accessible',    emoji:'♿', filter:'Accessible'},
-  {label:'Pump track',    emoji:'🚲', filter:'Pump track'},
-];
-
-const suggBox = document.getElementById('search-suggestions');
-const searchInput = document.getElementById('search-input');
-
-function countParksWithTag(tag){
-  return parks.filter(p=>p.tags.includes(tag)).length;
-}
-
-function showSuggestions(q) {
-  if (!q) { suggBox.classList.remove('visible'); suggBox.innerHTML=''; return; }
-
-  const ql = q.toLowerCase();
-  const matchFeatures = FEATURES.filter(f => f.label.toLowerCase().includes(ql));
-  const matchParks    = parks.filter(p =>
-    p.name.toLowerCase().includes(ql) || p.area.toLowerCase().includes(ql)
-  );
-
-  if (!matchFeatures.length && !matchParks.length) {
-    suggBox.classList.remove('visible'); return;
-  }
-
-  let html = '';
-  if (matchFeatures.length) {
-    html += '<div class="sugg-group-label">Features</div>';
-    matchFeatures.forEach(f => {
-      const n = countParksWithTag(f.filter);
-      html += `<button class="sugg-item" data-type="feature" data-value="${f.filter}" role="option">
-        <span class="sugg-icon">${f.emoji}</span>
-        <span class="sugg-label">${f.label}</span>
-        <span class="sugg-count">${n} park${n!==1?'s':''}</span>
-      </button>`;
-    });
-  }
-  if (matchParks.length) {
-    html += '<div class="sugg-group-label">Parks</div>';
-    matchParks.forEach(p => {
-      html += `<button class="sugg-item" data-type="park" data-value="${p.name}" role="option">
-        <span class="sugg-icon">${p.emoji}</span>
-        <span class="sugg-label">${p.name}</span>
-        <span class="sugg-count">${p.area}</span>
-      </button>`;
-    });
-  }
-
-  suggBox.innerHTML = html;
-  suggBox.classList.add('visible');
-
-  suggBox.querySelectorAll('.sugg-item').forEach(btn => {
-    btn.addEventListener('mousedown', e => {
-      e.preventDefault();
-      const type  = btn.dataset.type;
-      const value = btn.dataset.value;
-      if (type === 'feature') {
-        // activate the matching chip and clear text
-        searchInput.value = '';
-        const chip = document.querySelector(`.fchip[data-f="${value}"]`);
-        if (chip && !activeFilters.has(value)) {
-          activeFilters.add(value);
-          chip.classList.add('active');
-          chip.setAttribute('aria-pressed','true');
-        }
-      } else {
-        searchInput.value = value;
-      }
-      suggBox.classList.remove('visible');
-      render();
-    });
-  });
-}
-
-searchInput.addEventListener('input', () => {
-  showSuggestions(searchInput.value.trim());
-  render();
-});
-searchInput.addEventListener('focus', () => {
-  if (searchInput.value.trim()) showSuggestions(searchInput.value.trim());
-});
-searchInput.addEventListener('blur', () => {
-  setTimeout(() => suggBox.classList.remove('visible'), 150);
-});
-searchInput.addEventListener('keydown', e => {
-  if (e.key === 'Escape') { suggBox.classList.remove('visible'); }
-  if (e.key === 'ArrowDown') {
-    const first = suggBox.querySelector('.sugg-item');
-    if (first) { e.preventDefault(); first.focus(); }
-  }
 });
 
 render();
