@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Parkview School Playground — Bellingham Playground Finder</title>
+<title>About — Bellingham Playground Finder</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Boogaloo&family=Nunito:wght@400;700;800;900&display=swap" rel="stylesheet"/>
@@ -11,7 +11,7 @@
 :root {
   --red:#F2383A; --orange:#FF7A1A; --yellow:#FFD600; --green:#3DBD4A;
   --blue:#2B87E3; --purple:#9B5DE5; --pink:#F15BB5; --cream:#FFFEF5;
-  --dark:#1E1B18; --accent:#FF7A1A; --accent-light:#FFF0E0; --accent-dark:#8B4000;
+  --dark:#1E1B18; --accent:#3DBD4A; --accent-light:#D6F7E8; --accent-dark:#1B7A3E;
 }
 *{box-sizing:border-box;margin:0;padding:0;}
 body{font-family:'Nunito',sans-serif;background:var(--cream);color:var(--dark);background-image:repeating-linear-gradient(-45deg,transparent,transparent 18px,rgba(255,214,0,0.04) 18px,rgba(255,214,0,0.04) 36px);}
@@ -76,24 +76,15 @@ html.reduce-motion *{animation:none!important;transition:none!important;}
 .hero-inner{position:relative;z-index:1;max-width:760px;}
 .park-eyebrow{font-size:12px;font-weight:900;color:var(--accent-dark);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:8px;}
 .park-title{font-family:'Boogaloo',cursive;font-size:clamp(30px,5vw,52px);color:var(--dark);line-height:1.05;margin-bottom:10px;}
+.park-subtitle{font-size:15px;font-weight:800;color:var(--accent-dark);margin-bottom:14px;font-style:italic;}
 .hero-badges{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:1rem;}
 .dbadge{font-size:12px;font-weight:900;padding:5px 13px;border-radius:20px;border:2px solid var(--dark);box-shadow:2px 2px 0 var(--dark);}
 .hero-address{font-size:13px;font-weight:700;color:var(--accent-dark);margin-bottom:1.5rem;}
+.hero-mountain{width:100%;}
 .school-badge{position:absolute;top:18px;right:20px;z-index:2;background:#2D5F3F;color:#fff;font-family:'Boogaloo',cursive;padding:10px 18px;border:4px solid #8B5A2B;border-radius:6px;box-shadow:3px 3px 0 var(--dark);text-align:center;line-height:1.05;transform:rotate(-4deg);}
 .school-badge .sb-ico{font-size:22px;display:block;margin-bottom:2px;}
 .school-badge .sb-line{font-size:15px;}
 @media(max-width:560px){.school-badge{top:12px;right:12px;padding:7px 12px;}.school-badge .sb-ico{font-size:18px;}.school-badge .sb-line{font-size:12px;}}
-.hero-scene{position:relative;width:100%;height:260px;overflow:hidden;}
-.hero-scene svg{width:100%;height:100%;display:block;}
-
-
-
-
-
-
-
-
-
 .content{max-width:760px;margin:0 auto;padding:2rem 1.5rem;}
 .content-grid{display:grid;grid-template-columns:1fr 290px;gap:2rem;}
 @media(max-width:640px){.content-grid{grid-template-columns:1fr;}}
@@ -109,12 +100,13 @@ html.reduce-motion *{animation:none!important;transition:none!important;}
 .tip-item::before{content:'✓';position:absolute;left:0;color:var(--accent);font-weight:900;font-size:16px;}
 .sidebar-card{background:#fff;border:3px solid var(--dark);border-radius:16px;padding:1.25rem;margin-bottom:1rem;box-shadow:4px 4px 0 var(--dark);}
 .sidebar-title{font-family:'Boogaloo',cursive;font-size:18px;color:var(--dark);margin-bottom:12px;}
-.fact-row{display:flex;justify-content:space-between;align-items:baseline;padding:7px 0;border-bottom:2px dashed var(--yellow);}
+.fact-row{display:flex;justify-content:space-between;align-items:baseline;padding:7px 0;border-bottom:2px dashed var(--yellow);gap:10px;}
 .fact-row:last-child{border-bottom:none;}
-.fact-key{font-size:12px;font-weight:900;color:#888;text-transform:uppercase;letter-spacing:0.05em;}
-.fact-val{font-size:13px;font-weight:800;color:var(--dark);}
-
-
+.fact-key{font-size:12px;font-weight:900;color:#888;text-transform:uppercase;letter-spacing:0.05em;flex-shrink:0;}
+.fact-val{font-size:13px;font-weight:800;color:var(--dark);text-align:right;}
+.combo-box{background:#FFF9CC;border:3px solid var(--dark);border-radius:14px;padding:14px 16px;margin-bottom:2rem;box-shadow:4px 4px 0 var(--dark);}
+.combo-label{font-family:'Boogaloo',cursive;font-size:16px;color:#7A5800;margin-bottom:6px;}
+.combo-text{font-size:14px;font-weight:700;color:var(--dark);line-height:1.6;}
 .nearby-section{padding:0 1.5rem 2.5rem;max-width:760px;margin:0 auto;}
 .nearby-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;}
 .nearby-card{background:#fff;border:3px solid var(--dark);border-radius:14px;padding:12px 16px;text-decoration:none;display:flex;justify-content:space-between;align-items:center;box-shadow:3px 3px 0 var(--dark);transition:transform 0.15s,box-shadow 0.15s;}
@@ -143,13 +135,13 @@ footer{background:var(--dark);padding:2rem 1.5rem;text-align:center;}
   <div style="display:flex;align-items:center;gap:10px;">
     <div class="nav-links">
             <div class="nav-dropdown">
-        <button class="nav-dropdown-btn nav-dropdown-btn-active" id="hood-btn" aria-expanded="false" aria-controls="hood-menu" aria-haspopup="true">
+        <button class="nav-dropdown-btn" id="hood-btn" aria-expanded="false" aria-controls="hood-menu" aria-haspopup="true">
           Playgrounds <span class="caret">▼</span>
         </button>
         <div class="nav-dropdown-menu" id="hood-menu" role="menu" aria-label="Browse playgrounds by neighborhood">
           <div class="nav-dropdown-group">
             <div class="nav-dropdown-heading">🎡 Cornwall Park</div>
-            <a href="parkview.html" role="menuitem" aria-current="page" style="background:var(--accent-light);border-color:var(--accent);color:var(--accent-dark);">→ Parkview School Playground (you are here)</a>
+            <a href="parkview.html" role="menuitem">→ Parkview School Playground</a>
           </div>
           <div class="nav-dropdown-group">
             <div class="nav-dropdown-heading">🌳 Sunnyland</div>
@@ -161,7 +153,7 @@ footer{background:var(--dark);padding:2rem 1.5rem;text-align:center;}
           </div>
         </div>
       </div>
-<a href="about.html">About</a>
+<a href="about.html" class="active">About</a>
     </div>
     <div style="width:1px;height:28px;background:rgba(0,0,0,0.12);border-radius:1px;flex-shrink:0;"></div>
     <div class="a11y-nav-wrap">
@@ -185,132 +177,78 @@ footer{background:var(--dark);padding:2rem 1.5rem;text-align:center;}
   </div>
 </nav>
 
-<div class="breadcrumb">
-  <a href="index.html">← All Playgrounds</a>
-  <span>›</span>
-  Parkview School Playground
-</div>
-
 <div class="hero">
-  <div class="school-badge" aria-label="School playground">
-    <span class="sb-ico">🏫</span>
-    <div class="sb-line">School<br/>Playground</div>
-  </div>
   <div class="hero-inner">
-    <div class="park-eyebrow">📍 Cornwall Park Neighbourhood, Bellingham</div>
-    <div class="park-title">Parkview School Playground</div>
-    <div class="hero-badges">
-      <span class="dbadge" style="background:#EDE4FF;color:#6934D0;">🐒 Monkey bars</span>
-      <span class="dbadge" style="background:#FFF9CC;color:#7A5800;">☀️ Sun</span>
-      <span class="dbadge" style="background:#1E1B18;color:#FFD600;">♿ Accessible</span>
-      <span class="dbadge" style="background:#FFE8CC;color:#8B4000;">🐕 Dog friendly</span>
-      <span class="dbadge" style="background:#FFF0E0;color:#8B4000;">🏀 Basketball</span>
-      <span class="dbadge" style="background:#FFF0E0;color:#8B4000;">🎵 Music equipment</span>
-    </div>
-    <div class="hero-address">📍 3030 Cornwall Ave, Bellingham, WA 98225 · (360) 676-6433</div>
+    <div class="park-eyebrow">👋 Hi, we're glad you're here</div>
+    <h1 class="park-title">About this site</h1>
+    <div class="park-subtitle">A little love letter to Bellingham playgrounds 💛</div>
   </div>
 
   <div class="hero-mountain" aria-hidden="true">
     <svg viewBox="0 0 1440 90" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:80px;">
       <defs>
-        <linearGradient id="snowG2" x1="0" y1="0" x2="0" y2="1">
+        <linearGradient id="snowG_about" x1="0" y1="0" x2="0" y2="1">
           <stop offset="0%" stop-color="#ffffff"/>
           <stop offset="100%" stop-color="#dff0f8"/>
         </linearGradient>
       </defs>
-      <rect width="1440" height="90" fill="#FFF0E0"/>
+      <rect width="1440" height="90" fill="#D6F7E8"/>
       <path d="M0 90 L120 55 L240 70 L360 30 L480 65 L600 20 L720 58 L840 28 L960 62 L1080 18 L1200 52 L1320 35 L1440 50 L1440 90 Z" fill="#c2dce8" opacity="0.5"/>
       <path d="M0 90 L90 65 L200 80 L310 42 L430 72 L550 28 L660 65 L770 38 L890 75 L1000 32 L1110 68 L1230 46 L1350 70 L1440 52 L1440 90 Z" fill="#8ab8cc" opacity="0.6"/>
       <path d="M0 90 L100 60 L180 82 L260 45 L350 80 L450 28 L530 68 L620 48 L720 85 L800 35 L900 72 L980 42 L1080 78 L1160 30 L1260 65 L1360 48 L1440 62 L1440 90 Z" fill="#4a8fa8"/>
-      <path d="M450 28 L438 42 L462 42 Z" fill="url(#snowG2)" opacity="0.95"/>
-      <path d="M800 35 L788 48 L812 48 Z" fill="url(#snowG2)" opacity="0.95"/>
-      <path d="M1160 30 L1149 43 L1171 43 Z" fill="url(#snowG2)" opacity="0.9"/>
+      <path d="M450 28 L438 42 L462 42 Z" fill="url(#snowG_about)" opacity="0.95"/>
+      <path d="M800 35 L788 48 L812 48 Z" fill="url(#snowG_about)" opacity="0.95"/>
+      <path d="M1160 30 L1149 43 L1171 43 Z" fill="url(#snowG_about)" opacity="0.9"/>
       <rect x="0" y="87" width="1440" height="3" fill="#1E1B18"/>
     </svg>
   </div>
-
-      
-      
-    </div>
-  </div>
-  
-    
-    
-  </div>
 </div>
 
-<div class="content" id="main-content">
-  <div class="content-grid">
-    <div class="main-col">
-      <div class="section-label">🌳 About this park</div>
-      <p class="park-desc">One of the most impressive school playgrounds in Bellingham — Parkview Elementary's playground is a brand new, extensively equipped space that feels more like a premium adventure park than a typical school yard. There's a massive multi-level climbing structure, a rope pyramid, a spectacular wide racing slide, a spiral tube slide, overhead monkey bar traverse, accessible ramp up to the main structure, outdoor musical instruments (xylophone, wind chimes, interactive game panels), balance and stepping equipment, a rock climbing wall, and spring riders. The rubber safety surface throughout makes it very soft underfoot. It's a school playground so access is limited — open after school hours weekdays (around 4pm onward), all day weekends, holidays and summer.</p>
+<div class="content" id="main-content" style="display:block;">
+  <div class="section-label">🛝 Our story</div>
+  <p class="park-desc">
+    Made by a local Bellingham fam trying to have fun and go to all the playgrounds!
+    We started keeping a list of which parks had what — shade, swings for the littles,
+    bathrooms within walking distance of a meltdown — and figured maybe other families
+    would find it useful too. So here we are.
+  </p>
 
-      <div class="unique-box">
-        <div class="unique-label">✨ What makes it special</div>
-        <div class="unique-text">The sheer variety and quality of equipment is unlike any other playground in Bellingham — a rope pyramid, a wide racing slide, outdoor musical instruments, monkey bars, a rock climbing wall, and a huge multi-level accessible climbing structure all in one spot. Brand new rubber safety surface throughout. Cornwall Park with restrooms is just down the hill.</div>
-      </div>
-
-      <div style="background:#FFF9CC;border:3px solid var(--dark);border-radius:14px;padding:14px 16px;margin-bottom:2rem;box-shadow:4px 4px 0 var(--dark);">
-        <div style="font-family:'Boogaloo',cursive;font-size:16px;color:#7A5800;margin-bottom:6px;">⭐ 5-year-old review</div>
-        <div style="font-size:14px;font-weight:700;color:var(--dark);line-height:1.6;">4/5 — "Amazing playground but no shade or swings!"</div>
-      </div>
-
-      <div class="section-label">💡 Tips from families</div>
-      <ul class="tips-list">
-        <li class="tip-item">This is a school playground — open weekdays after ~4pm, and all day weekends, holidays & summer</li>
-        <li class="tip-item">No restrooms on site — Cornwall Park is right down the hill and has clean restrooms</li>
-        <li class="tip-item">No shade at all — bring sunscreen, hats, and water especially in summer</li>
-        <li class="tip-item">The outdoor musical instruments are a huge hit with younger kids — xylophone, wind chimes, interactive panels</li>
-        <li class="tip-item">The rope pyramid and racing slide are the standout features for older kids</li>
-        <li class="tip-item">The accessible ramp makes the main structure reachable for all kids</li>
-        <li class="tip-item">No swings here — head to Cornwall Park if swings are a must</li>
-        <li class="tip-item">Dogs are welcome in the surrounding area — Cornwall Park nearby has great off-leash space</li>
-      </ul>
-    </div>
-
-    <div class="sidebar-col">
-      <div class="sidebar-card">
-        <div class="sidebar-title">📋 Quick facts</div>
-        <div class="fact-row"><span class="fact-key">Best age</span><span class="fact-val">3–12</span></div>
-        <div class="fact-row"><span class="fact-key">Access hours</span><span class="fact-val">Weekdays ~4pm+, weekends & holidays all day, summer all day</span></div>
-        <div class="fact-row"><span class="fact-key">Parking</span><span class="fact-val">Free school lot</span></div>
-        <div class="fact-row"><span class="fact-key">Restrooms</span><span class="fact-val">None — Cornwall Park is down the hill</span></div>
-        <div class="fact-row"><span class="fact-key">Shade</span><span class="fact-val">None</span></div>
-        <div class="fact-row"><span class="fact-key">Surface</span><span class="fact-val">Rubber safety tiles throughout</span></div>
-        <div class="fact-row"><span class="fact-key">Fencing</span><span class="fact-val">Partial</span></div>
-        <div class="fact-row"><span class="fact-key">Swings</span><span class="fact-val">None</span></div>
-        <div class="fact-row"><span class="fact-key">Accessible ramp</span><span class="fact-val">Yes — to main structure</span></div>
-        <div class="fact-row"><span class="fact-key">Basketball</span><span class="fact-val">Yes — indoor hoop + 1 outdoor hoop</span></div>
-        <div class="fact-row"><span class="fact-key">Music equipment</span><span class="fact-val">Yes — xylophone, wind chimes, interactive panels</span></div>
-        <div class="fact-row"><span class="fact-key">Dogs</span><span class="fact-val">Welcome in surrounding area</span></div>
-        <div class="fact-row"><span class="fact-key">School website</span><span class="fact-val"><a href="https://parkview.bellinghamschools.org/" target="_blank" rel="noopener" style="color:var(--accent-dark);font-weight:800;">parkview.bellinghamschools.org ↗</a></span></div>
-      </div>
-      </div>
+  <div class="unique-box">
+    <div class="unique-label">💛 Why this site exists</div>
+    <div class="unique-text">
+      Bellingham has SO many great playgrounds, but it can be hard to figure out which one
+      fits your day. Toddler that needs a fence? A playground with shade in August? A spray
+      park for a heat wave? We're trying to make it easy to pick the right one — based on
+      what real local families actually care about.
     </div>
   </div>
-</div>
 
+  <div class="section-label">🌲 What we cover</div>
+  <p class="park-desc">
+    We're focused on playgrounds in and around Bellingham, including school playgrounds
+    that are open to the public after hours and on weekends. Each park gets its own page
+    with the things we'd want to know before driving over: shade, swings, accessibility,
+    parking, restrooms, and any insider tips that only locals would tell you.
+  </p>
 
+  <div class="section-label">✏️ Got something to add?</div>
+  <p class="park-desc">
+    Spotted a missing playground? Know a tip we should include? Found something out of date?
+    We'd love to hear from you. This site is built by families, for families — your input makes it better.
+  </p>
 
-
-
-<div class="nearby-section">
-  <div class="section-label" style="margin-bottom:14px;">🗺️ Also nearby</div>
-  <div class="nearby-grid">
-    <a href="cornwall.html" class="nearby-card"><span class="nearby-name">Cornwall Park</span><span class="nearby-arrow">→</span></a>
-    <a href="shadyland.html" class="nearby-card"><span class="nearby-name">Shadyland (Sunnyland School)</span><span class="nearby-arrow">→</span></a>
-    <a href="whatcom-falls.html" class="nearby-card"><span class="nearby-name">Whatcom Falls Park</span><span class="nearby-arrow">→</span></a>
-    <a href="fairhaven.html" class="nearby-card"><span class="nearby-name">Fairhaven Park</span><span class="nearby-arrow">→</span></a>
+  <div style="background:#fff;border:3px solid var(--dark);border-radius:16px;padding:1.5rem;box-shadow:4px 4px 0 var(--dark);text-align:center;margin-top:1.5rem;">
+    <div style="font-family:'Boogaloo',cursive;font-size:24px;color:var(--dark);margin-bottom:8px;">Say hi! 👋</div>
+    <p style="font-size:14px;font-weight:700;color:#666;margin-bottom:1rem;">Send us tips, corrections, or just say hello.</p>
+    <a href="mailto:bellinghamplaygroundfinder@gmail.com" style="display:inline-block;font-family:'Boogaloo',cursive;font-size:18px;background:var(--yellow);color:var(--dark);border:2.5px solid var(--dark);border-radius:12px;padding:10px 24px;text-decoration:none;box-shadow:3px 3px 0 var(--dark);">
+      bellinghamplaygroundfinder@gmail.com ✉️
+    </a>
   </div>
-</div>
 
-<div style="max-width:760px;margin:0 auto;padding:1.5rem 1.5rem 2.5rem;">
-  <div style="background:#fff;border:3px solid var(--dark);border-radius:16px;padding:1.25rem 1.5rem;box-shadow:4px 4px 0 var(--dark);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
-    <div>
-      <div style="font-family:'Boogaloo',cursive;font-size:18px;color:var(--dark);margin-bottom:4px;">✏️ Something wrong or missing?</div>
-      <div style="font-size:13px;font-weight:700;color:#666;line-height:1.5;">Spotted an error or have info to add? We'd love to hear from you!</div>
-    </div>
-    <a href="mailto:bellinghamplaygroundfinder@gmail.com?subject=Parkview School Playground — update" style="display:inline-block;font-family:'Boogaloo',cursive;font-size:17px;background:var(--yellow);color:var(--dark);border:2.5px solid var(--dark);border-radius:12px;padding:9px 20px;text-decoration:none;box-shadow:3px 3px 0 var(--dark);white-space:nowrap;">Email us ✉️</a>
+  <div style="text-align:center;margin-top:2.5rem;">
+    <a href="index.html" style="display:inline-block;font-family:'Boogaloo',cursive;font-size:18px;background:var(--red);color:#fff;border:2.5px solid var(--dark);border-radius:12px;padding:10px 28px;text-decoration:none;box-shadow:3px 3px 0 var(--dark);">
+      ← Back to all playgrounds
+    </a>
   </div>
 </div>
 
