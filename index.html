@@ -346,6 +346,7 @@ nav {
   transform: translateY(-2px);
 }
 .fchip[data-f="Baby swings"].active    { background: var(--pink); }
+.fchip[data-f="Toddler-friendly"].active { background: var(--pink); }
 .fchip[data-f="Kid swings"].active     { background: var(--pink); }
 .fchip[data-f="Monkey bars"].active    { background: var(--purple); color:#fff; }
 .fchip[data-f="Shade"].active          { background: var(--green); color:#fff; }
@@ -784,7 +785,7 @@ html.reduce-motion * { animation: none !important; transition: none !important; 
           </div>
           <div class="nav-dropdown-group">
             <div class="nav-dropdown-heading">🌳 Sunnyland</div>
-            <a href="shadyland.html" role="menuitem">→ Shadyland</a>
+            <a href="shadyland.html" role="menuitem">→ Shadyland (Behind Sunnyland)</a>
           </div>
           <div class="nav-dropdown-group">
             <div class="nav-dropdown-heading">🌲 Fairhaven</div>
@@ -869,6 +870,7 @@ html.reduce-motion * { animation: none !important; transition: none !important; 
   <p style="font-size:14px;font-weight:700;color:#666;margin-bottom:1.25rem;margin-top:-0.75rem;">Choose one or more features below and we'll recommend a playground!</p>
   <div class="filter-chips" role="group" aria-label="Filter playgrounds by feature">
     <button class="fchip" data-f="Baby swings" aria-pressed="false">👶 Baby swings</button>
+    <button class="fchip" data-f="Toddler-friendly" aria-pressed="false">🧸 Toddler-friendly</button>
     <button class="fchip" data-f="Kid swings" aria-pressed="false">🤸 Kid swings</button>
     <button class="fchip" data-f="Monkey bars" aria-pressed="false">🐒 Monkey bars</button>
     <button class="fchip" data-f="Shade" aria-pressed="false">🌳 Shade</button>
@@ -927,20 +929,21 @@ html.reduce-motion * { animation: none !important; transition: none !important; 
 <script>
 const parks = [
   {id:'parkview',  name:'Parkview School Playground', area:'Cornwall Park neighbourhood', neighborhood:'Cornwall Park', color:'#FFF0E0', emoji:'🏫', tags:['Monkey bars','Sun','Accessible','Basketball'], desc:'Brand new school playground with rope pyramid, racing slide, musical instruments and a massive multi-level climbing structure. Open after school hours, weekends & summer.'},
-  {id:'shadyland', name:'Shadyland (Sunnyland School)', area:'Sunnyland neighbourhood', neighborhood:'Sunnyland', color:'#D6F7E8', emoji:'🌳', tags:['Shade','Accessible'], desc:"Locals' nickname for the small, shaded, fully-fenced toddler playground tucked behind Sunnyland Elementary. A summer favorite for parents of littles. Open after school, weekends & summer."},
-  {id:'fairhaven', name:'Fairhaven Park', area:'Fairhaven neighbourhood', neighborhood:'Fairhaven', color:'#D6F7E8', emoji:'🌲', tags:['Kid swings','Baby swings','Monkey bars','Spray park','Shade','Restrooms','Accessible'], desc:'Wooded park near Historic Fairhaven Village with a beloved spray park and natural shade.'},
+  {id:'shadyland', name:'Shadyland (Behind Sunnyland Elementary School)', area:'Sunnyland neighbourhood', neighborhood:'Sunnyland', color:'#D6F7E8', emoji:'🌳', tags:['Toddler-friendly','Shade','Accessible'], desc:"Locals' nickname for the small, shaded, fully-fenced toddler playground tucked behind Sunnyland Elementary. A summer favorite for parents of littles. Open after school, weekends & summer."},
+  {id:'fairhaven', name:'Fairhaven Park', area:'Fairhaven neighbourhood', neighborhood:'Fairhaven', color:'#D6F7E8', emoji:'🌲', tags:['Kid swings','Baby swings','Monkey bars','Spray park','Restrooms','Accessible'], desc:'Wooded park near Historic Fairhaven Village with a beloved spray park. The playground itself has limited shade, but forested trails nearby do.'},
 ];
 
 const tagEmoji = {
-  'Kid swings':'🤸','Baby swings':'👶','Monkey bars':'🐒',
+  'Kid swings':'🤸','Baby swings':'👶','Toddler-friendly':'🧸','Monkey bars':'🐒',
   'Shade':'🌳','Spray park':'💦','Restrooms':'🚻',
   'Dog friendly':'🐕','Beach access':'🏖️','Trails':'🥾',
   'Basketball':'🏀','Tennis':'🎾','Accessible':'♿','Pump track':'🚲','Sun':'☀️'
 };
 
 const tagColor = {
-  'Kid swings':   'background:#FFE0EE;color:#993556;',
-  'Baby swings':  'background:#FFE0EE;color:#993556;',
+  'Kid swings':       'background:#FFE0EE;color:#993556;',
+  'Baby swings':      'background:#FFE0EE;color:#993556;',
+  'Toddler-friendly': 'background:#FFE0EE;color:#993556;',
   'Monkey bars':  'background:#EDE4FF;color:#6934D0;',
   'Shade':        'background:#D6F7E8;color:#1B7A3E;',
   'Spray park':   'background:#DDEEFF;color:#0C5DB5;',
