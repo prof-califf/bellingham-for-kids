@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en" id="html-root">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Shadyland (Sunnyland School) — Bellingham Playground Finder</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Boogaloo&family=Nunito:wght@400;700;800;900&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --red:#F2383A; --orange:#FF7A1A; --yellow:#FFD600; --green:#3DBD4A;
+  --blue:#2B87E3; --purple:#9B5DE5; --pink:#F15BB5; --cream:#FFFEF5;
+  --dark:#1E1B18; --accent:#3DBD4A; --accent-light:#D6F7E8; --accent-dark:#1B7A3E;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Nunito',sans-serif;background:var(--cream);color:var(--dark);background-image:repeating-linear-gradient(-45deg,transparent,transparent 18px,rgba(255,214,0,0.04) 18px,rgba(255,214,0,0.04) 36px);}
+.rainbow-bar{height:7px;background:linear-gradient(90deg,var(--red) 0%,var(--orange) 16.6%,var(--yellow) 33.2%,var(--green) 49.8%,var(--blue) 66.4%,var(--purple) 83%,var(--pink) 100%);}
+.skip-link{position:absolute;top:-100px;left:1rem;background:var(--dark);color:var(--yellow);font-family:'Boogaloo',cursive;font-size:16px;padding:10px 20px;border-radius:8px;border:3px solid var(--yellow);text-decoration:none;z-index:9999;transition:top 0.15s;}
+.skip-link:focus{top:8px;}
+:focus-visible{outline:3px solid var(--dark);outline-offset:3px;border-radius:4px;box-shadow:0 0 0 5px var(--yellow);}
+nav{background:#fff;border-bottom:4px solid var(--yellow);padding:0 1.5rem;height:66px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;box-shadow:0 3px 0 rgba(0,0,0,0.06);}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
+.logo-icon{width:42px;height:42px;background:var(--yellow);border-radius:50%;border:3px solid var(--dark);display:flex;align-items:center;justify-content:center;box-shadow:3px 3px 0 var(--dark);font-size:20px;}
+.logo-text{font-family:'Boogaloo',cursive;font-size:22px;color:var(--red);}
+.logo-text span{color:var(--blue);}
+.nav-links{display:flex;gap:4px;}
+.nav-links a{font-size:13px;font-weight:800;color:var(--dark);text-decoration:none;padding:6px 14px;border-radius:30px;border:2.5px solid transparent;transition:all 0.15s;}
+.nav-links a:hover{background:var(--yellow);border-color:var(--dark);}
+.nav-links a.active{background:var(--red);color:#fff;border-color:var(--dark);box-shadow:2px 2px 0 var(--dark);}
+.a11y-nav-wrap{position:relative;}
+.a11y-nav-btn{width:38px;height:38px;background:var(--dark);color:var(--yellow);border:2.5px solid var(--dark);border-radius:50%;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:2px 2px 0 rgba(0,0,0,0.18);transition:background 0.15s,transform 0.1s;flex-shrink:0;}
+.a11y-nav-btn:hover,.a11y-nav-btn:focus-visible{background:var(--yellow);color:var(--dark);outline:none;transform:scale(1.08);}
+.a11y-panel{position:absolute;top:calc(100% + 10px);right:0;width:280px;background:#fff;border:3px solid var(--dark);border-radius:16px;padding:1.25rem;box-shadow:4px 4px 0 var(--dark);z-index:300;display:none;}
+.a11y-panel.open{display:block;}
+.a11y-panel-title{font-family:'Boogaloo',cursive;font-size:18px;color:var(--dark);margin-bottom:0.75rem;padding-bottom:0.5rem;border-bottom:3px solid var(--yellow);}
+.a11y-option{display:flex;justify-content:space-between;align-items:center;padding:9px 0;border-bottom:2px dashed #eee;gap:12px;}
+.a11y-option:last-child{border-bottom:none;}
+.a11y-option-text label{display:block;font-size:13px;font-weight:800;color:var(--dark);}
+.a11y-option-text p{font-size:11px;color:#777;margin-top:1px;}
+.a11y-toggle{position:relative;width:42px;height:23px;flex-shrink:0;}
+.a11y-toggle input{opacity:0;width:0;height:0;}
+.a11y-toggle-slider{position:absolute;inset:0;background:#ccc;border-radius:23px;border:2px solid var(--dark);cursor:pointer;transition:background 0.2s;}
+.a11y-toggle-slider::before{content:'';position:absolute;left:2px;top:2px;width:15px;height:15px;background:#fff;border-radius:50%;border:1.5px solid var(--dark);transition:transform 0.2s;}
+.a11y-toggle input:checked + .a11y-toggle-slider{background:var(--green);}
+.a11y-toggle input:checked + .a11y-toggle-slider::before{transform:translateX(19px);}
+html.high-contrast body{filter:contrast(1.35);}
+html.large-text body{font-size:118%;}
+html.reduce-motion *{animation:none!important;transition:none!important;}
+.breadcrumb{background:#fff;border-bottom:3px solid var(--yellow);padding:10px 1.5rem;font-size:12px;font-weight:700;color:#888;}
+.breadcrumb a{color:var(--accent-dark);text-decoration:none;font-weight:900;}
+.breadcrumb a:hover{text-decoration:underline;}
+.breadcrumb span{color:#ccc;margin:0 6px;}
+.hero{background:var(--accent-light);border-bottom:4px solid var(--dark);padding:2.5rem 1.5rem 0;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;top:-60px;right:-60px;width:260px;height:260px;background:var(--accent);border-radius:50%;opacity:0.13;pointer-events:none;}
+.hero::after{content:'';position:absolute;bottom:-80px;left:-40px;width:200px;height:200px;background:var(--accent);border-radius:50%;opacity:0.08;pointer-events:none;}
+.hero-inner{position:relative;z-index:1;max-width:820px;}
+.park-eyebrow{font-size:12px;font-weight:900;color:var(--accent-dark);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:8px;}
+.park-title{font-family:'Boogaloo',cursive;font-size:clamp(30px,5vw,52px);color:var(--dark);line-height:1.05;margin-bottom:10px;}
+.park-subtitle{font-size:15px;font-weight:800;color:var(--accent-dark);margin-bottom:14px;font-style:italic;}
+.hero-badges{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:1rem;}
+.dbadge{font-size:12px;font-weight:900;padding:5px 13px;border-radius:20px;border:2px solid var(--dark);box-shadow:2px 2px 0 var(--dark);}
+.hero-address{font-size:13px;font-weight:700;color:var(--accent-dark);margin-bottom:1.5rem;}
+.hero-mountain{width:100%;}
+.content{max-width:820px;margin:0 auto;padding:2rem 1.5rem;}
+.content-grid{display:grid;grid-template-columns:1fr 290px;gap:2rem;}
+@media(max-width:640px){.content-grid{grid-template-columns:1fr;}}
+.section-label{font-family:'Boogaloo',cursive;font-size:18px;color:var(--dark);margin-bottom:10px;display:flex;align-items:center;gap:8px;}
+.section-label::after{content:'';flex:1;height:3px;background:repeating-linear-gradient(90deg,var(--red) 0px,var(--red) 10px,var(--orange) 10px,var(--orange) 20px,var(--yellow) 20px,var(--yellow) 30px,var(--green) 30px,var(--green) 40px,var(--blue) 40px,var(--blue) 50px,var(--purple) 50px,var(--purple) 60px);border-radius:2px;}
+.park-desc{font-size:15px;font-weight:400;color:#444;line-height:1.8;margin-bottom:2rem;}
+.unique-box{background:var(--accent-light);border:3px solid var(--dark);border-radius:14px;padding:14px 16px;margin-bottom:2rem;box-shadow:4px 4px 0 var(--dark);}
+.unique-label{font-family:'Boogaloo',cursive;font-size:16px;color:var(--accent-dark);margin-bottom:6px;}
+.unique-text{font-size:14px;font-weight:700;color:var(--dark);line-height:1.6;}
+.tips-list{list-style:none;margin-bottom:2rem;}
+.tip-item{font-size:14px;font-weight:700;color:#444;padding:9px 0 9px 28px;border-bottom:2px dashed var(--yellow);position:relative;line-height:1.5;}
+.tip-item:last-child{border-bottom:none;}
+.tip-item::before{content:'✓';position:absolute;left:0;color:var(--accent);font-weight:900;font-size:16px;}
+.sidebar-card{background:#fff;border:3px solid var(--dark);border-radius:16px;padding:1.25rem;margin-bottom:1rem;box-shadow:4px 4px 0 var(--dark);}
+.sidebar-title{font-family:'Boogaloo',cursive;font-size:18px;color:var(--dark);margin-bottom:12px;}
+.fact-row{display:flex;justify-content:space-between;align-items:baseline;padding:7px 0;border-bottom:2px dashed var(--yellow);gap:10px;}
+.fact-row:last-child{border-bottom:none;}
+.fact-key{font-size:12px;font-weight:900;color:#888;text-transform:uppercase;letter-spacing:0.05em;flex-shrink:0;}
+.fact-val{font-size:13px;font-weight:800;color:var(--dark);text-align:right;}
+.combo-box{background:#FFF9CC;border:3px solid var(--dark);border-radius:14px;padding:14px 16px;margin-bottom:2rem;box-shadow:4px 4px 0 var(--dark);}
+.combo-label{font-family:'Boogaloo',cursive;font-size:16px;color:#7A5800;margin-bottom:6px;}
+.combo-text{font-size:14px;font-weight:700;color:var(--dark);line-height:1.6;}
+.nearby-section{padding:0 1.5rem 2.5rem;max-width:820px;margin:0 auto;}
+.nearby-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;}
+.nearby-card{background:#fff;border:3px solid var(--dark);border-radius:14px;padding:12px 16px;text-decoration:none;display:flex;justify-content:space-between;align-items:center;box-shadow:3px 3px 0 var(--dark);transition:transform 0.15s,box-shadow 0.15s;}
+.nearby-card:hover{transform:translate(-1px,-1px);box-shadow:4px 4px 0 var(--dark);}
+.nearby-name{font-size:13px;font-weight:900;color:var(--dark);}
+.nearby-arrow{font-size:18px;color:var(--red);font-weight:900;}
+footer{background:var(--dark);padding:2rem 1.5rem;text-align:center;}
+.footer-rainbow{height:5px;background:linear-gradient(90deg,var(--red) 0%,var(--orange) 16.6%,var(--yellow) 33.2%,var(--green) 49.8%,var(--blue) 66.4%,var(--purple) 83%,var(--pink) 100%);margin-bottom:1.5rem;border-radius:2px;}
+.footer-logo{font-family:'Boogaloo',cursive;font-size:24px;color:var(--yellow);margin-bottom:4px;}
+.footer-logo span{color:var(--blue);}
+.footer-tagline{font-size:13px;font-weight:700;color:rgba(255,255,255,0.55);margin-bottom:1rem;}
+.footer-links{display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;margin-bottom:1rem;}
+.footer-links a{font-size:12px;font-weight:800;color:rgba(255,255,255,0.65);text-decoration:none;padding:4px 12px;border-radius:20px;border:1.5px solid rgba(255,255,255,0.2);transition:all 0.15s;}
+.footer-links a:hover{color:var(--yellow);border-color:var(--yellow);}
+.footer-copy{font-size:11px;color:rgba(255,255,255,0.3);font-weight:700;}
+</style>
+</head>
+<body>
+<a href="#main-content" class="skip-link">Skip to main content</a>
+<div class="rainbow-bar"></div>
+<nav>
+  <a href="index.html" class="logo">
+    <div class="logo-icon">🛝</div>
+    <div class="logo-text">bellingham<span> playground finder</span></div>
+  </a>
+  <div style="display:flex;align-items:center;gap:10px;">
+    <div class="nav-links">
+      <a href="index.html" class="active">Playgrounds</a>
+      <a href="#">About</a>
+    </div>
+    <div style="width:1px;height:28px;background:rgba(0,0,0,0.12);border-radius:1px;flex-shrink:0;"></div>
+    <div class="a11y-nav-wrap">
+      <button class="a11y-nav-btn" id="a11y-nav-btn" aria-expanded="false" aria-controls="a11y-panel" aria-label="Accessibility settings">♿</button>
+      <div class="a11y-panel" id="a11y-panel" role="dialog" aria-label="Accessibility options">
+        <div class="a11y-panel-title">♿ Accessibility</div>
+        <div class="a11y-option">
+          <div class="a11y-option-text"><label for="toggle-contrast">High contrast</label><p>Increases color contrast</p></div>
+          <label class="a11y-toggle"><input type="checkbox" id="toggle-contrast" role="switch" aria-checked="false"/><span class="a11y-toggle-slider"></span></label>
+        </div>
+        <div class="a11y-option">
+          <div class="a11y-option-text"><label for="toggle-text">Larger text</label><p>Increases base font size</p></div>
+          <label class="a11y-toggle"><input type="checkbox" id="toggle-text" role="switch" aria-checked="false"/><span class="a11y-toggle-slider"></span></label>
+        </div>
+        <div class="a11y-option">
+          <div class="a11y-option-text"><label for="toggle-motion">Reduce motion</label><p>Stops all animations</p></div>
+          <label class="a11y-toggle"><input type="checkbox" id="toggle-motion" role="switch" aria-checked="false"/><span class="a11y-toggle-slider"></span></label>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<div class="breadcrumb">
+  <a href="index.html">← All Playgrounds</a>
+  <span>›</span>
+  Shadyland (Sunnyland School)
+</div>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="park-eyebrow">📍 Sunnyland Neighbourhood, Bellingham</div>
+    <div class="park-title">Shadyland</div>
+    <div class="park-subtitle">A locals' nickname — the toddler playground tucked behind Sunnyland Elementary 🌳</div>
+    <div class="hero-badges">
+      <span class="dbadge" style="background:#D6F7E8;color:#1B7A3E;">🌳 Lots of shade</span>
+      <span class="dbadge" style="background:#FFE0EE;color:#993556;">🕸️ Spider web swing</span>
+      <span class="dbadge" style="background:#FFF0E0;color:#8B4000;">🛝 3 slides</span>
+      <span class="dbadge" style="background:#1E1B18;color:#FFD600;">🚪 Fully fenced</span>
+      <span class="dbadge" style="background:#EDE4FF;color:#6934D0;">👶 Toddler-friendly</span>
+    </div>
+    <div class="hero-address">📍 Behind Sunnyland Elementary · 2800 James St, Bellingham, WA 98225</div>
+  </div>
+
+  <div class="hero-mountain" aria-hidden="true">
+    <svg viewBox="0 0 1440 90" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:80px;">
+      <defs>
+        <linearGradient id="snowG2" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#ffffff"/>
+          <stop offset="100%" stop-color="#dff0f8"/>
+        </linearGradient>
+      </defs>
+      <rect width="1440" height="90" fill="#D6F7E8"/>
+      <path d="M0 90 L120 55 L240 70 L360 30 L480 65 L600 20 L720 58 L840 28 L960 62 L1080 18 L1200 52 L1320 35 L1440 50 L1440 90 Z" fill="#c2dce8" opacity="0.5"/>
+      <path d="M0 90 L90 65 L200 80 L310 42 L430 72 L550 28 L660 65 L770 38 L890 75 L1000 32 L1110 68 L1230 46 L1350 70 L1440 52 L1440 90 Z" fill="#8ab8cc" opacity="0.6"/>
+      <path d="M0 90 L100 60 L180 82 L260 45 L350 80 L450 28 L530 68 L620 48 L720 85 L800 35 L900 72 L980 42 L1080 78 L1160 30 L1260 65 L1360 48 L1440 62 L1440 90 Z" fill="#4a8fa8"/>
+      <path d="M450 28 L438 42 L462 42 Z" fill="url(#snowG2)" opacity="0.95"/>
+      <path d="M800 35 L788 48 L812 48 Z" fill="url(#snowG2)" opacity="0.95"/>
+      <path d="M1160 30 L1149 43 L1171 43 Z" fill="url(#snowG2)" opacity="0.9"/>
+      <rect x="0" y="87" width="1440" height="3" fill="#1E1B18"/>
+    </svg>
+  </div>
+</div>
+
+<div class="content" id="main-content">
+  <div class="content-grid">
+    <div class="main-col">
+      <div class="section-label">🌳 About this park</div>
+      <p class="park-desc">Shadyland is a locals' nickname for the small preschool & kindergarten playground tucked behind Sunnyland Elementary School. It's called Shadyland because it's somewhat hidden behind the school and rarely gets direct sun — making it a perfect summer destination when other playgrounds are baking. It's small, fully fenced, and built specifically for the school's youngest students, with three slides (a small one, a bigger one, and a twisty one), a spider-web circle swing, a small climbing dome, and ramps up to the play structures. The surface is fake grass throughout, so soft and clean. It's not affiliated with Whatcom Parks &amp; Rec — it's a Bellingham Public Schools playground that's open to the public after school hours, on weekends, and during holidays and summer break.</p>
+
+      <div class="unique-box">
+        <div class="unique-label">✨ What makes it special</div>
+        <div class="unique-text">Two words: <strong>shade</strong> and <strong>fully fenced</strong>. There's so little shade at most Bellingham playgrounds in summer, and Shadyland's tucked-away spot behind the school stays cool and shaded most of the day. Combine that with a fully enclosed fence and you've got toddler-parent paradise — let them roam, sit down, breathe.</div>
+      </div>
+
+      <div class="combo-box">
+        <div class="combo-label">🛝 Bonus: this is a 3-playground destination!</div>
+        <div class="combo-text">Sunnyland Elementary has a <strong>huge</strong> elementary-aged playground in the front of the school with swings, monkey bars, and tons of climbing equipment — perfect if you have a mix of ages. And right behind the school is <strong>Memorial Park</strong>, a big grassy field with a walking trail. You can easily spend a whole afternoon hopping between all three.</div>
+      </div>
+
+      <div style="background:#FFF9CC;border:3px solid var(--dark);border-radius:14px;padding:14px 16px;margin-bottom:2rem;box-shadow:4px 4px 0 var(--dark);">
+        <div style="font-family:'Boogaloo',cursive;font-size:16px;color:#7A5800;margin-bottom:6px;">⭐ Toddler review</div>
+        <div style="font-size:14px;font-weight:700;color:var(--dark);line-height:1.6;">5/5 — "The spider swing is the best!" 🕸️</div>
+      </div>
+
+      <div class="section-label">💡 Tips from families</div>
+      <ul class="tips-list">
+        <li class="tip-item">This is a school playground — open weekdays after school (~4pm), all day weekends, holidays & summer</li>
+        <li class="tip-item">The gate might look locked, but it opens from the inside — don't be fooled!</li>
+        <li class="tip-item">No restrooms on site — Trader Joe's shopping center is the closest, but you'll probably have to drive</li>
+        <li class="tip-item">Park at Sunnyland Elementary and walk around behind the school — there's also a trail through Memorial Park</li>
+        <li class="tip-item">Best in summer for the shade — most other Bellingham playgrounds have very little</li>
+        <li class="tip-item">Around midday it gets a bit sunnier, but mornings and afternoons stay shady</li>
+        <li class="tip-item">Bring snacks — there's nowhere to grab food without leaving</li>
+        <li class="tip-item">Got bigger kids too? The main Sunnyland playground out front has loads of equipment for elementary-age kids</li>
+        <li class="tip-item">Memorial Park behind the school is a great open grassy space to run around or kick a ball</li>
+      </ul>
+    </div>
+
+    <div class="sidebar-col">
+      <div class="sidebar-card">
+        <div class="sidebar-title">📋 Quick facts</div>
+        <div class="fact-row"><span class="fact-key">Best age</span><span class="fact-val">1.5–7</span></div>
+        <div class="fact-row"><span class="fact-key">Access hours</span><span class="fact-val">After school, weekends, holidays, summer</span></div>
+        <div class="fact-row"><span class="fact-key">Parking</span><span class="fact-val">Free at Sunnyland Elementary lot</span></div>
+        <div class="fact-row"><span class="fact-key">Restrooms</span><span class="fact-val">None</span></div>
+        <div class="fact-row"><span class="fact-key">Shade</span><span class="fact-val">Lots — that's the whole point!</span></div>
+        <div class="fact-row"><span class="fact-key">Surface</span><span class="fact-val">Fake grass</span></div>
+        <div class="fact-row"><span class="fact-key">Fencing</span><span class="fact-val">Fully fenced ✓</span></div>
+        <div class="fact-row"><span class="fact-key">Swings</span><span class="fact-val">1 spider-web circle swing</span></div>
+        <div class="fact-row"><span class="fact-key">Slides</span><span class="fact-val">3 (small, bigger, twisty)</span></div>
+        <div class="fact-row"><span class="fact-key">Climbing</span><span class="fact-val">Small climbing dome</span></div>
+        <div class="fact-row"><span class="fact-key">Accessible ramp</span><span class="fact-val">Yes — ramps up to play area</span></div>
+        <div class="fact-row"><span class="fact-key">Dogs</span><span class="fact-val">Not on school grounds</span></div>
+        <div class="fact-row"><span class="fact-key">Affiliated with</span><span class="fact-val">Bellingham Schools (not Parks & Rec)</span></div>
+        <div class="fact-row"><span class="fact-key">School website</span><span class="fact-val"><a href="https://sunnyland.bellinghamschools.org/" target="_blank" rel="noopener" style="color:var(--accent-dark);font-weight:800;">sunnyland.bellinghamschools.org ↗</a></span></div>
+      </div>
+
+      <div class="sidebar-card">
+        <div class="sidebar-title">🛝 Make it a 3-fer</div>
+        <div style="font-size:13px;font-weight:700;color:#444;line-height:1.6;">All within a 2-minute walk:
+        <ul style="list-style:none;padding:0;margin-top:10px;">
+          <li style="padding:6px 0;border-bottom:2px dashed var(--yellow);"><strong>🌳 Shadyland</strong> — toddlers (you're here)</li>
+          <li style="padding:6px 0;border-bottom:2px dashed var(--yellow);"><strong>🛝 Sunnyland front playground</strong> — bigger kids</li>
+          <li style="padding:6px 0;"><strong>🌱 Memorial Park</strong> — grass & trails</li>
+        </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="nearby-section">
+  <div class="section-label" style="margin-bottom:14px;">🗺️ Also nearby</div>
+  <div class="nearby-grid">
+    <a href="cornwall.html" class="nearby-card"><span class="nearby-name">Cornwall Park</span><span class="nearby-arrow">→</span></a>
+    <a href="parkview.html" class="nearby-card"><span class="nearby-name">Parkview School Playground</span><span class="nearby-arrow">→</span></a>
+    <a href="whatcom-falls.html" class="nearby-card"><span class="nearby-name">Whatcom Falls Park</span><span class="nearby-arrow">→</span></a>
+  </div>
+</div>
+
+<div style="max-width:820px;margin:0 auto;padding:1.5rem 1.5rem 2.5rem;">
+  <div style="background:#fff;border:3px solid var(--dark);border-radius:16px;padding:1.25rem 1.5rem;box-shadow:4px 4px 0 var(--dark);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
+    <div>
+      <div style="font-family:'Boogaloo',cursive;font-size:18px;color:var(--dark);margin-bottom:4px;">✏️ Something wrong or missing?</div>
+      <div style="font-size:13px;font-weight:700;color:#666;line-height:1.5;">Spotted an error or have info to add? We'd love to hear from you!</div>
+    </div>
+    <a href="mailto:bellinghamplaygroundfinder@gmail.com?subject=Shadyland (Sunnyland School) — update" style="display:inline-block;font-family:'Boogaloo',cursive;font-size:17px;background:var(--yellow);color:var(--dark);border:2.5px solid var(--dark);border-radius:12px;padding:9px 20px;text-decoration:none;box-shadow:3px 3px 0 var(--dark);white-space:nowrap;">Email us ✉️</a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-rainbow"></div>
+  <div class="footer-logo">bellingham<span> playground finder</span></div>
+  <div class="footer-tagline">Finding the best playgrounds in Bellingham for local families 🌲</div>
+  <div class="footer-links">
+    <a href="index.html">All Playgrounds</a>
+    <a href="#">Submit a park</a>
+    <a href="#">About us</a>
+  </div>
+  <div class="footer-copy">© 2025 Bellingham Playground Finder · Whatcom County, WA</div>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const a11yPanel = document.getElementById('a11y-panel');
+  const a11yBtn   = document.getElementById('a11y-nav-btn');
+  const htmlRoot  = document.getElementById('html-root');
+  if (!a11yPanel || !a11yBtn) return;
+  function toggleA11y(open) {
+    a11yPanel.classList.toggle('open', open);
+    a11yBtn.setAttribute('aria-expanded', String(open));
+  }
+  a11yBtn.addEventListener('click', e => { e.stopPropagation(); toggleA11y(!a11yPanel.classList.contains('open')); });
+  document.addEventListener('click', e => { if (!a11yPanel.contains(e.target) && e.target !== a11yBtn) toggleA11y(false); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') { toggleA11y(false); a11yBtn.focus(); } });
+  function bindToggle(id, cls) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.addEventListener('change', () => { htmlRoot.classList.toggle(cls, el.checked); el.setAttribute('aria-checked', String(el.checked)); });
+  }
+  bindToggle('toggle-contrast','high-contrast');
+  bindToggle('toggle-text','large-text');
+  bindToggle('toggle-motion','reduce-motion');
+});
+</script>
+</body>
+</html>

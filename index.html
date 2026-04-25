@@ -762,7 +762,7 @@ html.reduce-motion * { animation: none !important; transition: none !important; 
 
 <div class="section" id="main-content">
   <div class="section-header"><h2>What are you feeling today?</h2></div>
-  <p style="font-size:14px;font-weight:700;color:#666;margin-bottom:1.25rem;margin-top:-0.75rem;">Choose a feature below and we'll recommend a playground!</p>
+  <p style="font-size:14px;font-weight:700;color:#666;margin-bottom:1.25rem;margin-top:-0.75rem;">Choose one or more features below and we'll recommend a playground!</p>
   <div class="filter-chips" role="group" aria-label="Filter playgrounds by feature">
     <button class="fchip" data-f="Baby swings" aria-pressed="false">👶 Baby swings</button>
     <button class="fchip" data-f="Kid swings" aria-pressed="false">🤸 Kid swings</button>
@@ -828,6 +828,8 @@ const parks = [
   {id:'star-park',      name:'Star Park',             area:'Ferndale',             color:'#FFE0EE', emoji:'⭐', tags:['Kid swings','Baby swings','Monkey bars'],                              desc:'Purpose-built 12,000 sq ft playground with zones for ages 0–5 and ages 5–12.'},
   {id:'whatcom-falls',  name:'Whatcom Falls Park',    area:'Bellingham',           color:'#EDE4FF', emoji:'🌊', tags:['Kid swings','Baby swings','Monkey bars','Shade','Restrooms','Dog friendly','Accessible'], desc:'Forested park with 3+ miles of trails, stunning waterfalls, and full canopy shade.'},
   {id:'fairhaven',      name:'Fairhaven Park',        area:'Bellingham',           color:'#D6F7E8', emoji:'🌲', tags:['Kid swings','Baby swings','Monkey bars','Spray park','Shade','Restrooms','Accessible'], desc:'Wooded park near Historic Fairhaven Village with a beloved spray park and natural shade.'},
+  {id:'parkview',       name:'Parkview School Playground', area:'Cornwall Park neighbourhood', color:'#FFF0E0', emoji:'🏫', tags:['Monkey bars','Sun','Accessible','Basketball'], desc:'Brand new school playground with rope pyramid, racing slide, musical instruments and a massive multi-level climbing structure. Open after school hours, weekends & summer.'},
+  {id:'shadyland',      name:'Shadyland (Sunnyland School)', area:'Sunnyland neighbourhood', color:'#D6F7E8', emoji:'🌳', tags:['Shade','Accessible'], desc:"Locals' nickname for the small, shaded, fully-fenced toddler playground tucked behind Sunnyland Elementary. A summer favorite for parents of littles. Open after school, weekends & summer."},
 ];
 
 const tagEmoji = {
